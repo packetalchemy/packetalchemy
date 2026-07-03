@@ -1,0 +1,74 @@
+---
+import "../styles/global.css";
+import Navbar from "../components/Navbar.astro";
+---
+
+<div class="min-h-screen bg-[#0b0f17] text-white">
+
+  <Navbar />
+
+  <!-- HEADER -->
+  <div class="max-w-5xl mx-auto px-8 py-20">
+    <h1 class="text-4xl font-bold">
+      Projects & Labs
+    </h1>
+
+    <p class="text-gray-400 mt-4">
+      Real-world telecom simulations, tools, and engineering experiments.
+    </p>
+
+    <!-- GRID -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+
+      <!-- PROJECT 1 -->
+      <div class="p-6 border border-gray-800 rounded-xl hover:border-blue-500 transition">
+        <h2 class="text-xl font-semibold">5G Core Flow Simulator</h2>
+        <p class="text-gray-400 text-sm mt-2">
+          Simulated AMF → SMF → UPF signaling flows with GTP analysis.
+        </p>
+        <div class="flex gap-2 mt-4 text-xs text-gray-400">
+          <span class="border border-gray-700 px-2 py-1 rounded">5GC</span>
+          <span class="border border-gray-700 px-2 py-1 rounded">SBA</span>
+        </div>
+      </div>
+
+      <!-- PROJECT 2 -->
+      <div class="p-6 border border-gray-800 rounded-xl hover:border-blue-500 transition">
+        <h2 class="text-xl font-semibold">EPC Troubleshooting Lab</h2>
+        <p class="text-gray-400 text-sm mt-2">
+          Packet analysis of MME, SGW, PGW failures using Wireshark.
+        </p>
+        <div class="flex gap-2 mt-4 text-xs text-gray-400">
+          <span class="border border-gray-700 px-2 py-1 rounded">EPC</span>
+          <span class="border border-gray-700 px-2 py-1 rounded">GTP</span>
+        </div>
+      </div>
+
+      <!-- PROJECT 3 -->
+      <div class="p-6 border border-gray-800 rounded-xl hover:border-blue-500 transition">
+        <h2 class="text-xl font-semibold">DNS Routing Analyzer</h2>
+        <p class="text-gray-400 text-sm mt-2">
+          Telecom DNS resolution flow tracing for roaming scenarios.
+        </p>
+        <div class="flex gap-2 mt-4 text-xs text-gray-400">
+          <span class="border border-gray-700 px-2 py-1 rounded">DNS</span>
+          <span class="border border-gray-700 px-2 py-1 rounded">Roaming</span>
+        </div>
+      </div>
+
+      <!-- PROJECT 4 -->
+      <div class="p-6 border border-gray-800 rounded-xl hover:border-blue-500 transition">
+        <h2 class="text-xl font-semibold">Diameter Signaling Lab</h2>
+        <p class="text-gray-400 text-sm mt-2">
+          Analysis of CCR/CCA flows in LTE charging systems.
+        </p>
+        <div class="flex gap-2 mt-4 text-xs text-gray-400">
+          <span class="border border-gray-700 px-2 py-1 rounded">Diameter</span>
+          <span class="border border-gray-700 px-2 py-1 rounded">OCS</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
