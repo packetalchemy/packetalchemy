@@ -1,100 +1,78 @@
 ---
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>PacketAlchemy</title>
-
-    <style>
-      body {
-        margin: 0;
-        font-family: system-ui;
-        background: #0b0f17;
-        color: #e5e7eb;
-      }
-
-      .container {
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 100px 24px;
-      }
-
-      .title {
-        font-size: 52px;
-        font-weight: 700;
-      }
-
-      .subtitle {
-        margin-top: 16px;
-        font-size: 18px;
-        color: #9ca3af;
-        line-height: 1.6;
-      }
-
-      .tags {
-        margin-top: 30px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-      }
-
-      .tag {
-        padding: 6px 12px;
-        border: 1px solid #374151;
-        border-radius: 999px;
-        font-size: 13px;
-        color: #cbd5e1;
-      }
-
-      .buttons {
-        margin-top: 40px;
-        display: flex;
-        gap: 12px;
-      }
-
-      .btn {
-        padding: 10px 18px;
-        border-radius: 8px;
-        text-decoration: none;
-        font-weight: 500;
-      }
-
-      .primary {
-        background: #3b82f6;
-        color: white;
-      }
-
-      .secondary {
-        border: 1px solid #374151;
-        color: #e5e7eb;
-      }
-    </style>
-  </head>
-
-  <body>
-    <div class="container">
-      <div class="title">PacketAlchemy</div>
-
-      <div class="subtitle">
-        Engineering telecom systems at scale — from EPC to 5G Core, DNS routing,
-        signaling, and real-world network troubleshooting.
-      </div>
-
-      <div class="tags">
-        <div class="tag">5G Core</div>
-        <div class="tag">EPC</div>
-        <div class="tag">GTP</div>
-        <div class="tag">Diameter</div>
-        <div class="tag">Wireshark</div>
-        <div class="tag">Cloud Networking</div>
-      </div>
-
-      <div class="buttons">
-        <a class="btn primary" href="/blog">Explore Knowledge</a>
-        <a class="btn secondary" href="https://github.com/packetalchemy">GitHub</a>
-      </div>
+<div class="min-h-screen bg-[#0b0f17] text-white">
+  
+  <!-- NAV -->
+  <div class="flex justify-between items-center px-8 py-6 border-b border-gray-800">
+    <div class="font-bold text-xl">PacketAlchemy</div>
+    <div class="flex gap-6 text-sm text-gray-400">
+      <a href="/blog">Blog</a>
+      <a href="/projects">Projects</a>
+      <a href="https://github.com/packetalchemy">GitHub</a>
     </div>
-  </body>
-</html>
+  </div>
+
+  <!-- HERO -->
+  <div class="max-w-4xl mx-auto px-8 py-24">
+    
+    <h1 class="text-5xl font-bold leading-tight">
+      Engineering Telecom Systems
+      <span class="text-blue-500">at Scale</span>
+    </h1>
+
+    <p class="mt-6 text-gray-400 text-lg">
+      Deep dive into 5G Core, EPC architecture, signaling protocols,
+      DNS routing, and real-world telecom troubleshooting.
+    </p>
+
+    <div class="flex gap-4 mt-10">
+      <a class="px-5 py-3 bg-blue-600 rounded-lg" href="/blog">
+        Explore Knowledge
+      </a>
+      <a class="px-5 py-3 border border-gray-700 rounded-lg" href="/projects">
+        View Projects
+      </a>
+    </div>
+
+    <!-- TAGS -->
+    <div class="flex flex-wrap gap-3 mt-10">
+      <span class="px-3 py-1 border border-gray-700 rounded-full text-sm">5G Core</span>
+      <span class="px-3 py-1 border border-gray-700 rounded-full text-sm">EPC</span>
+      <span class="px-3 py-1 border border-gray-700 rounded-full text-sm">GTP</span>
+      <span class="px-3 py-1 border border-gray-700 rounded-full text-sm">Diameter</span>
+      <span class="px-3 py-1 border border-gray-700 rounded-full text-sm">Wireshark</span>
+      <span class="px-3 py-1 border border-gray-700 rounded-full text-sm">Cloud Native</span>
+    </div>
+
+  </div>
+
+  <!-- SECTION -->
+  <div class="border-t border-gray-800 px-8 py-16">
+    <div class="max-w-4xl mx-auto">
+      
+      <h2 class="text-2xl font-semibold">Featured Areas</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+
+        <div class="p-5 border border-gray-800 rounded-xl">
+          <h3 class="font-semibold">5G Core</h3>
+          <p class="text-gray-400 text-sm mt-2">SBA architecture, AMF/SMF/UPF flows</p>
+        </div>
+
+        <div class="p-5 border border-gray-800 rounded-xl">
+          <h3 class="font-semibold">EPC</h3>
+          <p class="text-gray-400 text-sm mt-2">MME, SGW, PGW, signaling analysis</p>
+        </div>
+
+        <div class="p-5 border border-gray-800 rounded-xl">
+          <h3 class="font-semibold">Troubleshooting</h3>
+          <p class="text-gray-400 text-sm mt-2">Real network incident analysis</p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
