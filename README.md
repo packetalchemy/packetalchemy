@@ -1,63 +1,55 @@
-# Astro Starter Kit: Blog
+# PacketAlchemy
 
-```sh
-npm create astro@latest -- --template blog
+**Turning packets into knowledge.**
+
+A personal engineering blog and knowledge hub built with [Astro](https://astro.build) + Tailwind CSS.
+
+## About
+
+PacketAlchemy is the online home of a telecom engineer with **21+ years of industry experience**, specializing in:
+
+- 📡 **PS Core** — Huawei USN, UGW, CG, UPCC, vUGW, vUSN, VCG
+- 🔬 **Packet Analysis** — Deep-dive into signaling, protocols, and troubleshooting
+- 🤖 **AI & Automation** — Applying machine learning and scripting to telecom workflows
+- 📐 **3GPP Standards** — Tracking LTE, EPC, 5G Core, and SBA evolution
+
+## Topics Covered
+
+| Category | Topics |
+|----------|--------|
+| **Core Network** | LTE/EPC, 5G Core (SBA), Network Slicing |
+| **Protocols** | GTP, Diameter, HTTP/2, DNS, SIP |
+| **Charging** | OCS/CHF, Rating, Policy Control |
+| **Tools** | Wireshark, Python, Git, Cloudflare Workers |
+| **Lab** | Troubleshooting, Case Studies, Outage Simulation |
+
+## Tech Stack
+
+- **Framework:** Astro 5.x
+- **Styling:** Tailwind CSS 4.x
+- **Content:** Markdown & MDX
+- **Deploy:** GitHub Pages
+
+## Getting Started
+
+```bash
+git clone https://github.com/packetalchemy/PacketAlchemy.git
+cd PacketAlchemy
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+The site runs locally at `http://localhost:4321`.
 
-Features:
+## Commands
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and Open Graph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
+| Command | Description |
+|---------|-------------|
+| `npm install` | Install dependencies |
+| `npm run dev` | Start dev server |
+| `npm run build` | Build for production |
+| `npm run preview` | Preview build locally |
 
-## 🚀 Project Structure
+## License
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-├── public/
-├── src/
-│   ├── assets/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-## Credit
-
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+MIT © [PacketAlchemy](https://github.com/packetalchemy)
