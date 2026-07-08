@@ -1,53 +1,67 @@
 ---
-// Import the global.css file here so that it is included on
-// all pages through the use of the <BaseHead /> component.
 import '../styles/global.css';
 import type { ImageMetadata } from 'astro';
 import FallbackImage from '../assets/blog-placeholder-1.jpg';
-import { SITE_TITLE } from '../consts';
-import { Font } from 'astro:assets';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
 interface Props {
-	title: string;
-	description: string;
-	image?: ImageMetadata;
+  title: string;
+  description?: string;
+  image?: ImageMetadata;
+  type?: string;
 }
 
-const site = Astro.site ?? "https://packetalchemy.pages.dev";
+const site = Astro.site ?? "https://packetalchemy.ir";
 const canonicalURL = new URL(Astro.url.pathname, site);
 
-const { title, description, image = FallbackImage } = Astro.props;
+const {
+  title,
+  description = SITE_DESCRIPTION,
+  image = FallbackImage,
+  type = "website"
+} = Astro.props;
+
+const fullTitle = title.includes('PacketAlchemy') ? title : `${title} | PacketAlchemy`;
 ---
 
-<!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="icon" href="/favicon.ico" />
 <link rel="sitemap" href="/sitemap-index.xml" />
-<link
-	rel="alternate"
-	type="application/rss+xml"
-	title={SITE_TITLE}
-	href={new URL('rss.xml', site)}
-/>
+<link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href={new URL('rss.xml', site)} />
 <meta name="generator" content={Astro.generator} />
 
-
-
-<!-- Canonical URL -->
+<!-- SEO -->
 <link rel="canonical" href={canonicalURL} />
-
-<!-- Primary Meta Tags -->
-<title>{title}</title>
+<title>{fullTitle}</title>
 <meta name="description" content={description} />
+<meta name="keywords" content="5G Core, PS Core, telecom, GTP, Diameter, PFCP, Wireshark, Huawei, network engineering, packet analysis, 3GPP" />
+<meta name="author" content="Reza" />
 
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website" />
-<meta property="og:url" content={Astro.url} />
-<meta property="og:title" content={title} />
+<!-- Open Graph -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={Astro.url.href} />
+<meta property="og:title" content={fullTitle} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(image.src, site)} />
+<meta property="og:site_name" content="PacketAlchemy" />
+<meta property="og:locale" content="en_US" />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+
+<!-- Structured Data -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "PacketAlchemy",
+  "url": site,
+  "description": SITE_DESCRIPTION,
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": `${site}search?q={search_term_string}`,
+    "query-input": "required name=search_term_string"
+  }
+})} />

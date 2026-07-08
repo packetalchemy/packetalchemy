@@ -1,0 +1,167 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout title="Protocol Reference | PacketAlchemy">
+
+<section class="relative overflow-hidden">
+  <div class="absolute -right-64 -top-64 w-[500px] h-[500px] rounded-full bg-blue-600/10 blur-[150px]"></div>
+  <div class="relative max-w-5xl mx-auto px-6 md:px-10 pt-28 pb-12">
+    <div class="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-1.5 text-xs text-blue-300 mb-6">
+      <span class="h-1.5 w-1.5 rounded-full bg-blue-400"></span>
+      Quick Reference
+    </div>
+    <h1 class="text-4xl md:text-5xl font-black leading-tight tracking-tight">
+      Protocol
+      <span class="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent"> Reference</span>
+    </h1>
+    <p class="text-gray-400 mt-4 text-lg max-w-2xl">
+      Quick reference for telecom signaling protocols — ports, message types, and filter cheatsheets.
+    </p>
+  </div>
+</section>
+
+<section class="max-w-5xl mx-auto px-6 md:px-10 pb-20">
+
+  <!-- Search -->
+  <div class="mb-10">
+    <input id="proto-search" type="text" placeholder="Search protocols..."
+      class="w-full md:w-96 px-5 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:border-blue-500/50 focus:outline-none transition text-sm" />
+  </div>
+
+  <!-- GTP-C -->
+  <div class="proto-card rounded-2xl border border-white/5 bg-white/[0.02] p-8 mb-6">
+    <div class="flex items-center gap-3 mb-4">
+      <span class="px-3 py-1 rounded-lg bg-blue-500/10 text-blue-400 text-xs font-mono">UDP 2123</span>
+      <h2 class="text-2xl font-bold">GTP-C</h2>
+      <span class="text-gray-500 text-sm ml-auto">GPRS Tunneling Protocol - Control</span>
+    </div>
+    <p class="text-gray-400 text-sm mb-6">Creates, modifies, and deletes GTP tunnels for user plane data in 2G/3G/LTE networks.</p>
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="text-sm">
+        <h3 class="font-semibold text-white mb-2">Key Messages</h3>
+        <div class="space-y-1 text-gray-400 font-mono text-xs">
+          <div>Create PDP Context Req/Resp (16/17)</div>
+          <div>Update PDP Context Req/Resp (18/19)</div>
+          <div>Delete PDP Context Req/Resp (20/21)</div>
+          <div>Create Session Req/Resp (32/33)</div>
+          <div>Modify Bearer Req/Resp (34/35)</div>
+          <div>Delete Session Req/Resp (36/37)</div>
+        </div>
+      </div>
+      <div class="text-sm">
+        <h3 class="font-semibold text-white mb-2">Wireshark Filters</h3>
+        <div class="space-y-1 text-gray-400 font-mono text-xs bg-black/30 rounded-lg p-3">
+          <div>gtp</div>
+          <div>gtpv2.msg_type == 32</div>
+          <div>gtpv2.imsi == "001011234"</div>
+          <div>gtpv2.apn == "internet"</div>
+          <div>gtpu.teid == 0x12345678</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Diameter -->
+  <div class="proto-card rounded-2xl border border-white/5 bg-white/[0.02] p-8 mb-6">
+    <div class="flex items-center gap-3 mb-4">
+      <span class="px-3 py-1 rounded-lg bg-cyan-500/10 text-cyan-400 text-xs font-mono">TCP/SCTP 3868</span>
+      <h2 class="text-2xl font-bold">Diameter</h2>
+      <span class="text-gray-500 text-sm ml-auto">AAA Protocol for LTE</span>
+    </div>
+    <p class="text-gray-400 text-sm mb-6">Authentication, Authorization, and Charging. Used across Gx, Gy, S6a, and S13 interfaces.</p>
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="text-sm">
+        <h3 class="font-semibold text-white mb-2">Interfaces</h3>
+        <div class="space-y-1 text-gray-400 text-xs">
+          <div><span class="font-mono text-cyan-400">Gx</span> — PGW/UGW to PCRF (Policy)</div>
+          <div><span class="font-mono text-cyan-400">Gy</span> — PGW/UGW to OCS (Online Charging)</div>
+          <div><span class="font-mono text-cyan-400">S6a</span> — MME to HSS (Auth)</div>
+          <div><span class="font-mono text-cyan-400">S13</span> — MME to EIR (IMEI Check)</div>
+        </div>
+      </div>
+      <div class="text-sm">
+        <h3 class="font-semibold text-white mb-2">Wireshark Filters</h3>
+        <div class="space-y-1 text-gray-400 font-mono text-xs bg-black/30 rounded-lg p-3">
+          <div>diameter</div>
+          <div>diameter.cmd.ccr</div>
+          <div>diameter.result_code != 2001</div>
+          <div>diameter.application_id == 16777238</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PFCP -->
+  <div class="proto-card rounded-2xl border border-white/5 bg-white/[0.02] p-8 mb-6">
+    <div class="flex items-center gap-3 mb-4">
+      <span class="px-3 py-1 rounded-lg bg-purple-500/10 text-purple-400 text-xs font-mono">UDP 8805</span>
+      <h2 class="text-2xl font-bold">PFCP</h2>
+      <span class="text-gray-500 text-sm ml-auto">Packet Forwarding Control Protocol</span>
+    </div>
+    <p class="text-gray-400 text-sm mb-6">5G Core protocol between SMF and UPF. Manages forwarding rules, QoS enforcement, and usage reporting.</p>
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="text-sm">
+        <h3 class="font-semibold text-white mb-2">Key Messages</h3>
+        <div class="space-y-1 text-gray-400 font-mono text-xs">
+          <div>Session Establishment Req/Resp (1/2)</div>
+          <div>Session Modification Req/Resp (3/4)</div>
+          <div>Session Deletion Req/Resp (5/6)</div>
+          <div>Heartbeat Req/Resp (128/129)</div>
+        </div>
+      </div>
+      <div class="text-sm">
+        <h3 class="font-semibold text-white mb-2">Wireshark Filters</h3>
+        <div class="space-y-1 text-gray-400 font-mono text-xs bg-black/30 rounded-lg p-3">
+          <div>pfcp</div>
+          <div>pfcp.msg_type == 1</div>
+          <div>pfcp.cause != 1</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAS -->
+  <div class="proto-card rounded-2xl border border-white/5 bg-white/[0.02] p-8 mb-6">
+    <div class="flex items-center gap-3 mb-4">
+      <span class="px-3 py-1 rounded-lg bg-green-500/10 text-green-400 text-xs font-mono">Over S1-AP / NG-AP</span>
+      <h2 class="text-2xl font-bold">NAS</h2>
+      <span class="text-gray-500 text-sm ml-auto">Non-Access Stratum</span>
+    </div>
+    <p class="text-gray-400 text-sm mb-6">UE-to-core signaling carried over S1-AP (4G) or NG-AP (5G). Handles attach, authentication, and session management.</p>
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="text-sm">
+        <h3 class="font-semibold text-white mb-2">Message Types</h3>
+        <div class="space-y-1 text-gray-400 font-mono text-xs">
+          <div>Attach Request / Accept / Reject</div>
+          <div>Detach Request / Accept</div>
+          <div>TAU Request / Accept</div>
+          <div>Service Request</div>
+          <div>PDN Connectivity Request</div>
+          <div>Activate / Deactivate EPS Bearer</div>
+        </div>
+      </div>
+      <div class="text-sm">
+        <h3 class="font-semibold text-white mb-2">Wireshark Filters</h3>
+        <div class="space-y-1 text-gray-400 font-mono text-xs bg-black/30 rounded-lg p-3">
+          <div>nas_eps</div>
+          <div>nas_eps.emm_msg_type == 0x51</div>
+          <div>s1ap || ngap</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+</MainLayout>
+
+<script>
+  const search = document.getElementById('proto-search') as HTMLInputElement;
+  search?.addEventListener('input', (e) => {
+    const val = (e.target as HTMLInputElement).value.toLowerCase();
+    document.querySelectorAll('.proto-card').forEach((card) => {
+      const text = card.textContent?.toLowerCase() || '';
+      (card as HTMLElement).style.display = text.includes(val) ? '' : 'none';
+    });
+  });
+</script>
