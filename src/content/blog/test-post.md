@@ -3,7 +3,7 @@ title: "Understanding 5G Core Architecture"
 description: "Deep dive into AMF, SMF and UPF"
 
 pubDate: 2026-07-04
-
+tags: ["5G Core", "Architecture", "AMF", "SMF", "UPF"]
 ---
 
 # Understanding 5G Core Architecture
