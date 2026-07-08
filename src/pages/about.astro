@@ -1,63 +1,199 @@
 ---
-import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
-import Layout from '../layouts/BlogPost.astro';
+import MainLayout from '../layouts/MainLayout.astro';
 ---
 
-<Layout
-	title="About Me"
-	description="Lorem ipsum dolor sit amet"
-	pubDate={new Date('August 08 2021')}
-	heroImage={AboutHeroImage}
->
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-		labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo
-		viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam
-		adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus
-		et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus
-		vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque
-		sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
-	</p>
+<MainLayout title="درباره من | PacketAlchemy">
 
-	<p>
-		Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non
-		tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non
-		blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna
-		porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis
-		massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc.
-		Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis
-		bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra
-		massa massa ultricies mi.
-	</p>
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden">
+    <div class="absolute -right-64 -top-64 w-[500px] h-[500px] rounded-full bg-blue-600/10 blur-[150px]"></div>
 
-	<p>
-		Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl
-		suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet
-		nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae
-		turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem
-		dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat
-		semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus
-		vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum
-		facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam
-		vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla
-		urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
-	</p>
+    <div class="relative max-w-5xl mx-auto px-6 md:px-10 pt-28 pb-16">
+      <div class="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-1.5 text-xs text-blue-300 mb-6">
+        <span class="h-1.5 w-1.5 rounded-full bg-blue-400"></span>
+        About Me
+      </div>
 
-	<p>
-		Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper
-		viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc
-		scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur
-		gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus
-		pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim
-		blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id
-		cursus metus aliquam eleifend mi.
-	</p>
+      <h1 class="text-4xl md:text-6xl font-black leading-tight tracking-tight">
+        مهندس شبکه‌های مخابراتی
+        <br />
+        <span class="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
+          علاقه‌مند به یادگیری
+        </span>
+      </h1>
+    </div>
+  </section>
 
-	<p>
-		Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta
-		nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam
-		tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci
-		ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar
-		proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
-	</p>
-</Layout>
+  <!-- Main Bio -->
+  <section class="max-w-4xl mx-auto px-6 md:px-10 pb-20">
+    <!-- Profile Card -->
+    <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-8 md:p-10">
+      <p class="text-lg md:text-xl leading-relaxed text-gray-300">
+        من <strong class="text-white">رضا</strong> هستم، مهندس الکترونیک با بیش از
+        <strong class="text-white">۲۱ سال تجربه</strong> در صنعت مخابرات.
+        در حال حاضر روی سیستم‌های
+        <strong class="text-white">PS Core</strong> کار می‌کنم و تمرکز اصلی‌ام روی
+        تجهیزات شبکه‌ای شرکت <strong class="text-white">هوآوی</strong> و عیب‌یابی
+        پیشرفته سیگنالینگ است.
+      </p>
+    </div>
+
+    <!-- Experience Timeline -->
+    <div class="mt-16">
+      <h2 class="text-2xl font-bold mb-8">مسیر حرفه‌ای</h2>
+
+      <div class="space-y-0">
+        <!-- Item 1 -->
+        <div class="relative pl-8 border-l border-white/10 pb-12">
+          <div class="absolute left-0 top-0 w-2 h-2 -ml-[4.5px] rounded-full bg-blue-500 ring-4 ring-[#0b0f17]"></div>
+          <div class="text-xs text-blue-400 font-semibold uppercase tracking-wider">۱۱+ سال اخیر</div>
+          <h3 class="text-xl font-bold mt-2">مهندس PS Core</h3>
+          <p class="text-gray-400 mt-2 leading-relaxed">
+            تخصص اصلی در سیستم‌های پکت‌سوئیچ هسته‌ای با تمرکز بر تجهیزات هوآوی:
+            USN, UGW, CG, UPCC, vUGW, vUSN, VCG.
+            عیب‌یابی سیگنالینگ GTP, Diameter, PFCP و تحلیل پکت با Wireshark.
+          </p>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="relative pl-8 border-l border-white/10 pb-12">
+          <div class="absolute left-0 top-0 w-2 h-2 -ml-[4.5px] rounded-full bg-blue-500/60 ring-4 ring-[#0b0f17]"></div>
+          <div class="text-xs text-gray-500 font-semibold uppercase tracking-wider">۲۱+ سال</div>
+          <h3 class="text-xl font-bold mt-2">مهندسی مخابرات</h3>
+          <p class="text-gray-400 mt-2 leading-relaxed">
+            شروع کار در صنعت تلکام با مدرک لیسانس الکترونیک.
+            تجربه گسترده در شبکه‌های مخابراتی، سوئیچینگ، و زیرساخت‌های هسته‌ای.
+          </p>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="relative pl-8 border-l border-white/10">
+          <div class="absolute left-0 top-0 w-2 h-2 -ml-[4.5px] rounded-full bg-cyan-500/60 ring-4 ring-[#0b0f17]"></div>
+          <div class="text-xs text-cyan-400 font-semibold uppercase tracking-wider">فعال</div>
+          <h3 class="text-xl font-bold mt-2">یادگیری و توسعه</h3>
+          <p class="text-gray-400 mt-2 leading-relaxed">
+            علاقه‌مند به تحلیل پکت، هوش مصنوعی، برنامه‌نویسی، و کار با GitHub.
+            پیگیری مقالات 3GPP و آخرین اخبار دنیای تلکام.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skills Grid -->
+    <div class="mt-16">
+      <h2 class="text-2xl font-bold mb-8">تخصص‌ها</h2>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Telecom Core -->
+        <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-6 hover:border-blue-500/30 transition-all duration-300">
+          <h3 class="text-lg font-bold text-white mb-4">هسته مخابراتی</h3>
+          <div class="space-y-2">
+            <div class="flex items-center gap-3 text-sm text-gray-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+              PS Core — USN, UGW, CG, UPCC
+            </div>
+            <div class="flex items-center gap-3 text-sm text-gray-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+              Virtual — vUGW, vUSN, VCG
+            </div>
+            <div class="flex items-center gap-3 text-sm text-gray-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+              5G Core — SBA Architecture
+            </div>
+            <div class="flex items-center gap-3 text-sm text-gray-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+              EPC — MME, SGW, PGW
+            </div>
+          </div>
+        </div>
+
+        <!-- Protocols -->
+        <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-6 hover:border-blue-500/30 transition-all duration-300">
+          <h3 class="text-lg font-bold text-white mb-4">پروتکل‌ها و سیگنالینگ</h3>
+          <div class="space-y-2">
+            <div class="flex items-center gap-3 text-sm text-gray-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
+              GTP-C / GTP-U
+            </div>
+            <div class="flex items-center gap-3 text-sm text-gray-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
+              Diameter (CCR/CCA, Gx, Gy)
+            </div>
+            <div class="flex items-center gap-3 text-sm text-gray-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
+              PFCP, NAS, NGAP
+            </div>
+            <div class="flex items-center gap-3 text-sm text-gray-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
+              HTTP/2 (SBA), DNS
+            </div>
+          </div>
+        </div>
+
+        <!-- Tools -->
+        <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-6 hover:border-blue-500/30 transition-all duration-300">
+          <h3 class="text-lg font-bold text-white mb-4">ابزارها و تحلیل</h3>
+          <div class="space-y-2">
+            <div class="flex items-center gap-3 text-sm text-gray-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+              Wireshark — تحلیل پکت
+            </div>
+            <div class="flex items-center gap-3 text-sm text-gray-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+              مقالات 3GPP
+            </div>
+            <div class="flex items-center gap-3 text-sm text-gray-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+              عیب‌یابی سیگنالینگ
+            </div>
+            <div class="flex items-center gap-3 text-sm text-gray-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+              Linux & Shell Scripting
+            </div>
+          </div>
+        </div>
+
+        <!-- Emerging Tech -->
+        <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-6 hover:border-blue-500/30 transition-all duration-300">
+          <h3 class="text-lg font-bold text-white mb-4">تکنولوژی‌های نوظهور</h3>
+          <div class="space-y-2">
+            <div class="flex items-center gap-3 text-sm text-gray-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
+              هوش مصنوعی و برنامه‌نویسی
+            </div>
+            <div class="flex items-center gap-3 text-sm text-gray-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
+              GitHub & DevOps
+            </div>
+            <div class="flex items-center gap-3 text-sm text-gray-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
+              Cloud Native Networking
+            </div>
+            <div class="flex items-center gap-3 text-sm text-gray-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
+              Python & Automation
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-16 rounded-2xl border border-white/5 bg-gradient-to-br from-blue-600/10 to-cyan-600/10 p-8 text-center">
+      <h3 class="text-xl font-bold">بیایید ارتباط برقرار کنیم</h3>
+      <p class="text-gray-400 mt-2 text-sm">
+        اگر در حوزه تلکام، PS Core، یا هوش مصنوعی فعالیت می‌کنید، خوشحال می‌شم باهاتون در ارتباط باشم.
+      </p>
+      <div class="flex justify-center gap-4 mt-6">
+        <a
+          href="https://github.com/packetalchemy"
+          target="_blank"
+          class="px-6 py-2.5 rounded-xl bg-white/5 border border-white/10 hover:border-blue-500/40 hover:bg-blue-500/10 transition-all text-sm flex items-center gap-2"
+        >
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          GitHub Profile
+        </a>
+      </div>
+    </div>
+  </section>
+</MainLayout>

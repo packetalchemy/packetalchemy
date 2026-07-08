@@ -1,74 +1,98 @@
 ---
-import "../styles/global.css";
-import Navbar from "../components/Navbar.astro";
+import MainLayout from '../layouts/MainLayout.astro';
 ---
 
-<div class="min-h-screen bg-[#0b0f17] text-white">
+<MainLayout title="پروژه‌ها | PacketAlchemy">
 
-  <Navbar />
+  <section class="relative overflow-hidden">
+    <div class="absolute -left-64 -top-64 w-[500px] h-[500px] rounded-full bg-blue-600/10 blur-[150px]"></div>
 
-  <!-- HEADER -->
-  <div class="max-w-5xl mx-auto px-8 py-20">
-    <h1 class="text-4xl font-bold">
-      Projects & Labs
-    </h1>
-
-    <p class="text-gray-400 mt-4">
-      Real-world telecom simulations, tools, and engineering experiments.
-    </p>
-
-    <!-- GRID -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-
-      <!-- PROJECT 1 -->
-      <div class="p-6 border border-gray-800 rounded-xl hover:border-blue-500 transition">
-        <h2 class="text-xl font-semibold">5G Core Flow Simulator</h2>
-        <p class="text-gray-400 text-sm mt-2">
-          Simulated AMF → SMF → UPF signaling flows with GTP analysis.
-        </p>
-        <div class="flex gap-2 mt-4 text-xs text-gray-400">
-          <span class="border border-gray-700 px-2 py-1 rounded">5GC</span>
-          <span class="border border-gray-700 px-2 py-1 rounded">SBA</span>
-        </div>
+    <div class="relative max-w-5xl mx-auto px-6 md:px-10 pt-28 pb-12">
+      <div class="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-1.5 text-xs text-blue-300 mb-6">
+        <span class="h-1.5 w-1.5 rounded-full bg-blue-400"></span>
+        Projects & Labs
       </div>
 
-      <!-- PROJECT 2 -->
-      <div class="p-6 border border-gray-800 rounded-xl hover:border-blue-500 transition">
-        <h2 class="text-xl font-semibold">EPC Troubleshooting Lab</h2>
-        <p class="text-gray-400 text-sm mt-2">
-          Packet analysis of MME, SGW, PGW failures using Wireshark.
-        </p>
-        <div class="flex gap-2 mt-4 text-xs text-gray-400">
-          <span class="border border-gray-700 px-2 py-1 rounded">EPC</span>
-          <span class="border border-gray-700 px-2 py-1 rounded">GTP</span>
-        </div>
-      </div>
+      <h1 class="text-4xl md:text-5xl font-black leading-tight tracking-tight">
+        پروژه‌ها و
+        <span class="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
+          آزمایشگاه‌ها
+        </span>
+      </h1>
 
-      <!-- PROJECT 3 -->
-      <div class="p-6 border border-gray-800 rounded-xl hover:border-blue-500 transition">
-        <h2 class="text-xl font-semibold">DNS Routing Analyzer</h2>
-        <p class="text-gray-400 text-sm mt-2">
-          Telecom DNS resolution flow tracing for roaming scenarios.
-        </p>
-        <div class="flex gap-2 mt-4 text-xs text-gray-400">
-          <span class="border border-gray-700 px-2 py-1 rounded">DNS</span>
-          <span class="border border-gray-700 px-2 py-1 rounded">Roaming</span>
-        </div>
-      </div>
-
-      <!-- PROJECT 4 -->
-      <div class="p-6 border border-gray-800 rounded-xl hover:border-blue-500 transition">
-        <h2 class="text-xl font-semibold">Diameter Signaling Lab</h2>
-        <p class="text-gray-400 text-sm mt-2">
-          Analysis of CCR/CCA flows in LTE charging systems.
-        </p>
-        <div class="flex gap-2 mt-4 text-xs text-gray-400">
-          <span class="border border-gray-700 px-2 py-1 rounded">Diameter</span>
-          <span class="border border-gray-700 px-2 py-1 rounded">OCS</span>
-        </div>
-      </div>
-
+      <p class="text-gray-400 mt-4 text-lg max-w-2xl">
+        شبیه‌سازی‌ها و ابزارهای واقعی مهندسی مخابراتی — از تحلیل پکت تا جریان‌های سیگنالینگ.
+      </p>
     </div>
-  </div>
+  </section>
 
-</div>
+  <section class="max-w-5xl mx-auto px-6 md:px-10 pb-20">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Project 1 -->
+      <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-7 hover:border-blue-500/30 hover:-translate-y-1 transition-all duration-300">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400">📡</div>
+          <h2 class="text-lg font-bold">5G Core Flow Simulator</h2>
+        </div>
+        <p class="text-gray-400 text-sm leading-relaxed">
+          شبیه‌سازی جریان‌های سیگنالینگ AMF → SMF → UPF با تحلیل GTP.
+          مدل‌سازی ثبت‌نام UE و PDU Session.
+        </p>
+        <div class="flex gap-2 mt-5">
+          <span class="px-2.5 py-0.5 text-[11px] border border-white/10 rounded-md text-gray-500">5GC</span>
+          <span class="px-2.5 py-0.5 text-[11px] border border-white/10 rounded-md text-gray-500">SBA</span>
+          <span class="px-2.5 py-0.5 text-[11px] border border-white/10 rounded-md text-gray-500">GTP</span>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-7 hover:border-blue-500/30 hover:-translate-y-1 transition-all duration-300">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400">🔍</div>
+          <h2 class="text-lg font-bold">EPC Troubleshooting Lab</h2>
+        </div>
+        <p class="text-gray-400 text-sm leading-relaxed">
+          تحلیل پکت MME, SGW, PGW با Wireshark.
+          عیب‌یابی Bearing و سیگنالینگ S11, S5/S8.
+        </p>
+        <div class="flex gap-2 mt-5">
+          <span class="px-2.5 py-0.5 text-[11px] border border-white/10 rounded-md text-gray-500">EPC</span>
+          <span class="px-2.5 py-0.5 text-[11px] border border-white/10 rounded-md text-gray-500">GTP</span>
+          <span class="px-2.5 py-0.5 text-[11px] border border-white/10 rounded-md text-gray-500">Wireshark</span>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-7 hover:border-blue-500/30 hover:-translate-y-1 transition-all duration-300">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400">🌐</div>
+          <h2 class="text-lg font-bold">PS Core Huawei Lab</h2>
+        </div>
+        <p class="text-gray-400 text-sm leading-relaxed">
+          محیط آزمایشگاهی برای تمرین با تجهیزات هوآوی: USN, UGW, CG, UPCC.
+          تنظیمات APN و مدیریت سشن.
+        </p>
+        <div class="flex gap-2 mt-5">
+          <span class="px-2.5 py-0.5 text-[11px] border border-white/10 rounded-md text-gray-500">Huawei</span>
+          <span class="px-2.5 py-0.5 text-[11px] border border-white/10 rounded-md text-gray-500">PS Core</span>
+        </div>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-7 hover:border-blue-500/30 hover:-translate-y-1 transition-all duration-300">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-400">⚡</div>
+          <h2 class="text-lg font-bold">Diameter Signaling Analyzer</h2>
+        </div>
+        <p class="text-gray-400 text-sm leading-relaxed">
+          تحلیل جریان‌های CCR/CCA در سیستم‌های شارژینگ LTE.
+          بررسی Diameter Gx, Gy و OCS.
+        </p>
+        <div class="flex gap-2 mt-5">
+          <span class="px-2.5 py-0.5 text-[11px] border border-white/10 rounded-md text-gray-500">Diameter</span>
+          <span class="px-2.5 py-0.5 text-[11px] border border-white/10 rounded-md text-gray-500">OCS</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>

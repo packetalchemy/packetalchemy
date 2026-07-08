@@ -1,31 +1,47 @@
 @import "tailwindcss";
 
-/* ===== BASE THEME ===== */
-body {
-  margin: 0;
-  font-family: system-ui, sans-serif;
-  background: #0b0f17;
-  color: white;
+/* ===== BASE ===== */
+html {
+  scroll-behavior: smooth;
 }
 
-/* ===== SOFT GLOW BACKGROUND ===== */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  background: #0b0f17;
+  color: white;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== SUBTLE GLOW BACKGROUND ===== */
 body::before {
   content: "";
   position: fixed;
-  top: -200px;
-  left: -200px;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(59,130,246,0.15), transparent 60%);
-  filter: blur(80px);
-  z-index: -1;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(37,99,235,.12), transparent 35%),
+    radial-gradient(circle at 90% 80%, rgba(56,189,248,.08), transparent 40%);
 }
 
-/* ===== ANIMATION ===== */
+/* ===== GRID OVERLAY ===== */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(circle, white 30%, transparent 100%);
+}
+
+/* ===== ANIMATIONS ===== */
 @keyframes fade-in {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
@@ -34,118 +50,19 @@ body::before {
 }
 
 .animate-fade-in {
-  animation: fade-in 0.8s ease-out;
+  animation: fade-in 0.6s ease-out both;
 }
 
-/* ===== PacketAlchemy Background ===== */
-
-body {
-  background: #0b0f17;
-  color: white;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-
-  background:
-    radial-gradient(circle at top left,
-      rgba(59,130,246,.18),
-      transparent 35%),
-
-    radial-gradient(circle at bottom right,
-      rgba(14,165,233,.12),
-      transparent 40%);
-}
-
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-
-  background-image:
-    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
-
-  background-size: 40px 40px;
-
-  mask-image: radial-gradient(circle, white 40%, transparent 100%);
-}
-
-/* ---------- Smooth Scroll ---------- */
-
-html {
-    scroll-behavior: smooth;
-}
-
-/* ---------- Background ---------- */
-
-body {
-    background: #0b0f17;
-    color: white;
-}
-
-/* Glow */
-
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: -2;
-
-    background:
-        radial-gradient(circle at 10% 20%,
-            rgba(37,99,235,.18),
-            transparent 35%),
-
-        radial-gradient(circle at 90% 80%,
-            rgba(56,189,248,.12),
-            transparent 40%);
-}
-
-/* Grid */
-
-body::after {
-
-    content: "";
-
-    position: fixed;
-
-    inset: 0;
-
-    z-index: -1;
-
-    background-image:
-
-        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
-
-        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
-
-    background-size: 40px 40px;
-
-    mask-image:
-        radial-gradient(circle, white 35%, transparent 100%);
-}
-
-/* Card */
-
+/* ===== CARD COMPONENT ===== */
 .card {
-
-    background: rgba(17,24,39,.55);
-
-    backdrop-filter: blur(14px);
-
-    border: 1px solid rgba(255,255,255,.06);
-
-    transition: .35s;
+  background: rgba(17,24,39,.45);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,.05);
+  transition: all .3s ease;
 }
 
 .card:hover {
-
-    transform: translateY(-6px);
-
-    border-color: rgb(59 130 246);
+  transform: translateY(-4px);
+  border-color: rgba(59,130,246,.4);
+  background: rgba(17,24,39,.6);
 }

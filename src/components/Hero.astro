@@ -1,228 +1,111 @@
 ---
-
 ---
 
 <section class="relative overflow-hidden">
+  <!-- Background Effects -->
+  <div class="absolute -left-64 -top-64 w-[700px] h-[700px] rounded-full bg-blue-600/15 blur-[180px]"></div>
+  <div class="absolute -right-64 bottom-0 w-[700px] h-[700px] rounded-full bg-cyan-500/10 blur-[180px]"></div>
 
-  <!-- Background Glow -->
-  <div class="absolute -left-64 -top-64 w-[700px] h-[700px] rounded-full bg-blue-600/20 blur-[180px]"></div>
-
-  <div class="absolute -right-64 bottom-0 w-[700px] h-[700px] rounded-full bg-blue-500/20 blur-[180px]"></div>
-
-  <!-- Grid -->
+  <!-- Grid Pattern -->
   <div
-    class="absolute inset-0 opacity-10
-    bg-[linear-gradient(rgba(255,255,255,.06)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.06)_1px,transparent_1px)]
+    class="absolute inset-0 opacity-[0.04]
+    bg-[linear-gradient(rgba(255,255,255,.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.08)_1px,transparent_1px)]
     bg-[size:48px_48px]"
   ></div>
 
-  <div class="relative max-w-7xl mx-auto px-8 pt-28 pb-20">
-
-    <!-- Badge -->
-
-    <div class="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-5 py-2 text-sm text-blue-300">
-
-      <span class="h-2 w-2 rounded-full bg-blue-400"></span>
-
-      Telecom Knowledge Platform
-
+  <div class="relative max-w-7xl mx-auto px-6 md:px-10 pt-24 pb-20">
+    <!-- Status Badge -->
+    <div class="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-1.5 text-xs text-blue-300">
+      <span class="h-1.5 w-1.5 rounded-full bg-blue-400 animate-pulse"></span>
+      PS Core Engineer · 5G Telecom Specialist
     </div>
 
-    <!-- Hero -->
-
-    <div class="mt-12 max-w-5xl">
-
-      <h1 class="text-6xl md:text-8xl font-black leading-[0.95] tracking-tight">
-
-        Engineering
-
+    <!-- Hero Content -->
+    <div class="mt-10 max-w-5xl">
+      <h1 class="text-4xl sm:text-5xl md:text-7xl font-black leading-[1] tracking-tight">
+        مهندسی
         <br />
-
-        Telecom Systems
-
+        سیستم‌های مخابراتی
         <br />
-
-        <span class="text-blue-500">
-          at Scale
+        <span class="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
+          در مقیاس واقعی
         </span>
-
       </h1>
 
-      <p class="mt-10 max-w-3xl text-xl leading-9 text-gray-400">
-
-        PacketAlchemy is a modern engineering knowledge base focused on
-        5G Core, EPC, DNS, Diameter, Cloudflare, Linux,
-        Open Source and real-world telecom troubleshooting.
-
+      <p class="mt-8 max-w-2xl text-lg md:text-xl leading-relaxed text-gray-400">
+        پلتفرم دانش مهندسی شبکه‌های مخابراتی — از 5G Core و PS Core گرفته تا
+        تحلیل پکت، تجهیزات هوآوی، و عیب‌یابی واقعی شبکه.
       </p>
 
-      <!-- Buttons -->
-
-      <div class="flex flex-wrap gap-5 mt-12">
-
+      <!-- CTA Buttons -->
+      <div class="flex flex-wrap gap-4 mt-10">
+        <a
+          href="/about"
+          class="rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 transition-all px-7 py-3.5 font-semibold shadow-lg shadow-blue-600/20 text-sm"
+        >
+          درباره من ←
+        </a>
         <a
           href="/blog"
-          class="rounded-xl bg-blue-600 hover:bg-blue-500 transition px-8 py-4 font-semibold shadow-lg shadow-blue-600/20"
+          class="rounded-xl border border-white/10 hover:border-blue-500/40 hover:bg-white/5 transition-all px-7 py-3.5 font-semibold text-sm text-gray-300"
         >
-          Explore Articles →
+          مقالات فنی →
         </a>
-
         <a
           href="https://github.com/packetalchemy"
           target="_blank"
-          class="rounded-xl border border-gray-700 hover:border-blue-500 hover:bg-gray-900 transition px-8 py-4"
+          class="rounded-xl border border-white/10 hover:border-blue-500/40 hover:bg-white/5 transition-all px-7 py-3.5 font-semibold text-sm text-gray-300 flex items-center gap-2"
         >
-          GitHub →
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          GitHub
         </a>
-
       </div>
-
     </div>
 
-    <!-- Stats -->
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mt-24 max-w-4xl">
-
+    <!-- Stats Bar -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 max-w-5xl border-t border-white/5 pt-10">
       <div>
-
-        <div class="text-5xl font-black text-blue-500">
-          20+
+        <div class="text-3xl md:text-4xl font-black bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
+          21+
         </div>
-
-        <div class="text-gray-400 mt-2">
-          Years Experience
-        </div>
-
+        <div class="text-sm text-gray-500 mt-1">سال تجربه تلکام</div>
       </div>
-
       <div>
-
-        <div class="text-5xl font-black text-blue-500">
+        <div class="text-3xl md:text-4xl font-black bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
+          11+
+        </div>
+        <div class="text-sm text-gray-500 mt-1">سال PS Core</div>
+      </div>
+      <div>
+        <div class="text-3xl md:text-4xl font-black bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
+          7+
+        </div>
+        <div class="text-sm text-gray-500 mt-1">دستگاه هوآوی</div>
+      </div>
+      <div>
+        <div class="text-3xl md:text-4xl font-black bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
           5G
         </div>
-
-        <div class="text-gray-400 mt-2">
-          Core Engineering
-        </div>
-
+        <div class="text-sm text-gray-500 mt-1">Core Engineer</div>
       </div>
-
-      <div>
-
-        <div class="text-5xl font-black text-blue-500">
-          OSS
-        </div>
-
-        <div class="text-gray-400 mt-2">
-          Open Source Projects
-        </div>
-
-      </div>
-
     </div>
 
-    <!-- Feature Cards -->
-
-    <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-8 mt-24">
-
-      <div
-        class="rounded-2xl border border-gray-800 bg-[#111827]/60 backdrop-blur p-7 hover:border-blue-500 hover:-translate-y-2 transition-all duration-300"
-      >
-
-        <div class="text-2xl mb-4">📡</div>
-
-        <h3 class="text-xl font-semibold">
-          5G Core
-        </h3>
-
-        <p class="mt-4 text-gray-400 leading-7">
-
-          AMF, SMF, UPF, NRF, NSSF,
-          UE Registration,
-          PDU Session,
-          SBA Architecture.
-
-        </p>
-
-      </div>
-
-      <div
-        class="rounded-2xl border border-gray-800 bg-[#111827]/60 backdrop-blur p-7 hover:border-blue-500 hover:-translate-y-2 transition-all duration-300"
-      >
-
-        <div class="text-2xl mb-4">🛡️</div>
-
-        <h3 class="text-xl font-semibold">
-          EPC
-        </h3>
-
-        <p class="mt-4 text-gray-400 leading-7">
-
-          MME,
-          SGW,
-          PGW,
-          GTP,
-          Diameter,
-          S11,
-          S5/S8,
-          Troubleshooting.
-
-        </p>
-
-      </div>
-
-      <div
-        class="rounded-2xl border border-gray-800 bg-[#111827]/60 backdrop-blur p-7 hover:border-blue-500 hover:-translate-y-2 transition-all duration-300"
-      >
-
-        <div class="text-2xl mb-4">☁️</div>
-
-        <h3 class="text-xl font-semibold">
-          Cloud & Automation
-        </h3>
-
-        <p class="mt-4 text-gray-400 leading-7">
-
-          Cloudflare,
-          Docker,
-          Workers,
-          Linux,
-          Python,
-          Automation,
-          Open Source.
-
-        </p>
-
-      </div>
-
-      <div
-        class="rounded-2xl border border-gray-800 bg-[#111827]/60 backdrop-blur p-7 hover:border-blue-500 hover:-translate-y-2 transition-all duration-300"
-      >
-
-        <div class="text-2xl mb-4">🌐</div>
-
-        <h3 class="text-xl font-semibold">
-          Network Protocols
-        </h3>
-
-        <p class="mt-4 text-gray-400 leading-7">
-
-          Diameter,
-          GTP,
-          PFCP,
-          NAS,
-          NGAP,
-          HTTP/2,
-          HTTP/3,
-          QUIC,
-          DNS.
-
-        </p>
-
-      </div>
-
+    <!-- Skill Tags -->
+    <div class="flex flex-wrap gap-2 mt-12 max-w-4xl">
+      <span class="px-3 py-1 border border-white/10 rounded-full text-xs text-gray-400 bg-white/[0.02]">USN</span>
+      <span class="px-3 py-1 border border-white/10 rounded-full text-xs text-gray-400 bg-white/[0.02]">UGW</span>
+      <span class="px-3 py-1 border border-white/10 rounded-full text-xs text-gray-400 bg-white/[0.02]">CG</span>
+      <span class="px-3 py-1 border border-white/10 rounded-full text-xs text-gray-400 bg-white/[0.02]">UPCC</span>
+      <span class="px-3 py-1 border border-white/10 rounded-full text-xs text-gray-400 bg-white/[0.02]">vUGW</span>
+      <span class="px-3 py-1 border border-white/10 rounded-full text-xs text-gray-400 bg-white/[0.02]">vUSN</span>
+      <span class="px-3 py-1 border border-white/10 rounded-full text-xs text-gray-400 bg-white/[0.02]">VCG</span>
+      <span class="px-3 py-1 border border-white/10 rounded-full text-xs text-gray-400 bg-white/[0.02]">GTP</span>
+      <span class="px-3 py-1 border border-white/10 rounded-full text-xs text-gray-400 bg-white/[0.02]">Diameter</span>
+      <span class="px-3 py-1 border border-white/10 rounded-full text-xs text-gray-400 bg-white/[0.02]">PFCP</span>
+      <span class="px-3 py-1 border border-white/10 rounded-full text-xs text-gray-400 bg-white/[0.02]">Wireshark</span>
+      <span class="px-3 py-1 border border-white/10 rounded-full text-xs text-gray-400 bg-white/[0.02]">3GPP</span>
+      <span class="px-3 py-1 border border-white/10 rounded-full text-xs text-gray-400 bg-white/[0.02]">AI</span>
+      <span class="px-3 py-1 border border-white/10 rounded-full text-xs text-gray-400 bg-white/[0.02]">Python</span>
     </div>
-
   </div>
-
 </section>
