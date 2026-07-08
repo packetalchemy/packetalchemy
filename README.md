@@ -49,6 +49,28 @@
 - Expanding the [telecom-notes](https://github.com/packetalchemy/packetalchemy-telecom-notes) knowledge base
 - Automating PS Core monitoring and troubleshooting workflows
 
+### ☕ Support My Work
+
+If you find my work useful, consider buying me a coffee!
+
+<p align="center">
+
+| Currency | Address |
+|----------|---------|
+| **₿ BTC** | `bc1qk3nrnz48psnts2qpku0f54mcj2whqdv257azrt` |
+| **₮ USDT (TRC20)** | `THwnrya8nitjqsUASFPduB3k1PkFocnFez` |
+
+</p>
+
+<p align="center">
+  <a href="https://link.trustwallet.com/send?coin=0&address=bc1qk3nrnz48psnts2qpku0f54mcj2whqdv257azrt">
+    <img src="https://img.shields.io/badge/Send_BTC-Trust_Wallet-3375FF?style=for-the-badge&logo=bitcoin&logoColor=white" alt="Send BTC via Trust Wallet" />
+  </a>
+  <a href="https://link.trustwallet.com/send?coin=195&address=THwnrya8nitjqsUASFPduB3k1PkFocnFez&token_id=TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t">
+    <img src="https://img.shields.io/badge/Send_USDT-Trust_Wallet-3375FF?style=for-the-badge&logo=tether&logoColor=white" alt="Send USDT via Trust Wallet" />
+  </a>
+</p>
+
 ### 📫 How to Reach Me
 
 [![GitHub](https://img.shields.io/badge/-GitHub-181717?style=flat&logo=github)](https://github.com/packetalchemy)
