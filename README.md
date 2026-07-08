@@ -1,55 +1,58 @@
-# PacketAlchemy
+<h1 align="center">Hi, I'm Reza 👋</h1>
 
-**Turning packets into knowledge.**
+<p align="center">
+  <strong>Telecom Engineer | Packet Analyst | Automation Enthusiast</strong>
+</p>
 
-A personal engineering blog and knowledge hub built with [Astro](https://astro.build) + Tailwind CSS.
+<p align="center">
+  Turning 21 years of telecom experience into tools, knowledge, and automation.
+</p>
 
-## About
+---
 
-PacketAlchemy is the online home of a telecom engineer with **21+ years of industry experience**, specializing in:
+### 🔭 What I Do
 
-- 📡 **PS Core** — Huawei USN, UGW, CG, UPCC, vUGW, vUSN, VCG
-- 🔬 **Packet Analysis** — Deep-dive into signaling, protocols, and troubleshooting
-- 🤖 **AI & Automation** — Applying machine learning and scripting to telecom workflows
-- 📐 **3GPP Standards** — Tracking LTE, EPC, 5G Core, and SBA evolution
+- **PS Core Specialist** — 11 years working with Huawei core network devices (USN, UGW, CG, UPCC, vUGW, vUSN, VCG)
+- **Packet Analysis** — Deep-dive into GTP, Diameter, HTTP/2, SIP signaling
+- **Automation** — Python scripting, AI-powered network analysis
+- **3GPP Standards** — Tracking LTE, EPC, 5G Core (SBA) evolution
 
-## Topics Covered
+### 🛠️ Tech & Tools
 
-| Category | Topics |
-|----------|--------|
-| **Core Network** | LTE/EPC, 5G Core (SBA), Network Slicing |
-| **Protocols** | GTP, Diameter, HTTP/2, DNS, SIP |
-| **Charging** | OCS/CHF, Rating, Policy Control |
-| **Tools** | Wireshark, Python, Git, Cloudflare Workers |
-| **Lab** | Troubleshooting, Case Studies, Outage Simulation |
-
-## Tech Stack
-
-- **Framework:** Astro 5.x
-- **Styling:** Tailwind CSS 4.x
-- **Content:** Markdown & MDX
-- **Deploy:** GitHub Pages
-
-## Getting Started
-
-```bash
-git clone https://github.com/packetalchemy/PacketAlchemy.git
-cd PacketAlchemy
-npm install
-npm run dev
+```
+📡 Telecom        → Huawei PS Core, LTE/EPC, 5G Core, Network Slicing
+🔬 Analysis       → Wireshark, Scapy, Protocol Dissection
+🐍 Programming    → Python, JavaScript, Bash
+🤖 AI/ML          → Machine Learning for network analytics
+☁️ Cloud          → Cloudflare Workers, Edge Computing
+🌐 Web            → Astro, Tailwind CSS, GitHub Pages
+🔧 Version Control → Git, GitHub Actions
 ```
 
-The site runs locally at `http://localhost:4321`.
+### 📂 My Repos
 
-## Commands
+| Repository | Description |
+|------------|-------------|
+| [**telecom-notes**](https://github.com/packetalchemy/packetalchemy-telecom-notes) | Comprehensive knowledge base: LTE, 5G, DNS, Charging, Wireshark, Case Studies |
+| [**nexus**](https://github.com/packetalchemy/packetalchemy-nexus) | Cloudflare Edge Platform — Workers, Routing, Security, Automation |
+| [**edge-cloudflare**](https://github.com/packetalchemy/packetalchemy-edge-cloudflare) | Edge computing lab & telecom-to-cloud analogies |
 
-| Command | Description |
-|---------|-------------|
-| `npm install` | Install dependencies |
-| `npm run dev` | Start dev server |
-| `npm run build` | Build for production |
-| `npm run preview` | Preview build locally |
+### 📊 GitHub Stats
 
-## License
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=packetalchemy&show_icons=true&theme=tokyonight&hide_border=true" alt="GitHub Stats" />
+</p>
 
-MIT © [PacketAlchemy](https://github.com/packetalchemy)
+### 🎯 Currently Working On
+
+- Building AI-powered packet analysis tools in Python
+- Expanding the [telecom-notes](https://github.com/packetalchemy/packetalchemy-telecom-notes) knowledge base
+- Automating PS Core monitoring and troubleshooting workflows
+
+### 📫 How to Reach Me
+
+[![GitHub](https://img.shields.io/badge/-GitHub-181717?style=flat&logo=github)](https://github.com/packetalchemy)
+
+---
+
+<p align="center"><em>"Packets tell stories — I just learn to read them."</em></p>
