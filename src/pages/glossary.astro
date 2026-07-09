@@ -1,0 +1,204 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout title="Glossary | PacketAlchemy">
+
+<section class="relative overflow-hidden">
+  <div class="absolute -right-64 -top-64 w-[500px] h-[500px] rounded-full bg-blue-600/10 blur-[150px]"></div>
+  <div class="relative max-w-5xl mx-auto px-6 md:px-10 pt-28 pb-12">
+    <div class="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-1.5 text-xs text-blue-300 mb-6">
+      <span class="h-1.5 w-1.5 rounded-full bg-blue-400"></span>
+      Telecom Dictionary
+    </div>
+    <h1 class="text-4xl md:text-5xl font-black leading-tight tracking-tight">
+      Telecom
+      <span class="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent"> Glossary</span>
+    </h1>
+    <p class="text-gray-400 mt-4 text-lg">Essential telecom terms explained in plain English</p>
+
+    <div class="mt-8 relative">
+      <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+      <input id="glossary-search" type="text" placeholder="Search terms..."
+        class="w-full md:w-96 pl-12 pr-5 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:border-blue-500/50 focus:outline-none transition text-sm" />
+    </div>
+  </div>
+</section>
+
+<section class="max-w-5xl mx-auto px-6 md:px-10 pb-20" id="glossary-list">
+
+  <!-- A -->
+  <div class="mb-10">
+    <h2 class="text-sm font-bold text-blue-400 uppercase tracking-widest mb-4">A</h2>
+    <div class="space-y-3">
+      <div class="term-card rounded-xl border border-white/5 bg-white/[0.02] p-5 hover:border-blue-500/20 transition">
+        <h3 class="font-bold text-white">AMF</h3>
+        <p class="text-xs text-blue-400 mt-1">Access and Mobility Management Function</p>
+        <p class="text-gray-400 text-sm mt-2">5G Core function responsible for registration, connection, reachability, and mobility management of UE devices.</p>
+      </div>
+      <div class="term-card rounded-xl border border-white/5 bg-white/[0.02] p-5 hover:border-blue-500/20 transition">
+        <h3 class="font-bold text-white">APN</h3>
+        <p class="text-xs text-blue-400 mt-1">Access Point Name</p>
+        <p class="text-gray-400 text-sm mt-2">Gateway identifier between mobile network and external packet data networks (internet, IMS, MMS).</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- D -->
+  <div class="mb-10">
+    <h2 class="text-sm font-bold text-blue-400 uppercase tracking-widest mb-4">D</h2>
+    <div class="space-y-3">
+      <div class="term-card rounded-xl border border-white/5 bg-white/[0.02] p-5 hover:border-blue-500/20 transition">
+        <h3 class="font-bold text-white">Diameter</h3>
+        <p class="text-xs text-blue-400 mt-1">RFC 6733</p>
+        <p class="text-gray-400 text-sm mt-2">AAA protocol replacing RADIUS. Used for authentication (S6a), policy control (Gx), and online charging (Gy) in LTE networks. Runs over TCP/SCTP port 3868.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- E -->
+  <div class="mb-10">
+    <h2 class="text-sm font-bold text-blue-400 uppercase tracking-widest mb-4">E</h2>
+    <div class="space-y-3">
+      <div class="term-card rounded-xl border border-white/5 bg-white/[0.02] p-5 hover:border-blue-500/20 transition">
+        <h3 class="font-bold text-white">EPC</h3>
+        <p class="text-xs text-blue-400 mt-1">Evolved Packet Core</p>
+        <p class="text-gray-400 text-sm mt-2">LTE core network architecture comprising MME, SGW, PGW, HSS, and PCRF. Handles packet switching for 4G networks.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- G -->
+  <div class="mb-10">
+    <h2 class="text-sm font-bold text-blue-400 uppercase tracking-widest mb-4">G</h2>
+    <div class="space-y-3">
+      <div class="term-card rounded-xl border border-white/5 bg-white/[0.02] p-5 hover:border-blue-500/20 transition">
+        <h3 class="font-bold text-white">GTP</h3>
+        <p class="text-xs text-blue-400 mt-1">GPRS Tunneling Protocol</p>
+        <p class="text-gray-400 text-sm mt-2">Tunneling protocol for carrying user data (GTP-U) and control signaling (GTP-C) in mobile networks. Runs over UDP ports 2123 (C) and 2152 (U).</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- H -->
+  <div class="mb-10">
+    <h2 class="text-sm font-bold text-blue-400 uppercase tracking-widest mb-4">H</h2>
+    <div class="space-y-3">
+      <div class="term-card rounded-xl border border-white/5 bg-white/[0.02] p-5 hover:border-blue-500/20 transition">
+        <h3 class="font-bold text-white">HSS</h3>
+        <p class="text-xs text-blue-400 mt-1">Home Subscriber Server</p>
+        <p class="text-gray-400 text-sm mt-2">Central database storing subscriber profiles, authentication data, and service information. Connects to MME via Diameter S6a.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- M -->
+  <div class="mb-10">
+    <h2 class="text-sm font-bold text-blue-400 uppercase tracking-widest mb-4">M</h2>
+    <div class="space-y-3">
+      <div class="term-card rounded-xl border border-white/5 bg-white/[0.02] p-5 hover:border-blue-500/20 transition">
+        <h3 class="font-bold text-white">MME</h3>
+        <p class="text-xs text-blue-400 mt-1">Mobility Management Entity</p>
+        <p class="text-gray-400 text-sm mt-2">Key EPC control node handling NAS signaling, authentication, and handover decisions for LTE devices.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- N -->
+  <div class="mb-10">
+    <h2 class="text-sm font-bold text-blue-400 uppercase tracking-widest mb-4">N</h2>
+    <div class="space-y-3">
+      <div class="term-card rounded-xl border border-white/5 bg-white/[0.02] p-5 hover:border-blue-500/20 transition">
+        <h3 class="font-bold text-white">NAS</h3>
+        <p class="text-xs text-blue-400 mt-1">Non-Access Stratum</p>
+        <p class="text-gray-400 text-sm mt-2">Signaling protocol between UE and core network, carried over S1-AP (4G) or NG-AP (5G). Handles attach, auth, and session management.</p>
+      </div>
+      <div class="term-card rounded-xl border border-white/5 bg-white/[0.02] p-5 hover:border-blue-500/20 transition">
+        <h3 class="font-bold text-white">NRF</h3>
+        <p class="text-xs text-blue-400 mt-1">Network Repository Function</p>
+        <p class="text-gray-400 text-sm mt-2">5G Core service discovery function. Maintains profiles of available NFs and enables NF registration and discovery.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- O -->
+  <div class="mb-10">
+    <h2 class="text-sm font-bold text-blue-400 uppercase tracking-widest mb-4">O</h2>
+    <div class="space-y-3">
+      <div class="term-card rounded-xl border border-white/5 bg-white/[0.02] p-5 hover:border-blue-500/20 transition">
+        <h3 class="font-bold text-white">OCS</h3>
+        <p class="text-xs text-blue-400 mt-1">Online Charging System</p>
+        <p class="text-gray-400 text-sm mt-2">Real-time credit control system. Grants quotas to PGW/UGW for data usage. Connects via Diameter Gy interface.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- P -->
+  <div class="mb-10">
+    <h2 class="text-sm font-bold text-blue-400 uppercase tracking-widest mb-4">P</h2>
+    <div class="space-y-3">
+      <div class="term-card rounded-xl border border-white/5 bg-white/[0.02] p-5 hover:border-blue-500/20 transition">
+        <h3 class="font-bold text-white">PFCP</h3>
+        <p class="text-xs text-blue-400 mt-1">Packet Forwarding Control Protocol</p>
+        <p class="text-gray-400 text-sm mt-2">5G protocol between SMF and UPF. Manages forwarding rules, QoS enforcement, and usage reporting. Runs over UDP 8805.</p>
+      </div>
+      <div class="term-card rounded-xl border border-white/5 bg-white/[0.02] p-5 hover:border-blue-500/20 transition">
+        <h3 class="font-bold text-white">PCRF</h3>
+        <p class="text-xs text-blue-400 mt-1">Policy and Charging Rules Function</p>
+        <p class="text-gray-400 text-sm mt-2">Makes policy and charging decisions. Connects to PGW via Diameter Gx. In 5G, replaced by PCF.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- S -->
+  <div class="mb-10">
+    <h2 class="text-sm font-bold text-blue-400 uppercase tracking-widest mb-4">S</h2>
+    <div class="space-y-3">
+      <div class="term-card rounded-xl border border-white/5 bg-white/[0.02] p-5 hover:border-blue-500/20 transition">
+        <h3 class="font-bold text-white">SBA</h3>
+        <p class="text-xs text-blue-400 mt-1">Service-Based Architecture</p>
+        <p class="text-gray-400 text-sm mt-2">5G Core architecture where NFs communicate via HTTP/2 REST APIs over a service bus, replacing point-to-point interfaces.</p>
+      </div>
+      <div class="term-card rounded-xl border border-white/5 bg-white/[0.02] p-5 hover:border-blue-500/20 transition">
+        <h3 class="font-bold text-white">SGW</h3>
+        <p class="text-xs text-blue-400 mt-1">Serving Gateway</p>
+        <p class="text-gray-400 text-sm mt-2">EPC node that routes and forwards user data packets. Handles inter-eNodeB handover and mobility anchoring.</p>
+      </div>
+      <div class="term-card rounded-xl border border-white/5 bg-white/[0.02] p-5 hover:border-blue-500/20 transition">
+        <h3 class="font-bold text-white">SMF</h3>
+        <p class="text-xs text-blue-400 mt-1">Session Management Function</p>
+        <p class="text-gray-400 text-sm mt-2">5G Core function for PDU session establishment, modification, and release. Interacts with UPF via PFCP.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- U -->
+  <div class="mb-10">
+    <h2 class="text-sm font-bold text-blue-400 uppercase tracking-widest mb-4">U</h2>
+    <div class="space-y-3">
+      <div class="term-card rounded-xl border border-white/5 bg-white/[0.02] p-5 hover:border-blue-500/20 transition">
+        <h3 class="font-bold text-white">UDM</h3>
+        <p class="text-xs text-blue-400 mt-1">Unified Data Management</p>
+        <p class="text-gray-400 text-sm mt-2">5G Core function storing subscriber data and service profiles. Replaces HSS in 5G architecture.</p>
+      </div>
+      <div class="term-card rounded-xl border border-white/5 bg-white/[0.02] p-5 hover:border-blue-500/20 transition">
+        <h3 class="font-bold text-white">UPF</h3>
+        <p class="text-xs text-blue-400 mt-1">User Plane Function</p>
+        <p class="text-gray-400 text-sm mt-2">5G Core function that forwards user traffic, applies QoS rules, and performs deep packet inspection.</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+</MainLayout>
+
+<script>
+  const search = document.getElementById('glossary-search') as HTMLInputElement;
+  search?.addEventListener('input', (e) => {
+    const val = (e.target as HTMLInputElement).value.toLowerCase();
+    document.querySelectorAll('.term-card').forEach((card) => {
+      const text = card.textContent?.toLowerCase() || '';
+      (card as HTMLElement).style.display = text.includes(val) ? '' : 'none';
+    });
+  });
+</script>

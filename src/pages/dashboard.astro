@@ -1,0 +1,123 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+const totalPosts = posts.length;
+const totalWords = posts.reduce((sum, p) => sum + (p.body?.split(/\s+/).length || 0), 0);
+const avgReadTime = Math.ceil(totalWords / totalPosts / 200);
+
+// Get all unique tags
+const allTags = new Map<string, number>();
+posts.forEach(p => {
+  (p.data as any).tags?.forEach((t: string) => {
+    allTags.set(t, (allTags.get(t) || 0) + 1);
+  });
+});
+---
+
+<MainLayout title="Dashboard | PacketAlchemy">
+
+<section class="relative overflow-hidden">
+  <div class="absolute -right-64 -top-64 w-[500px] h-[500px] rounded-full bg-blue-600/10 blur-[150px]"></div>
+  <div class="relative max-w-5xl mx-auto px-6 md:px-10 pt-28 pb-12">
+    <div class="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-1.5 text-xs text-blue-300 mb-6">
+      <span class="h-1.5 w-1.5 rounded-full bg-blue-400 animate-pulse"></span>
+      Live Dashboard
+    </div>
+    <h1 class="text-4xl md:text-5xl font-black leading-tight tracking-tight">
+      Site
+      <span class="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent"> Dashboard</span>
+    </h1>
+  </div>
+</section>
+
+<section class="max-w-5xl mx-auto px-6 md:px-10 pb-20">
+
+  <!-- Stats Cards -->
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-14">
+    <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-6 text-center">
+      <div class="text-3xl font-black bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">{totalPosts}</div>
+      <div class="text-xs text-gray-500 mt-1">Articles</div>
+    </div>
+    <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-6 text-center">
+      <div class="text-3xl font-black bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">{(totalWords / 1000).toFixed(1)}k</div>
+      <div class="text-xs text-gray-500 mt-1">Total Words</div>
+    </div>
+    <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-6 text-center">
+      <div class="text-3xl font-black bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">{avgReadTime}</div>
+      <div class="text-xs text-gray-500 mt-1">Avg Read (min)</div>
+    </div>
+    <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-6 text-center">
+      <div class="text-3xl font-black bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">{allTags.size}</div>
+      <div class="text-xs text-gray-500 mt-1">Topics</div>
+    </div>
+  </div>
+
+  <!-- Tag Distribution -->
+  <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-8 mb-10">
+    <h2 class="text-xl font-bold mb-6">Topic Distribution</h2>
+    <div class="space-y-3">
+      {[...allTags.entries()].sort((a, b) => b[1] - a[1]).map(([tag, count]) => {
+        const pct = Math.round((count / totalPosts) * 100);
+        return (
+          <div class="flex items-center gap-4">
+            <span class="text-sm text-gray-400 w-28 shrink-0">{tag}</span>
+            <div class="flex-1 h-2 bg-white/5 rounded-full overflow-hidden">
+              <div class="h-full bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full" style={`width: ${pct}%`}></div>
+            </div>
+            <span class="text-xs text-gray-500 w-8 text-right">{count}</span>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+
+  <!-- Recent Activity -->
+  <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-8">
+    <h2 class="text-xl font-bold mb-6">Recent Articles</h2>
+    <div class="space-y-4">
+      {posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()).slice(0, 5).map(post => (
+        <a href={`/blog/${post.id}/`} class="flex items-center gap-4 p-4 rounded-xl hover:bg-white/[0.03] transition group">
+          <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 text-sm font-bold shrink-0">
+            {post.data.pubDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+          </div>
+          <div class="flex-1 min-w-0">
+            <h3 class="text-sm font-bold group-hover:text-blue-400 transition truncate">{post.data.title}</h3>
+            <p class="text-xs text-gray-500 truncate">{post.data.description}</p>
+          </div>
+          <svg class="w-4 h-4 text-gray-600 group-hover:text-blue-400 transition shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      ))}
+    </div>
+  </div>
+
+  <!-- Tech Stack -->
+  <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-8 mt-10">
+    <h2 class="text-xl font-bold mb-6">Tech Stack</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+      <div class="text-center p-4 rounded-xl bg-white/[0.02]">
+        <div class="text-2xl mb-2">⚡</div>
+        <div class="text-gray-400">Astro 5</div>
+        <div class="text-xs text-gray-600">Framework</div>
+      </div>
+      <div class="text-center p-4 rounded-xl bg-white/[0.02]">
+        <div class="text-2xl mb-2">🎨</div>
+        <div class="text-gray-400">Tailwind CSS</div>
+        <div class="text-xs text-gray-600">Styling</div>
+      </div>
+      <div class="text-center p-4 rounded-xl bg-white/[0.02]">
+        <div class="text-2xl mb-2">☁️</div>
+        <div class="text-gray-400">Cloudflare</div>
+        <div class="text-xs text-gray-600">Hosting</div>
+      </div>
+      <div class="text-center p-4 rounded-xl bg-white/[0.02]">
+        <div class="text-2xl mb-2">📦</div>
+        <div class="text-gray-400">GitHub</div>
+        <div class="text-xs text-gray-600">Source</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+</MainLayout>
