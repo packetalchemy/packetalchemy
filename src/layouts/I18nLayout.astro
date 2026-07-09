@@ -1,0 +1,39 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import I18nNavbar from "../components/I18nNavbar.astro";
+import I18nFooter from "../components/I18nFooter.astro";
+import { getLocale, type Locale } from "../i18n/index";
+
+interface Props {
+  title?: string;
+  description?: string;
+  lang?: Locale;
+}
+
+const { title = "PacketAlchemy", description, lang = 'en' } = Astro.props;
+const t = getLocale(lang);
+---
+
+<!DOCTYPE html>
+<html lang={lang} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
+
+<head>
+  <BaseHead title={title} description={description || t.site.description} />
+  {lang === 'fa' && (
+    <style>
+      body { font-family: 'Vazirmatn', 'Tahoma', system-ui, sans-serif; }
+    </style>
+  )}
+</head>
+
+<body class:list={[
+  "bg-[#0b0f17] text-white min-h-screen",
+  lang === 'fa' && "font-[Vazirmatn,Tahoma,system-ui,sans-serif]"
+]}>
+  <I18nNavbar t={t} lang={lang} />
+  <main>
+    <slot />
+  </main>
+  <I18nFooter t={t} lang={lang} />
+</body>
+</html>

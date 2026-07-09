@@ -1,0 +1,96 @@
+---
+import I18nLayout from '../../../layouts/I18nLayout.astro';
+import { getLocale } from '../../../i18n/index';
+import { getCollection } from 'astro:content';
+
+const lang = 'fa' as const;
+const t = getLocale(lang);
+
+const posts = await getCollection('blog');
+posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+const featured = posts[0];
+const rest = posts.slice(1);
+
+function readingTime(body: string): string {
+  const words = body.split(/\s+/).length;
+  const mins = Math.max(1, Math.ceil(words / 200));
+  return `${mins} ${t.blog.minRead}`;
+}
+
+// Persian blog title/description map
+const faTitles: Record<string, string> = {
+  'gtp-c-signaling-ps-core': 'درک سیگنالینگ GTP-C در شبکه‌های PS Core',
+  'diameter-signaling-lte-charging': 'سیگنالینگ Diameter در شارژینگ LTE',
+  'wireshark-filters-ps-core': 'فیلترهای Wireshark برای مهندسان PS Core',
+  '5g-core-sba-troubleshooting': 'عیب‌یابی SBA در 5G Core',
+  'huawei-ugw-apn-configuration': 'بهترین روش‌های تنظیم APN در Huawei UGW',
+  'test-post': 'درک معماری 5G Core',
+};
+
+const faDescs: Record<string, string> = {
+  'gtp-c-signaling-ps-core': 'تحلیل عمیق سیگنالینگ GTP-C — جریان‌ها، پیام‌ها و عیب‌یابی در تجهیزات هوآوی.',
+  'diameter-signaling-lte-charging': 'راهنمای کامل پروتکل Diameter در شبکه‌های LTE — رابط Gx برای کنترل پالیسی و Gy برای شارژ آنلاین.',
+  'wireshark-filters-ps-core': 'فیلترهای ضروری Wireshark برای عیب‌یابی GTP، Diameter، PFCP و سیگنالینگ PS Core.',
+  '5g-core-sba-troubleshooting': 'راهنمای عملی عیب‌یابی معماری مبتنی بر سرویس 5G Core.',
+  'huawei-ugw-apn-configuration': 'راهنمای گام‌به‌گام تنظیم پروفایل APN در Huawei UGW.',
+  'test-post': 'تحلیل عمیق AMF، SMF و UPF.',
+};
+---
+
+<I18nLayout title="مقالات | PacketAlchemy" lang={lang}>
+
+<section class="relative overflow-hidden">
+  <div class="absolute -right-64 -top-64 w-[500px] h-[500px] rounded-full bg-blue-600/10 blur-[150px]"></div>
+  <div class="relative max-w-5xl mx-auto px-6 md:px-10 pt-28 pb-12 rtl">
+    <div class="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-1.5 text-xs text-blue-300 mb-6">
+      <span class="h-1.5 w-1.5 rounded-full bg-blue-400 animate-pulse"></span>
+      {posts.length} {t.blog.badge}
+    </div>
+    <h1 class="text-4xl md:text-5xl font-black leading-tight tracking-tight">
+      {t.blog.title}
+      <span class="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent"> {t.blog.titleHighlight}</span>
+    </h1>
+    <p class="text-gray-400 mt-4 text-lg max-w-2xl">{t.blog.subtitle}</p>
+  </div>
+</section>
+
+{featured && (
+  <section class="max-w-5xl mx-auto px-6 md:px-10 pb-8">
+    <a href={`/fa/blog/${featured.id}/`} class="block group rounded-2xl border border-white/5 bg-gradient-to-br from-blue-600/10 via-white/[0.02] to-cyan-600/5 p-8 md:p-10 hover:border-blue-500/30 transition-all duration-300 rtl">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest bg-blue-500/20 text-blue-300 rounded-md">{t.blog.featured}</span>
+        <span class="text-xs text-gray-500 font-mono">{featured.data.pubDate.toLocaleDateString('fa-IR')}</span>
+        <span class="text-xs text-gray-600">· {readingTime(featured.body!)}</span>
+      </div>
+      <h2 class="text-2xl md:text-3xl font-bold group-hover:text-blue-400 transition-colors">
+        {faTitles[featured.id] || featured.data.title}
+      </h2>
+      <p class="text-gray-400 mt-3 max-w-3xl leading-relaxed">
+        {faDescs[featured.id] || featured.data.description}
+      </p>
+      <div class="text-blue-400 text-sm mt-6 font-semibold">{t.blog.readMore}</div>
+    </a>
+  </section>
+)}
+
+<section class="max-w-5xl mx-auto px-6 md:px-10 pb-20">
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+    {rest.map((post) => (
+      <a href={`/fa/blog/${post.id}/`} class="group rounded-2xl border border-white/5 bg-white/[0.02] p-6 hover:border-blue-500/30 hover:-translate-y-1 transition-all duration-300 flex flex-col rtl">
+        <div class="flex items-center gap-2 text-xs text-gray-500 font-mono">
+          <span>{post.data.pubDate.toLocaleDateString('fa-IR')}</span>
+          <span>·</span>
+          <span>{readingTime(post.body!)}</span>
+        </div>
+        <h3 class="text-lg font-bold mt-3 group-hover:text-blue-400 transition-colors leading-snug">
+          {faTitles[post.id] || post.data.title}
+        </h3>
+        <p class="text-gray-400 text-sm mt-3 leading-relaxed flex-1">
+          {faDescs[post.id] || post.data.description}
+        </p>
+      </a>
+    ))}
+  </div>
+</section>
+
+</I18nLayout>

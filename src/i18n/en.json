@@ -1,0 +1,124 @@
+{
+  "site": {
+    "title": "PacketAlchemy",
+    "description": "Engineering Telecom Systems at Scale — Deep dive into 5G Core, PS Core, Huawei networking, and real-world telecom troubleshooting."
+  },
+  "nav": {
+    "home": "Home",
+    "blog": "Blog",
+    "projects": "Projects",
+    "reference": "Reference",
+    "glossary": "Glossary",
+    "about": "About",
+    "contact": "Contact",
+    "search": "Search",
+    "github": "GitHub",
+    "dashboard": "Dashboard"
+  },
+  "hero": {
+    "badge": "PS Core Engineer · 5G Telecom Specialist",
+    "title1": "Engineering",
+    "title2": "Telecom Systems",
+    "title3": "at Scale",
+    "subtitle": "A telecom engineering knowledge base — from 5G Core and PS Core to packet analysis, Huawei networking, and real-world troubleshooting.",
+    "cta1": "About Me →",
+    "cta2": "Technical Articles →",
+    "stats": {
+      "years1": "Years in Telecom",
+      "years2": "Years PS Core",
+      "devices": "Huawei Devices",
+      "core": "Core Engineer"
+    }
+  },
+  "about": {
+    "badge": "About Me",
+    "title": "Telecom Network Engineer",
+    "titleHighlight": "Passionate About Learning",
+    "bio": "I'm Reza, an Electronics Engineer with over 21 years of experience in the telecommunications industry. I currently work on PS Core systems, specializing in Huawei networking equipment and advanced signaling troubleshooting.",
+    "careerPath": "Career Path",
+    "expertise": "Expertise",
+    "connect": "Let's Connect",
+    "connectDesc": "If you're working in telecom, PS Core, or AI, I'd love to connect and exchange knowledge."
+  },
+  "blog": {
+    "badge": "Articles",
+    "title": "Technical",
+    "titleHighlight": "Blog",
+    "subtitle": "Deep dives into telecom protocols, troubleshooting guides, and engineering insights.",
+    "featured": "Featured",
+    "readMore": "Read article →",
+    "minRead": "min read",
+    "newsletter": "Stay Updated",
+    "newsletterDesc": "Get notified when new articles on telecom engineering, packet analysis, and 5G Core are published.",
+    "emailPlaceholder": "your@email.com",
+    "subscribe": "Subscribe",
+    "noSpam": "No spam. Unsubscribe anytime."
+  },
+  "projects": {
+    "badge": "Projects & Labs",
+    "title": "Projects &",
+    "titleHighlight": "Labs",
+    "subtitle": "Real-world telecom simulations and engineering tools — from packet analysis to signaling flows."
+  },
+  "reference": {
+    "badge": "Quick Reference",
+    "title": "Protocol",
+    "titleHighlight": "Reference",
+    "subtitle": "Quick reference for telecom signaling protocols — ports, message types, and filter cheatsheets.",
+    "searchPlaceholder": "Search protocols..."
+  },
+  "glossary": {
+    "badge": "Telecom Dictionary",
+    "title": "Telecom",
+    "titleHighlight": "Glossary",
+    "subtitle": "Essential telecom terms explained in plain English",
+    "searchPlaceholder": "Search terms..."
+  },
+  "tags": {
+    "title": "Topics &",
+    "titleHighlight": "Tags",
+    "subtitle": "Browse all articles by topic",
+    "articles": "articles"
+  },
+  "search": {
+    "title": "Search",
+    "subtitle": "Find articles, protocols, and tutorials",
+    "placeholder": "Type to search...",
+    "noResults": "No results found. Try different keywords.",
+    "results": "results"
+  },
+  "contact": {
+    "badge": "Get in Touch",
+    "title": "Contact",
+    "subtitle": "Interested in telecom engineering, collaboration, or just want to connect? I'd love to hear from you.",
+    "github": "GitHub",
+    "githubDesc": "Check out my projects, code, and contributions.",
+    "rss": "RSS Feed",
+    "rssDesc": "Subscribe to the latest articles via your favorite reader.",
+    "topics": "Topics I'm Interested In",
+    "cta": "For professional inquiries, collaboration proposals, or technical discussions, feel free to reach out via GitHub."
+  },
+  "dashboard": {
+    "badge": "Live Dashboard",
+    "title": "Site",
+    "titleHighlight": "Dashboard",
+    "articles": "Articles",
+    "totalWords": "Total Words",
+    "avgRead": "Avg Read (min)",
+    "topics": "Topics",
+    "topicDist": "Topic Distribution",
+    "recentArticles": "Recent Articles",
+    "techStack": "Tech Stack"
+  },
+  "footer": {
+    "links": "Links",
+    "topics": "Topics",
+    "copyright": "© 2026 PacketAlchemy · Engineering Networks. Building Knowledge."
+  },
+  "404": {
+    "title": "Page Not Found",
+    "desc": "The page you're looking for doesn't exist or has been moved. Check the URL or explore the links below.",
+    "home": "Home",
+    "back": "← Back to Home"
+  }
+}

@@ -1,0 +1,34 @@
+---
+import I18nLayout from '../../layouts/I18nLayout.astro';
+import { getLocale } from '../../i18n/index';
+const lang = 'fa' as const;
+const t = getLocale(lang);
+---
+<I18nLayout title="مرجع پروتکل‌ها | PacketAlchemy" lang={lang}>
+<section class="relative overflow-hidden">
+  <div class="absolute -right-64 -top-64 w-[500px] h-[500px] rounded-full bg-blue-600/10 blur-[150px]"></div>
+  <div class="relative max-w-5xl mx-auto px-6 md:px-10 pt-28 pb-12 rtl">
+    <div class="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-1.5 text-xs text-blue-300 mb-6">
+      <span class="h-1.5 w-1.5 rounded-full bg-blue-400"></span>{t.reference.badge}
+    </div>
+    <h1 class="text-4xl md:text-5xl font-black leading-tight tracking-tight">{t.reference.title}<span class="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent"> {t.reference.titleHighlight}</span></h1>
+    <p class="text-gray-400 mt-4 text-lg max-w-2xl">{t.reference.subtitle}</p>
+  </div>
+</section>
+<section class="max-w-5xl mx-auto px-6 md:px-10 pb-20 rtl">
+  <div class="mb-10"><input id="proto-search" type="text" placeholder={t.reference.searchPlaceholder} class="w-full md:w-96 px-5 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:border-blue-500/50 focus:outline-none transition text-sm" /></div>
+  <div class="proto-card rounded-2xl border border-white/5 bg-white/[0.02] p-8 mb-6"><div class="flex items-center gap-3 mb-4"><span class="px-3 py-1 rounded-lg bg-blue-500/10 text-blue-400 text-xs font-mono">UDP 2123</span><h2 class="text-2xl font-bold">GTP-C</h2></div><p class="text-gray-400 text-sm mb-4">پروتکل تونلینگ GPRS - صفحه کنترل. ایجاد، تغییر و حذف تونل‌های GTP برای داده‌های کاربر.</p><div class="grid md:grid-cols-2 gap-4"><div class="text-sm"><h3 class="font-semibold text-white mb-2">پیام‌های کلیدی</h3><div class="space-y-1 text-gray-400 font-mono text-xs"><div>Create Session Req/Resp (32/33)</div><div>Modify Bearer Req/Resp (34/35)</div><div>Delete Session Req/Resp (36/37)</div></div></div><div class="text-sm"><h3 class="font-semibold text-white mb-2">فیلترهای Wireshark</h3><div class="space-y-1 text-gray-400 font-mono text-xs bg-black/30 rounded-lg p-3"><div>gtp</div><div>gtpv2.msg_type == 32</div><div>gtpv2.apn == "internet"</div></div></div></div></div>
+  <div class="proto-card rounded-2xl border border-white/5 bg-white/[0.02] p-8 mb-6"><div class="flex items-center gap-3 mb-4"><span class="px-3 py-1 rounded-lg bg-cyan-500/10 text-cyan-400 text-xs font-mono">TCP/SCTP 3868</span><h2 class="text-2xl font-bold">Diameter</h2></div><p class="text-gray-400 text-sm mb-4">پروتکل AAA برای LTE - احراز هویت، مجوز و شارژینگ.</p><div class="text-sm"><h3 class="font-semibold text-white mb-2">رابط‌ها</h3><div class="space-y-1 text-gray-400 text-xs"><div><span class="font-mono text-cyan-400">Gx</span> — PGW به PCRF (پالیسی)</div><div><span class="font-mono text-cyan-400">Gy</span> — PGW به OCS (شارژ آنلاین)</div><div><span class="font-mono text-cyan-400">S6a</span> — MME به HSS (احراز هویت)</div></div></div></div>
+  <div class="proto-card rounded-2xl border border-white/5 bg-white/[0.02] p-8 mb-6"><div class="flex items-center gap-3 mb-4"><span class="px-3 py-1 rounded-lg bg-purple-500/10 text-purple-400 text-xs font-mono">UDP 8805</span><h2 class="text-2xl font-bold">PFCP</h2></div><p class="text-gray-400 text-sm">پروتکل کنترل فورواردینگ بسته - بین SMF و UPF در 5G Core.</p></div>
+</section>
+<script>
+  const search = document.getElementById('proto-search') as HTMLInputElement;
+  search?.addEventListener('input', (e) => {
+    const val = (e.target as HTMLInputElement).value.toLowerCase();
+    document.querySelectorAll('.proto-card').forEach((card) => {
+      const text = card.textContent?.toLowerCase() || '';
+      (card as HTMLElement).style.display = text.includes(val) ? '' : 'none';
+    });
+  });
+</script>
+</I18nLayout>

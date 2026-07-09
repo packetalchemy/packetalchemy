@@ -1,0 +1,25 @@
+---
+import I18nLayout from '../../layouts/I18nLayout.astro';
+import { getLocale } from '../../i18n/index';
+import { getCollection } from 'astro:content';
+const lang = 'fa' as const;
+const t = getLocale(lang);
+const posts = await getCollection('blog');
+posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+const tagMap = new Map<string, typeof posts>();
+posts.forEach(post => { (post.data as any).tags?.forEach((tag: string) => { if (!tagMap.has(tag)) tagMap.set(tag, []); tagMap.get(tag)!.push(post); }); });
+const sortedTags = [...tagMap.entries()].sort((a, b) => b[1].length - a[1].length);
+const faTitles: Record<string, string> = { 'gtp-c-signaling-ps-core': 'درک سیگنالینگ GTP-C', 'diameter-signaling-lte-charging': 'سیگنالینگ Diameter در شارژینگ', 'wireshark-filters-ps-core': 'فیلترهای Wireshark', '5g-core-sba-troubleshooting': 'عیب‌یابی SBA 5G Core', 'huawei-ugw-apn-configuration': 'تنظیم APN هوآوی', 'test-post': 'معماری 5G Core' };
+---
+<I18nLayout title="موضوعات | PacketAlchemy" lang={lang}>
+<section class="relative overflow-hidden">
+  <div class="relative max-w-5xl mx-auto px-6 md:px-10 pt-28 pb-12 rtl">
+    <h1 class="text-4xl md:text-5xl font-black leading-tight tracking-tight">{t.tags.title}<span class="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent"> {t.tags.titleHighlight}</span></h1>
+    <p class="text-gray-400 mt-4 text-lg">{t.tags.subtitle}</p>
+  </div>
+</section>
+<section class="max-w-5xl mx-auto px-6 md:px-10 pb-20 rtl">
+  <div class="flex flex-wrap gap-3 mb-14">{sortedTags.map(([tag, tagPosts]) => (<a href={`#${tag.toLowerCase().replace(/[^a-z0-9]/g, '-')}`} class="px-4 py-2 rounded-xl bg-white/[0.03] border border-white/5 hover:border-blue-500/40 transition-all text-sm text-gray-300 hover:text-white">{tag} <span class="text-gray-600 ml-1">({tagPosts.length})</span></a>))}</div>
+  {sortedTags.map(([tag, tagPosts]) => (<div id={tag.toLowerCase().replace(/[^a-z0-9]/g, '-')} class="mb-14 scroll-mt-24"><h2 class="text-2xl font-bold mb-6 flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>{tag} <span class="text-sm text-gray-500 font-normal">({tagPosts.length} {t.tags.articles})</span></h2><div class="space-y-4">{tagPosts.map(post => (<a href={`/fa/blog/${post.id}/`} class="block rounded-xl border border-white/5 bg-white/[0.02] p-6 hover:border-blue-500/30 transition-all"><div class="text-xs text-gray-500 font-mono">{post.data.pubDate.toLocaleDateString('fa-IR')}</div><h3 class="text-lg font-bold mt-1">{faTitles[post.id] || post.data.title}</h3><p class="text-gray-400 text-sm mt-2">{post.data.description}</p></a>))}</div></div>))}
+</section>
+</I18nLayout>

@@ -1,0 +1,40 @@
+---
+import I18nLayout from '../../layouts/I18nLayout.astro';
+import { getLocale } from '../../i18n/index';
+import Hero from '../../components/Hero.astro';
+import Features from '../../components/Features.astro';
+import LatestPosts from '../../components/LatestPosts.astro';
+
+const lang = 'fa' as const;
+const t = getLocale(lang);
+---
+
+<I18nLayout title="PacketAlchemy — مهندسی شبکه‌های مخابراتی" lang={lang}>
+
+  <Hero />
+
+  <Features />
+
+  <LatestPosts />
+
+  <!-- CTA Section -->
+  <section class="max-w-5xl mx-auto px-6 md:px-10 py-20">
+    <div class="rounded-2xl border border-white/5 bg-gradient-to-br from-blue-600/10 via-transparent to-cyan-600/10 p-10 text-center">
+      <h2 class="text-2xl md:text-3xl font-bold rtl">
+        آماده یادگیری هستید؟
+      </h2>
+      <p class="text-gray-400 mt-3 max-w-lg mx-auto text-sm rtl">
+        مقالات فنی درباره مهندسی شبکه، تحلیل پکت و آخرین تحولات تلکام رو اینجا دنبال کنید.
+      </p>
+      <div class="flex justify-center gap-4 mt-8">
+        <a href="/fa/blog" class="rounded-xl bg-blue-600 hover:bg-blue-500 transition-all px-6 py-3 font-semibold text-sm shadow-lg shadow-blue-600/20">
+          شروع مطالعه →
+        </a>
+        <a href="https://github.com/packetalchemy" target="_blank" class="rounded-xl border border-white/10 hover:border-blue-500/40 hover:bg-white/5 transition-all px-6 py-3 font-semibold text-sm text-gray-300">
+          GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+</I18nLayout>
