@@ -6,14 +6,15 @@ interface Props {
 
 const { lang, currentPath } = Astro.props;
 
-// Build the alternate language URL
+// lang = CURRENT page language
+// We want to switch to the OTHER language
 let targetPath: string;
 if (lang === 'fa') {
-  // Currently English, switch to Persian
-  targetPath = '/fa' + (currentPath === '/' ? '' : currentPath);
-} else {
-  // Currently Persian, switch to English
+  // Currently Persian → switch to English (remove /fa prefix)
   targetPath = currentPath.replace(/^\/fa/, '') || '/';
+} else {
+  // Currently English → switch to Persian (add /fa prefix)
+  targetPath = '/fa' + (currentPath === '/' ? '' : currentPath);
 }
 ---
 
