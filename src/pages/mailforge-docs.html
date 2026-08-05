@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MailForge User Manual | PacketAlchemy</title>
+<meta name="description" content="Complete user manual for MailForge — VSTO Outlook Add-in for advanced email management, search, templates, and batch operations.">
+<style>
+  :root {
+    --bg: #0d1117; --surface: #161b22; --border: #30363d;
+    --text: #e6edf3; --muted: #8b949e; --accent: #58a6ff;
+    --cyan: #39d2c0; --orange: #d2991d; --green: #3fb950;
+    --red: #f85149; --purple: #bc8cff; --radius: 12px;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; direction: ltr; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  code { background: var(--surface); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; color: var(--cyan); }
+  pre { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; overflow-x: auto; margin: 16px 0; }
+  pre code { background: none; padding: 0; color: var(--text); }
+  .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+  .header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 16px 0; position: sticky; top: 0; z-index: 100; }
+  .header-inner { display: flex; justify-content: space-between; align-items: center; }
+  .logo { font-size: 1.3em; font-weight: 800; color: var(--text); }
+  .logo span { color: var(--cyan); }
+  .nav a { margin-left: 20px; color: var(--muted); font-size: 0.9em; }
+  .nav a:hover { color: var(--text); }
+
+  .hero { padding: 80px 0 60px; text-align: center; position: relative; overflow: hidden; }
+  .hero::before { content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background: radial-gradient(circle at 30% 20%, rgba(88,166,255,0.06) 0%, transparent 50%); }
+  .hero h1 { font-size: 2.8em; font-weight: 900; margin-bottom: 16px; position: relative; }
+  .hero h1 .gradient { background: linear-gradient(135deg, var(--accent), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero p { color: var(--muted); font-size: 1.15em; max-width: 600px; margin: 0 auto; position: relative; }
+  .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.8em; border: 1px solid var(--border); color: var(--muted); margin: 4px; }
+
+  section { padding: 60px 0; border-top: 1px solid var(--border); }
+  h2 { font-size: 1.8em; margin-bottom: 24px; color: var(--text); }
+  h3 { font-size: 1.3em; margin: 32px 0 16px; color: var(--text); }
+  h4 { font-size: 1.1em; margin: 24px 0 12px; color: var(--muted); }
+  p { margin-bottom: 16px; color: var(--muted); }
+
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin: 24px 0; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; transition: border-color 0.2s; }
+  .card:hover { border-color: var(--accent); }
+  .card h4 { margin-top: 0; color: var(--text); }
+  .card p { font-size: 0.9em; }
+  .card .icon { font-size: 2em; margin-bottom: 12px; }
+
+  .feature-list { list-style: none; padding: 0; }
+  .feature-list li { padding: 10px 0; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 12px; }
+  .feature-list li:last-child { border-bottom: none; }
+  .feature-list .check { color: var(--green); font-size: 1.2em; flex-shrink: 0; margin-top: 2px; }
+
+  .step { display: flex; gap: 16px; margin: 20px 0; align-items: flex-start; }
+  .step-num { background: var(--accent); color: var(--bg); width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; font-size: 0.9em; }
+  .step-content { flex: 1; }
+
+  .code-block { background: #0d1117; border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; font-family: 'JetBrains Mono', monospace; font-size: 0.85em; overflow-x: auto; margin: 16px 0; white-space: pre; color: var(--text); }
+
+  .toc { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin: 24px 0; }
+  .toc h3 { margin-top: 0; font-size: 1em; }
+  .toc ol { padding-left: 20px; }
+  .toc li { margin: 6px 0; }
+  .toc a { color: var(--muted); font-size: 0.9em; }
+  .toc a:hover { color: var(--accent); }
+
+  .alert { padding: 16px 20px; border-radius: var(--radius); margin: 16px 0; font-size: 0.9em; }
+  .alert-info { background: rgba(88,166,255,0.1); border: 1px solid rgba(88,166,255,0.3); color: var(--accent); }
+  .alert-warn { background: rgba(210,153,29,0.1); border: 1px solid rgba(210,153,29,0.3); color: var(--orange); }
+  .alert-success { background: rgba(63,185,80,0.1); border: 1px solid rgba(63,185,80,0.3); color: var(--green); }
+
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+  th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+  th { color: var(--text); font-weight: 600; background: var(--surface); }
+  td { color: var(--muted); }
+
+  .footer { padding: 40px 0; text-align: center; color: var(--muted); font-size: 0.85em; border-top: 1px solid var(--border); margin-top: 60px; }
+
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 1.8em; }
+    .card-grid { grid-template-columns: 1fr; }
+    .nav { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container header-inner">
+    <div class="logo">Packet<span>Alchemy</span></div>
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/projects">Projects</a>
+      <a href="/blog">Blog</a>
+      <a href="/mailforge-docs">MailForge Docs</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1>MailForge <span class="gradient">User Manual</span></h1>
+    <p>Advanced VSTO Outlook Add-in for email management, search, templates, batch operations, and more — with dark theme and 18+ features.</p>
+    <div style="margin-top:20px;">
+      <span class="badge">VSTO Outlook Add-in</span>
+      <span class="badge">C# .NET 4.8</span>
+      <span class="badge">Dark Theme</span>
+      <span class="badge">18+ Features</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="toc">
+      <h3>📑 Table of Contents</h3>
+      <ol>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#installation">Installation & Setup</a></li>
+        <li><a href="#search">Advanced Search</a></li>
+        <li><a href="#dashboard">Email Dashboard</a></li>
+        <li><a href="#templates">Email Templates</a></li>
+        <li><a href="#batch">Batch Operations</a></li>
+        <li><a href="#followup">Follow-up & Tracking</a></li>
+        <li><a href="#settings">Settings</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#structure">Project Structure</a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="container">
+    <h2>✨ Features</h2>
+    <p>MailForge is a professional toolkit for managing your Outlook inbox more efficiently:</p>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="icon">🔍</div>
+        <h4>Advanced Search</h4>
+        <p>Search across all folders by Subject, From, To, Body, Date, Flag, Unread status, and Attachment presence.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📊</div>
+        <h4>Email Dashboard</h4>
+        <p>Visual charts of your email activity — sent, received, and overall mailbox statistics.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📦</div>
+        <h4>Batch Operations</h4>
+        <p>Archive, delete, move, and mark read/unread for multiple emails simultaneously.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📝</div>
+        <h4>Email Templates</h4>
+        <p>Create, manage, and quickly apply reusable email templates for repetitive replies.</p>
+      </div>
+      <div class="card">
+        <div class="icon">⚡</div>
+        <h4>Quick Reply</h4>
+        <p>Fast email replies with one click for your most common responses.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🕐</div>
+        <h4>Schedule Send</h4>
+        <p>Schedule emails for delivery at a specific date and time.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🔖</div>
+        <h4>Follow-up & Tracking</h4>
+        <p>Track follow-up status of sent emails and monitor email open status.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🌙</div>
+        <h4>Dark Theme</h4>
+        <p>Modern GitHub-dark inspired UI with accent colors, hover effects, and rounded corners.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="installation">
+  <div class="container">
+    <h2>📦 Installation & Setup</h2>
+
+    <h3>Requirements</h3>
+    <table>
+      <tr><th>Requirement</th><th>Version</th></tr>
+      <tr><td>Microsoft Outlook</td><td>2016, 2019, 2021, or Microsoft 365</td></tr>
+      <tr><td>.NET Framework</td><td>4.8</td></tr>
+      <tr><td>VSTO Runtime</td><td>4.0</td></tr>
+      <tr><td>Operating System</td><td>Windows 10 / 11</td></tr>
+      <tr><td>Visual Studio</td><td>2019 or 2022 (for building only)</td></tr>
+    </table>
+
+    <h3>Method 1: Using install.bat (Easiest)</h3>
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">Open the project in Visual Studio and run <strong>Build → Rebuild Solution</strong>.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">Run <code>install.bat</code> with Administrator privileges.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">Close and reopen Outlook. Trust the add-in prompt when it appears.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">The MailForge tab appears in the Outlook ribbon.</div>
+    </div>
+
+    <div class="alert alert-info">
+      <strong>Note:</strong> If Outlook is already running, close it first and reopen it so the add-in loads properly.
+    </div>
+
+    <h3>Method 2: Manual Registration</h3>
+    <ol>
+      <li>Copy <code>MailForge.dll</code> to <code>%LOCALAPPDATA%\MailForge\</code>.</li>
+      <li>Add the following registry keys:</li>
+    </ol>
+    <div class="code-block">Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Software\Microsoft\Office\Outlook\Addins\MailForge]
+"Description"="MailForge"
+"FriendlyName"="MailForge"
+"LoadBehavior"=dword:00000003
+"Manifest"="file:///%LOCALAPPDATA%/MailForge/MailForge.vsto|vstolocal"</div>
+
+    <div class="alert alert-warn">
+      <strong>Warning:</strong> Administrator privileges are recommended for installation. Without them, the add-in installs for the current user account only.
+    </div>
+  </div>
+</section>
+
+<section id="search">
+  <div class="container">
+    <h2>🔍 Advanced Search</h2>
+    <p>The Advanced Search is MailForge's most powerful feature. Combine multiple filters to find the exact emails you need in seconds.</p>
+
+    <h3>Search Fields</h3>
+    <table>
+      <tr><th>Field</th><th>Description</th><th>Type</th></tr>
+      <tr><td>Subject</td><td>Search in email subject</td><td>Text</td></tr>
+      <tr><td>From</td><td>Search in sender name or email address</td><td>Text</td></tr>
+      <tr><td>To</td><td>Search in recipient name or CC</td><td>Text</td></tr>
+      <tr><td>Body</td><td>Search in email body text</td><td>Multi-line text</td></tr>
+      <tr><td>Date From / To</td><td>Filter by received date</td><td>Date</td></tr>
+      <tr><td>Folder</td><td>Target folder (All Folders, Inbox, Sent Items, etc.)</td><td>Dropdown</td></tr>
+      <tr><td>Use Regex</td><td>Enable regular expression matching</td><td>Checkbox</td></tr>
+      <tr><td>Flagged Only</td><td>Show only flagged emails</td><td>Checkbox</td></tr>
+      <tr><td>Unread Only</td><td>Show only unread emails</td><td>Checkbox</td></tr>
+      <tr><td>Has Attachment</td><td>Show only emails with attachments</td><td>Checkbox</td></tr>
+      <tr><td>Importance</td><td>Filter by importance level (Any, High, Normal, Low)</td><td>Dropdown</td></tr>
+    </table>
+
+    <h3>How to Use</h3>
+    <ol>
+      <li>Fill in the search fields you need (at least one field is required).</li>
+      <li>Click the <strong>🔍 Search</strong> button.</li>
+      <li>Results appear in the table below.</li>
+      <li>Double-click any row to open the email.</li>
+    </ol>
+
+    <h3>Result Features</h3>
+    <ul class="feature-list">
+      <li><span class="check">✅</span> <strong>Duplicate Prevention:</strong> Each email appears only once using HashSet tracking of EntryIDs.</li>
+      <li><span class="check">✅</span> <strong>CSV Export:</strong> Export search results to CSV file.</li>
+      <li><span class="check">✅</span> <strong>Saved Searches:</strong> Save your favorite search criteria for reuse.</li>
+      <li><span class="check">✅</span> <strong>Search History:</strong> Access previous searches from a dropdown.</li>
+      <li><span class="check">✅</span> <strong>Cancellation:</strong> Cancel a running search at any time.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="dashboard">
+  <div class="container">
+    <h2>📊 Email Dashboard</h2>
+    <p>The Email Dashboard provides visual charts of your email activity. View sent and received email statistics at a glance.</p>
+  </div>
+</section>
+
+<section id="templates">
+  <div class="container">
+    <h2>📝 Email Templates</h2>
+    <p>Email templates are useful for repetitive responses:</p>
+    <ol>
+      <li>From the <strong>Save</strong> menu, create a new template.</li>
+      <li>Edit the template text.</li>
+      <li>When composing a new email, select your template from the <strong>Load</strong> menu.</li>
+    </ol>
+  </div>
+</section>
+
+<section id="batch">
+  <div class="container">
+    <h2>📦 Batch Operations</h2>
+    <p>After searching, select results and perform batch operations:</p>
+    <table>
+      <tr><th>Operation</th><th>Description</th></tr>
+      <tr><td>Archive</td><td>Move emails to the archive folder</td></tr>
+      <tr><td>Delete</td><td>Delete selected emails</td></tr>
+      <tr><td>Move</td><td>Move to a specific folder</td></tr>
+      <tr><td>Mark Read</td><td>Mark all selected as read</td></tr>
+      <tr><td>Mark Unread</td><td>Mark all selected as unread</td></tr>
+      <tr><td>Smart Categorize</td><td>Categorize based on sender patterns</td></tr>
+    </table>
+  </div>
+</section>
+
+<section id="followup">
+  <div class="container">
+    <h2>🔖 Follow-up & Tracking</h2>
+    <p>MailForge provides tools to track your sent emails:</p>
+    <ul class="feature-list">
+      <li><span class="check">✅</span> <strong>Follow-up Tracker:</strong> Register and manage follow-up status of sent emails.</li>
+      <li><span class="check">✅</span> <strong>Snooze:</strong> Snooze emails to reappear at a later time.</li>
+      <li><span class="check">✅</span> <strong>Track Emails:</strong> Monitor whether your sent emails have been opened.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="settings">
+  <div class="container">
+    <h2>⚙️ Settings</h2>
+    <p>From the <strong>Settings</strong> page, you can configure:</p>
+    <ul class="feature-list">
+      <li><span class="check">✅</span> Appearance and theme settings</li>
+      <li><span class="check">✅</span> Storage path configuration</li>
+      <li><span class="check">✅</span> Signature settings</li>
+      <li><span class="check">✅</span> Default search options</li>
+    </ul>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="container">
+    <h2>❓ Frequently Asked Questions</h2>
+
+    <h4>Does MailForge require Administrator access?</h4>
+    <p>No. Installation is performed for the current user account. Administrator privileges are recommended but not required.</p>
+
+    <h4>Is MailForge compatible with Outlook 365?</h4>
+    <p>Yes. MailForge is compatible with Outlook 2016, 2019, 2021, and Microsoft 365.</p>
+
+    <h4>How does MailForge prevent duplicate emails?</h4>
+    <p>MailForge uses a <code>HashSet</code> to track EntryIDs of emails and ensures each email appears only once in search results.</p>
+
+    <h4>Does Regex search work?</h4>
+    <p>Yes. Enable the <strong>Use Regex</strong> checkbox to use regular expressions in search fields.</p>
+
+    <h4>What format does the CSV export use?</h4>
+    <p>The CSV file contains columns: Subject, From, To, Date, Size, Attach, Flag, Unread. Saved with UTF-8 encoding.</p>
+
+    <h4>What if VSTOInstaller is not found?</h4>
+    <p>The installer automatically falls back to manual registry registration. The <code>install.bat</code> script selects the best available method.</p>
+  </div>
+</section>
+
+<section id="structure">
+  <div class="container">
+    <h2>📁 Project Structure</h2>
+    <div class="code-block">MailForge/
+├── Forms/                      # UI forms (WinForms)
+│   ├── AdvancedSearchForm.cs    # Advanced email search
+│   ├── BatchOperationForm.cs    # Batch email operations
+│   ├── DarkThemeHelper.cs       # Dark theme engine
+│   ├── EmailDashboardForm.cs    # Email analytics dashboard
+│   ├── FollowUpForm.cs          # Follow-up tracker
+│   ├── SettingsForm.cs          # Application settings
+│   ├── SignatureManagerForm.cs  # Signature management
+│   ├── StorageAnalyzerForm.cs   # Storage analysis
+│   ├── SensitiveDataScannerForm.cs  # Data scanning
+│   ├── TemplateForm.cs          # Email templates
+│   ├── TrackingForm.cs          # Email tracking
+│   └── ...
+├── Services/                   # Business logic services
+│   ├── JsonStorageService.cs    # JSON file storage
+│   ├── TemplateService.cs       # Email templates
+│   ├── TrackingService.cs       # Email tracking
+│   ├── FollowUpTrackerService.cs # Follow-up management
+│   ├── SettingsService.cs       # Application settings
+│   └── ...
+├── Resources/                  # Resource files (icons)
+├── Ribbon1.cs                  # Outlook ribbon definition
+├── Ribbon1.xml                 # Ribbon XML layout
+├── ThisAddIn.cs                # VSTO add-in entry point
+├── install.bat                 # Installation script
+├── uninstall.bat               # Uninstallation script
+├── MailForge.csproj            # Project file
+└── README.md                   # Project readme</div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <p>MailForge © 2025 — Reza Reyhanian — <a href="https://github.com/packetalchemy/MailForge">GitHub</a></p>
+    <p>Inspired by <a href="https://github.com/ParhamGhafouri/EmailTools">EmailTools</a> by Parham Ghafouri</p>
+  </div>
+</footer>
+
+</body>
+</html>
