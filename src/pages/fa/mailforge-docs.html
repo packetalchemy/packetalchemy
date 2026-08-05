@@ -5,66 +5,72 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>راهنمای کاربر MailForge | PacketAlchemy</title>
 <meta name="description" content="راهنمای کامل و مستند MailForge — افزونه VSTO Outlook برای مدیریت پیشرفته ایمیل، جستجو، قالب‌ها و عملیات دسته‌ای.">
+<meta property="og:title" content="MailForge User Manual | PacketAlchemy">
+<meta property="og:description" content="راهنمای کامل MailForge — افزونه VSTO Outlook با ۱۸+ قابلیت، تم تاریک، و جستجوی پیشرفته.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://packetalchemy.ir/fa/mailforge-docs/">
 <style>
   :root {
-    --bg: #0d1117; --surface: #161b22; --border: #30363d;
+    --bg: #0b0f17; --surface: #161b22; --border: #30363d;
     --text: #e6edf3; --muted: #8b949e; --accent: #58a6ff;
     --cyan: #39d2c0; --orange: #d2991d; --green: #3fb950;
     --red: #f85149; --purple: #bc8cff; --radius: 12px;
   }
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family: 'Vazirmatn', Tahoma, sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; direction: rtl; }
+  body { font-family: 'Vazirmatn', 'Tahoma', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; direction: rtl; }
   a { color: var(--accent); text-decoration: none; }
   a:hover { text-decoration: underline; }
   code { background: var(--surface); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; color: var(--cyan); }
-  pre { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; overflow-x: auto; margin: 16px 0; }
+  pre { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; overflow-x: auto; margin: 16px 0; direction: ltr; }
   pre code { background: none; padding: 0; color: var(--text); }
   .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
 
-  /* Header */
-  .header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 16px 0; position: sticky; top: 0; z-index: 100; }
-  .header-inner { display: flex; justify-content: space-between; align-items: center; }
-  .logo { font-size: 1.3em; font-weight: 800; color: var(--text); }
-  .logo span { color: var(--cyan); }
-  .nav a { margin-right: 20px; color: var(--muted); font-size: 0.9em; }
-  .nav a:hover { color: var(--text); }
+  /* Header - matches site */
+  .header { background: var(--bg); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 16px 0; position: sticky; top: 0; z-index: 50; backdrop-filter: blur(24px); background: rgba(11,15,23,0.85); }
+  .header-inner { display: flex; justify-content: space-between; align-items: center; max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+  .logo { font-size: 1.2em; font-weight: 800; color: var(--text); display: flex; align-items: center; gap: 8px; }
+  .logo .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--cyan); }
+  .nav a { margin-right: 4px; color: var(--muted); font-size: 0.85em; padding: 8px 12px; border-radius: 8px; transition: all 0.2s; }
+  .nav a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+  .nav a.active { color: var(--text); background: rgba(88,166,255,0.1); }
+  .lang-switch { padding: 6px 12px; border-radius: 8px; font-size: 0.8em; font-weight: 700; border: 1px solid rgba(88,166,255,0.3); background: rgba(88,166,255,0.1); color: #93c5fd; }
 
   /* Hero */
   .hero { padding: 80px 0 60px; text-align: center; position: relative; overflow: hidden; }
   .hero::before { content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background: radial-gradient(circle at 30% 20%, rgba(88,166,255,0.06) 0%, transparent 50%); }
-  .hero h1 { font-size: 2.8em; font-weight: 900; margin-bottom: 16px; position: relative; }
+  .hero h1 { font-size: 2.6em; font-weight: 900; margin-bottom: 16px; position: relative; }
   .hero h1 .gradient { background: linear-gradient(135deg, var(--accent), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .hero p { color: var(--muted); font-size: 1.15em; max-width: 600px; margin: 0 auto; position: relative; }
-  .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.8em; border: 1px solid var(--border); color: var(--muted); margin: 4px; }
+  .hero p { color: var(--muted); font-size: 1.1em; max-width: 600px; margin: 0 auto; position: relative; }
+  .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.75em; border: 1px solid var(--border); color: var(--muted); margin: 4px; }
 
   /* Sections */
-  section { padding: 60px 0; border-top: 1px solid var(--border); }
+  section { padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.05); }
   h2 { font-size: 1.8em; margin-bottom: 24px; color: var(--text); }
-  h3 { font-size: 1.3em; margin: 32px 0 16px; color: var(--text); }
-  h4 { font-size: 1.1em; margin: 24px 0 12px; color: var(--muted); }
+  h3 { font-size: 1.25em; margin: 32px 0 16px; color: var(--text); }
+  h4 { font-size: 1.05em; margin: 24px 0 12px; color: var(--muted); }
   p { margin-bottom: 16px; color: var(--muted); }
 
   /* Cards */
   .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin: 24px 0; }
-  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; transition: border-color 0.2s; }
-  .card:hover { border-color: var(--accent); }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; transition: border-color 0.2s, transform 0.2s; }
+  .card:hover { border-color: rgba(88,166,255,0.3); transform: translateY(-2px); }
   .card h4 { margin-top: 0; color: var(--text); }
   .card p { font-size: 0.9em; }
   .card .icon { font-size: 2em; margin-bottom: 12px; }
 
   /* Feature list */
   .feature-list { list-style: none; padding: 0; }
-  .feature-list li { padding: 10px 0; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 12px; }
+  .feature-list li { padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: flex-start; gap: 12px; }
   .feature-list li:last-child { border-bottom: none; }
   .feature-list .check { color: var(--green); font-size: 1.2em; flex-shrink: 0; margin-top: 2px; }
 
   /* Steps */
   .step { display: flex; gap: 16px; margin: 20px 0; align-items: flex-start; }
-  .step-num { background: var(--accent); color: var(--bg); width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; font-size: 0.9em; }
+  .step-num { background: var(--accent); color: var(--bg); width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; font-size: 0.85em; }
   .step-content { flex: 1; }
 
   /* Code */
-  .code-block { background: #0d1117; border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; font-family: 'JetBrains Mono', monospace; font-size: 0.85em; overflow-x: auto; margin: 16px 0; white-space: pre; color: var(--text); }
+  .code-block { background: #0b0f17; border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; font-family: 'JetBrains Mono', monospace; font-size: 0.85em; overflow-x: auto; margin: 16px 0; white-space: pre; color: var(--text); direction: ltr; }
 
   /* TOC */
   .toc { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin: 24px 0; }
@@ -87,12 +93,16 @@
   td { color: var(--muted); }
 
   /* Footer */
-  .footer { padding: 40px 0; text-align: center; color: var(--muted); font-size: 0.85em; border-top: 1px solid var(--border); margin-top: 60px; }
+  .footer { padding: 40px 0; text-align: center; color: var(--muted); font-size: 0.85em; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 60px; }
 
+  /* Mobile nav */
+  .mobile-menu-btn { display: none; background: none; border: none; color: var(--muted); font-size: 1.5em; cursor: pointer; padding: 4px 8px; }
   @media (max-width: 768px) {
     .hero h1 { font-size: 1.8em; }
     .card-grid { grid-template-columns: 1fr; }
     .nav { display: none; }
+    .nav.open { display: flex; flex-direction: column; position: absolute; top: 100%; right: 0; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px; min-width: 200px; }
+    .mobile-menu-btn { display: block; }
   }
 </style>
 </head>
@@ -100,13 +110,16 @@
 
 <!-- Header -->
 <header class="header">
-  <div class="container header-inner">
-    <div class="logo">Packet<span>Alchemy</span></div>
+  <div class="header-inner">
+    <a href="/" class="logo"><span class="dot"></span>PacketAlchemy</a>
+    <button class="mobile-menu-btn" onclick="document.querySelector('.nav').classList.toggle('open')">☰</button>
     <nav class="nav">
       <a href="/">خانه</a>
       <a href="/projects">پروژه‌ها</a>
       <a href="/blog">وبلاگ</a>
-      <a href="/fa/mailforge-docs">راهنمای MailForge</a>
+      <a href="/fa/mailforge-docs" class="active">راهنمای MailForge</a>
+      <a href="/fa/mailforge-docs" class="lang-switch">🇮🇷 فارسی</a>
+      <a href="/mailforge-docs" class="lang-switch">🇬🇧 English</a>
     </nav>
   </div>
 </header>
@@ -156,7 +169,7 @@
       <div class="card">
         <div class="icon">🔍</div>
         <h4>جستجوی پیشرفته</h4>
-        <p>جستجو در تمام پوشه‌ها بر اساس موضوع، فرستنده، گیرنده، متن، تاریخ، پرچم، وضعیت خوانده‌نشده و پیوست.</p>
+        <p>جستجو در تمام پوشه‌ها (Inbox, Sent, Drafts, Junk, Archive) با فیلترهای Subject, From, To, Body, Date, Flagged, Unread, Attachment و Importance.</p>
       </div>
       <div class="card">
         <div class="icon">📊</div>
@@ -171,7 +184,7 @@
       <div class="card">
         <div class="icon">📝</div>
         <h4>قالب‌های ایمیل</h4>
-        <p>ساخت، مدیریت و اعمال سریع قالب‌های ایمیل برای پاسخ‌های تکراری.</p>
+        <p>ساخت، اعمال و مدیریت قالب‌های ایمیل برای پاسخ‌های تکراری.</p>
       </div>
       <div class="card">
         <div class="icon">⚡</div>
@@ -424,7 +437,7 @@
 <footer class="footer">
   <div class="container">
     <p>MailForge © 2025 — Reza Reyhanian — <a href="https://github.com/packetalchemy/MailForge">GitHub</a></p>
-    <p>Inspired by <a href="https://github.com/ParhamGhafouri/EmailTools">EmailTools</a> by Parham Ghafouri</p>
+    <p>الهام‌گرفته از <a href="https://github.com/ParhamGhafouri/EmailTools">EmailTools</a> by Parham Ghafouri</p>
   </div>
 </footer>
 
