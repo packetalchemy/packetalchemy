@@ -1,0 +1,264 @@
+---
+import I18nLayout from '../../../layouts/I18nLayout.astro';
+import { getLocale } from '../../../i18n/index';
+const lang = 'fa' as const;
+const t = getLocale(lang);
+---
+
+<I18nLayout title="محاسبه‌گر ساب‌نت IP | PacketAlchemy" lang={lang}>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="absolute -left-64 -top-64 w-[500px] h-[500px] rounded-full bg-blue-600/10 blur-[150px]"></div>
+    <div class="relative max-w-5xl mx-auto px-6 md:px-10 pt-28 pb-8 rtl">
+      <div class="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-1.5 text-xs text-blue-300 mb-6">
+        <span class="h-1.5 w-1.5 rounded-full bg-blue-400"></span>
+        ابزارهای شبکه
+      </div>
+      <h1 class="text-4xl md:text-5xl font-black leading-tight tracking-tight">
+        محاسبه‌گر
+        <span class="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">ساب‌نت IP</span>
+      </h1>
+      <p class="text-gray-400 mt-4 text-lg max-w-2xl">
+        ۱۷ ابزار برای محاسبه، مرتب‌سازی، تجمیع و تبدیل ساب‌نت‌های IPv4/IPv6
+      </p>
+
+      <!-- Stats -->
+      <div class="flex gap-4 mt-8 flex-wrap">
+        <div class="rounded-xl border border-white/5 bg-white/[0.03] px-5 py-3 text-center">
+          <div class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">۱۷</div>
+          <div class="text-[11px] text-gray-500 mt-0.5">ابزار</div>
+        </div>
+        <div class="rounded-xl border border-white/5 bg-white/[0.03] px-5 py-3 text-center">
+          <div class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">۱۳</div>
+          <div class="text-[11px] text-gray-500 mt-0.5">IPv4</div>
+        </div>
+        <div class="rounded-xl border border-white/5 bg-white/[0.03] px-5 py-3 text-center">
+          <div class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">۴</div>
+          <div class="text-[11px] text-gray-500 mt-0.5">IPv6</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tool Area -->
+  <section class="max-w-6xl mx-auto px-6 md:px-10 pb-24">
+    <div class="flex flex-col lg:flex-row gap-6 rtl">
+
+      <!-- Sidebar -->
+      <div class="lg:w-56 flex-shrink-0">
+        <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-4 sticky top-20">
+          <h3 class="text-xs font-semibold text-blue-400 uppercase tracking-wider mb-3 px-2">IPv4</h3>
+          <div class="space-y-0.5" id="ipv4-tools">
+            <label class="tool-label flex items-center gap-2 px-3 py-2 rounded-lg cursor-pointer text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-all">
+              <input type="radio" name="func" value="ipSortArray" class="accent-blue-500" /> مرتب‌سازی IP
+            </label>
+            <label class="tool-label flex items-center gap-2 px-3 py-2 rounded-lg cursor-pointer text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-all">
+              <input type="radio" name="func" value="ipSubnetSortArray" class="accent-blue-500" /> مرتب‌سازی شبکه و IP
+            </label>
+            <label class="tool-label flex items-center gap-2 px-3 py-2 rounded-lg cursor-pointer text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-all">
+              <input type="radio" name="func" value="ipStrToNbr" class="accent-blue-500" /> IP به عدد
+            </label>
+            <label class="tool-label flex items-center gap-2 px-3 py-2 rounded-lg cursor-pointer text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-all">
+              <input type="radio" name="func" value="ipNbrToStr" class="accent-blue-500" /> عدد به IP
+            </label>
+            <label class="tool-label flex items-center gap-2 px-3 py-2 rounded-lg cursor-pointer text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-all">
+              <input type="radio" name="func" value="ipIsValid" class="accent-blue-500" /> اعتبارسنجی IP
+            </label>
+            <label class="tool-label flex items-center gap-2 px-3 py-2 rounded-lg cursor-pointer text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-all">
+              <input type="radio" name="func" value="ipIsPrivate" class="accent-blue-500" /> بررسی IP خصوصی
+            </label>
+            <label class="tool-label flex items-center gap-2 px-3 py-2 rounded-lg cursor-pointer text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-all">
+              <input type="radio" name="func" value="ipFindOverlappingSubnets" class="accent-blue-500" /> یافتن همپوشانی
+            </label>
+            <label class="tool-label flex items-center gap-2 px-3 py-2 rounded-lg cursor-pointer text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-all">
+              <input type="radio" name="func" value="ipSubnetAggregateArray" class="accent-blue-500" /> تجمیع شبکه‌ها
+            </label>
+            <label class="tool-label flex items-center gap-2 px-3 py-2 rounded-lg cursor-pointer text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-all">
+              <input type="radio" name="func" value="ipRouteAggregateArray" class="accent-blue-500" /> تجمیع مسیرها
+            </label>
+            <label class="tool-label flex items-center gap-2 px-3 py-2 rounded-lg cursor-pointer text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-all">
+              <input type="radio" name="func" value="ipDivideSubnet" class="accent-blue-500" /> تقسیم ساب‌نت
+            </label>
+            <label class="tool-label flex items-center gap-2 px-3 py-2 rounded-lg cursor-pointer text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-all">
+              <input type="radio" name="func" value="ipRangeToCIDR" class="accent-blue-500" /> محدوده به CIDR
+            </label>
+            <label class="tool-label flex items-center gap-2 px-3 py-2 rounded-lg cursor-pointer text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-all">
+              <input type="radio" name="func" value="ipSubtractSubnets" class="accent-blue-500" /> تفریق ساب‌نت‌ها
+            </label>
+            <label class="tool-label flex items-center gap-2 px-3 py-2 rounded-lg cursor-pointer text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-all">
+              <input type="radio" name="func" value="ipCommonSubnets" class="accent-blue-500" /> تقاطع ساب‌نت‌ها
+            </label>
+          </div>
+
+          <h3 class="text-xs font-semibold text-purple-400 uppercase tracking-wider mb-3 mt-5 px-2">IPv6</h3>
+          <div class="space-y-0.5" id="ipv6-tools">
+            <label class="tool-label flex items-center gap-2 px-3 py-2 rounded-lg cursor-pointer text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-all">
+              <input type="radio" name="func" value="ipv6SortArray" class="accent-purple-500" /> مرتب‌سازی IPv6
+            </label>
+            <label class="tool-label flex items-center gap-2 px-3 py-2 rounded-lg cursor-pointer text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-all">
+              <input type="radio" name="func" value="ipv6Expand" class="accent-purple-500" /> بسط IPv6
+            </label>
+            <label class="tool-label flex items-center gap-2 px-3 py-2 rounded-lg cursor-pointer text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-all">
+              <input type="radio" name="func" value="ipv6Compress" class="accent-purple-500" /> فشرده‌سازی IPv6
+            </label>
+            <label class="tool-label flex items-center gap-2 px-3 py-2 rounded-lg cursor-pointer text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-all">
+              <input type="radio" name="func" value="ipv6IsValid" class="accent-purple-500" /> اعتبارسنجی IPv6
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Tool Area -->
+      <div class="flex-1 min-w-0">
+        <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-6">
+          <p class="text-gray-400 text-sm mb-2">
+            یک تابع انتخاب کنید، داده را در کادر وارد کنید و <strong class="text-white">ارسال</strong> را بزنید. روی <strong class="text-white">نمونه</strong> کلیک کنید.
+          </p>
+          <p class="text-gray-500 text-xs mb-5 text-center">
+            💡 کلید <kbd class="bg-white/5 px-1.5 py-0.5 rounded text-gray-400">Enter</kbd> برای ارسال
+          </p>
+
+          <!-- Buttons -->
+          <div class="flex gap-3 mb-4">
+            <button onclick="example()" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-sm font-semibold hover:shadow-lg hover:shadow-blue-500/20 hover:-translate-y-0.5 transition-all">
+              نمونه
+            </button>
+            <button onclick="submit()" class="px-5 py-2.5 rounded-xl bg-white/5 border border-white/10 text-gray-300 text-sm font-semibold hover:text-white hover:border-blue-500/50 hover:bg-blue-500/10 transition-all">
+              ارسال
+            </button>
+          </div>
+
+          <!-- Input -->
+          <textarea id="iplist" rows="10" placeholder="داده را اینجا وارد کنید..."
+            class="w-full p-3 rounded-xl bg-[#111827] border border-white/5 text-gray-200 font-mono text-sm outline-none resize-y focus:border-blue-500/50 transition-colors placeholder-gray-600"
+            dir="ltr"
+          ></textarea>
+
+          <!-- Output -->
+          <textarea id="output" rows="10" readonly placeholder="نتیجه اینجا نمایش داده می‌شود..."
+            class="w-full p-3 mt-3 rounded-xl bg-[#0d1117] border border-white/5 text-gray-300 font-mono text-sm resize-y placeholder-gray-600"
+            dir="ltr"
+          ></textarea>
+
+          <!-- Format hints -->
+          <div class="mt-4 p-3 rounded-xl bg-white/[0.02] border border-white/5">
+            <p class="text-gray-500 text-xs leading-relaxed" dir="ltr">
+              فرمت‌های مجاز: <code class="text-blue-400">10.0.0.0/24</code> یا <code class="text-blue-400">10.0.0.0 255.255.255.0</code><br>
+              مسیرها: <code class="text-blue-400">10.0.0.0/24 1.2.3.4</code> (شبکه + نکست هاپ)<br>
+              تفریق/تقاطع: لیست‌ها را با <code class="text-blue-400">-</code> در یک خط جداگانه جدا کنید
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline src="/js/ipcalc-lib.js"></script>
+  <script is:inline>
+    function example() {
+      var examples = {
+        ipSortArray: '192.168.1.20\n192.168.1.2\n192.168.100.5\n192.168.1.4',
+        ipSubnetSortArray: '192.168.10.0/24\n192.168.2.0/24\n192.168.10.128/25\n192.168.1.0/24\n192.168.1.0',
+        ipStrToNbr: '0.0.0.1\n0.0.1.0\n192.168.1.1',
+        ipNbrToStr: '1\n256\n3232235777',
+        ipIsValid: '1.2.3.4\n256.0.0.0\n02.0.0.0\n1.2.3\n1.2.3.4.5',
+        ipIsPrivate: '10.0.1.0\n1.2.3.4\n192.168.9.9',
+        ipFindOverlappingSubnets: '192.168.0.0/24\n192.168.0.128/25\n192.168.1.0/26\n192.168.1.64/26\n192.168.2.0 255.255.255.0\n192.168.2.0/25',
+        ipSubnetAggregateArray: '192.168.0.0/24\n192.168.0.128/25\n192.168.1.0/26\n192.168.1.64/26\n192.168.2.0 255.255.255.0\n192.168.2.0/25',
+        ipRouteAggregateArray: "10.0.0.0 255.255.255.0 my.next.hop.1\n10.0.1.4 255.255.255.0 my.next.hop.1\n10.0.1.0/24 next hop 2\n10.0.2.0/24 next hop 2\n10.0.3.0/24 next hop 2\n10.0.4.1/24 next hop 2\n10.0.4.128 255.255.255.128 next hop 2\n10.0.10.0/24 one route\n10.0.11.0/24 different route, can't summarize",
+        ipDivideSubnet: '10.0.0.0/24, 2',
+        ipRangeToCIDR: '10.0.0.1, 10.0.0.191',
+        ipSubtractSubnets: '10.10.0.0/22\n192.168.0.0/22\n-\n10.10.0.0/24\n192.168.0.128/25\n192.168.1.0/24',
+        ipCommonSubnets: '10.10.0.0/22\n192.168.0.0/22\n-\n10.10.0.0/24\n192.168.0.128/25\n192.168.1.0/24',
+        ipv6SortArray: '2001:db8:1:1a0::10\n2001:db8:2:1a0::1\n2001:db8:1:1a0::1',
+        ipv6Expand: '2001:db8:1f89:c5a3::ac1f:8001\n::',
+        ipv6Compress: '2001:db8:0001:01a0:0:0::\n2001:db8:0001:01a0:0:0::1\n2001:0db8:1f89:c5a3:0000:0000:ac1f:8001\n0000:0000:0000:0000:0000:0000:0000:0000',
+        ipv6IsValid: '2001:db8:1:1a0::10\n2001:db8:2:1a0::1\n2001:db8:1:1a0::1'
+      };
+      try {
+        var f = document.querySelector('input[name="func"]:checked').value;
+      } catch(err) {
+        document.getElementById("output").value = "لطفاً ابتدا یک تابع انتخاب کنید";
+        return;
+      }
+      document.getElementById("iplist").value = examples[f];
+      submit();
+    }
+
+    function submit() {
+      var i;
+      try {
+        var f = document.querySelector('input[name="func"]:checked').value;
+      } catch(err) {
+        document.getElementById("output").value = "لطفاً ابتدا یک تابع انتخاب کنید";
+        return;
+      }
+      var list = document.getElementById("iplist").value;
+      list = list.replace(/\n+$/g, "");
+      var res = [];
+      switch (f) {
+        case "ipDivideSubnet":
+        case "ipRangeToCIDR":
+          list = list.split("\n");
+          for (i = 0; i < list.length; i++) {
+            var params = list[i].split(",");
+            res = res.concat(window[f](params[0], params[1], params[2]));
+          }
+          break;
+        case "ipv6Expand":
+        case "ipv6Compress":
+        case "ipStrToNbr":
+        case "ipNbrToStr":
+        case "ipIsValid":
+        case "ipIsPrivate":
+        case "ipv6IsValid":
+          list = list.split("\n");
+          for (i = 0; i < list.length; i++) {
+            list[i] = window[f](list[i]);
+          }
+          res = list;
+          break;
+        case "ipSubtractSubnets":
+          list = list.split("\n-\n");
+          res = ipSubtractSubnets(list[0].split("\n"), list[1].split("\n"));
+          break;
+        case "ipCommonSubnets":
+          list = list.split("\n-\n");
+          res = ipCommonSubnets(list[0].split("\n"), list[1].split("\n"));
+          break;
+        default:
+          list = list.split("\n");
+          res = window[f](list);
+          break;
+      }
+      if (f == "ipFindOverlappingSubnets") {
+        for (i = 0; i < res.length; i++) {
+          if (res[i] == "") res[i] = list[i] + " is not in another network";
+          else res[i] = list[i] + " is in " + res[i];
+        }
+      }
+      if (Array.isArray(res)) res = res.join("\n");
+      document.getElementById("output").value = res;
+    }
+
+    // Enter key to submit
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' && !e.target.matches('textarea')) submit();
+    });
+
+    // Highlight selected tool
+    document.querySelectorAll('input[name="func"]').forEach(function(radio) {
+      radio.addEventListener('change', function() {
+        document.querySelectorAll('.tool-label').forEach(function(label) {
+          label.classList.remove('bg-white/5', 'text-white');
+          label.classList.add('text-gray-400');
+        });
+        if (this.checked) {
+          this.closest('.tool-label').classList.add('bg-white/5', 'text-white');
+          this.closest('.tool-label').classList.remove('text-gray-400');
+        }
+      });
+    });
+  </script>
+</I18nLayout>
