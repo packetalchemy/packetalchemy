@@ -161,6 +161,7 @@
         <li><a href="#followup">پیگیری و ردیابی</a></li>
         <li><a href="#settings">تنظیمات</a></li>
         <li><a href="#faq">سؤالات متداول</a></li>
+        <li><a href="#troubleshooting">عیب‌یابی (Office 2024)</a></li>
         <li><a href="#structure">ساختار پروژه</a></li>
       </ol>
     </div>
@@ -211,8 +212,8 @@
       </div>
       <div class="card">
         <div class="icon">🌙</div>
-        <h4>تم تاریک</h4>
-        <p>تم تاریک مدرن الهام‌گرفته از GitHub-dark با رنگ‌های تأکیدی و افکت‌های hover.</p>
+        <h4>تم تاریک / روشن</h4>
+        <p>تعویض آنی بین تم تاریک (الهام‌گرفته از GitHub-dark) و تم روشن و تمیز. از نوار ابزار یا تنظیمات — بدون نیاز به راه‌اندازی مجدد Outlook اعمال می‌شود.</p>
       </div>
     </div>
   </div>
@@ -226,7 +227,7 @@
     <h3>پیش‌نیازها</h3>
     <table>
       <tr><th>مورد</th><th>نسخه</th></tr>
-      <tr><td>Microsoft Outlook</td><td>2016, 2019, 2021, یا Microsoft 365</td></tr>
+      <tr><td>Microsoft Outlook</td><td>2016، 2019، 2021، 2024، یا Microsoft 365</td></tr>
       <tr><td>.NET Framework</td><td>4.8</td></tr>
       <tr><td>VSTO Runtime</td><td>4.0</td></tr>
       <tr><td>سیستم‌عامل</td><td>Windows 10 / 11</td></tr>
@@ -389,7 +390,7 @@
     <p>خیر. نصب برای حساب کاربری فعلی انجام می‌شود و نیاز به دسترسی Administrator ندارد (البته اجرای install.bat با دسترسی Administrator توصیه می‌شود).</p>
 
     <h4>آیا MailForge با Outlook 365 کار می‌کند؟</h4>
-    <p>بله. MailForge با Outlook 2016، 2019، 2021 و Microsoft 365 سازگار است.</p>
+    <p>بله. MailForge با Outlook 2016، 2019، 2021، 2024 و Microsoft 365 سازگار است.</p>
 
     <h4>چگونه ایمیل‌های تکراری جلوگیری می‌شوند؟</h4>
     <p>MailForge از یک <code>HashSet</code> برای ردیابی EntryID ایمیل‌ها استفاده می‌کند و هر ایمیل فقط یک بار در نتایج نمایش داده می‌شود.</p>
@@ -400,8 +401,37 @@
     <h4>خروجی CSV چه فرمتی دارد؟</h4>
     <p>فایل CSV با ستون‌های: Subject, From, To, Date, Size, Attach, Flag, Unread. با encoding UTF-8 ذخیره می‌شود.</p>
 
-    <h4>اگر VSTOInstaller پیدا نشد چه کنم؟</h4>
+    <h4>اگر VSTOInstaller پیدا نشد چه کنیم؟</h4>
     <p>نصب به صورت دستی از طریق ثبت Registry انجام می‌شود. فایل <code>install.bat</code> خودکار بهترین روش را انتخاب می‌کند.</p>
+
+    <h4>جستجو کند است یا جدول خالی می‌ماند؟</h4>
+    <p>MailForge صندوق‌ها را با <code>GetFirst/GetNext</code> استریم می‌کند (هرگز کل فروشگاه را شمارش نمی‌کند)، بنابراین حتی صندوق ۱۰۰ گیگابایتی Outlook را هنگ نمی‌کند. اگر نتایج نمایش داده نمی‌شوند، مطمئن شوید حداقل یک فیلتر تنظیم شده و <strong>Importance</strong> روی <strong>Any</strong> باقی مانده است مگر اینکه بخواهید خاصاً بر اساس اولویت فیلتر کنید.</p>
+  </div>
+</section>
+
+<!-- Troubleshooting -->
+<section id="troubleshooting">
+  <div class="container">
+    <h2>🛠️ عیب‌یابی (Office 2024)</h2>
+    <p>Outlook 2024 سخت‌گیرانه‌تر از 2016/2019/2021 عمل می‌کند. اگر افزونه بارگذاری نشد یا غیرفعال شد، مراحل زیر را اعمال کنید.</p>
+
+    <h3>علامت: «Not loaded. A runtime error occurred during the loading»</h3>
+    <ul class="feature-list">
+      <li><span class="check">✅</span> مطمئن شوید پس از به‌روزرسانی **Rebuild** انجام داده‌اید — یک DLL قدیمی قبل از فیکس همچنان شکست می‌خورد.</li>
+      <li><span class="check">✅</span> فایل <code>fix-outlook-user.bat</code> (همراه پروژه) را اجرا کنید تا افزونه با COM Guid صحیح ثبت شود و <code>DoNotDisableAddinList</code> تنظیم گردد.</li>
+    </ul>
+
+    <h3>علامت: «Slow and Disabled» با میانگین تأخیر ۱۲ ثانیه</h3>
+    <ul class="feature-list">
+      <li><span class="check">✅</span> یک manifest امضا‌شده باعث بررسی لغو گواهی (CRL) در دستگاه‌های آفلاین می‌شود. MailForge با **SignManifests غیرفعال** ارائه می‌شود تا از این امر جلوگیری شود.</li>
+      <li><span class="check">✅</span> مسیر manifest باید یک مسیر محلی ساده (<code>C:\Users\...\MailForge.vsto|vstolocal</code>) باشد، **نه** یک URL از نوع <code>file:///</code> — فرم <code>file:///</code> بررسی‌های شبکه/اعتماد را تحمیل می‌کند که ۱۲ ثانیه تایم‌اوت اضافه می‌کند.</li>
+      <li><span class="check">✅</span> در مسیر <code>%LOCALAPPDATA%\MailForge\</code> (یک پوشه محلی) نصب کنید، نه مسیر همگام‌سازی‌شده با OneDrive یا نگاشت‌شده به شبکه — همگام‌سازی تأخیر راه‌اندازی اضافه می‌کند که Outlook آن را به حساب افزونه می‌گذارد.</li>
+      <li><span class="check">✅</span> <code>fix-outlook-user.bat</code> همچنین بررسی CRL را در Registry به عنوان شبکه ایمنی غیرفعال می‌کند.</li>
+    </ul>
+
+    <div class="alert alert-info">
+      <strong>نکته:</strong> پس از هر فیکس، Outlook را کاملاً ببندید، <code>fix-outlook-user.bat</code> را اجرا کنید، سپس Outlook را دوباره باز کنید. بررسی کنید که تب MailForge در ریبون ظاهر می‌شود و هیچ هشدار «disabled» در <em>File → Options → Add-ins → Manage COM Add-ins</em> نمایش داده نمی‌شود.
+    </div>
   </div>
 </section>
 
@@ -430,10 +460,13 @@
 │   ├── FollowUpTrackerService.cs # پیگیری و پیشگیری
 │   ├── SettingsService.cs       # تنظیمات
 │   └── ...
-├── Resources/                  # فایل‌های منابع (آیکون‌ها)
+├── Resources/                  # فایل‌های منابع (۱۹ آیکون گلسمورفیسم)
 ├── Ribbon1.cs                  # تعریف ریبون Outlook
 ├── Ribbon1.xml                 # چیدمان ریبون XML
 ├── ThisAddIn.cs                # نقطه ورود افزونه VSTO
+├── OutlookSafe.cs              # Safe ribbon stub + محافظ خطای سراسری
+├── App.config                  # Binding redirects برای .NET 4.8 / Office 2024
+├── fix-outlook-user.bat        # ثبت COM سطح کاربر + فیکس CRL-off
 ├── install.bat                 # اسکریپت نصب
 ├── uninstall.bat               # اسکریپت حذف نصب
 ├── MailForge.csproj            # فایل پروژه

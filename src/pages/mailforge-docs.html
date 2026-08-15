@@ -146,6 +146,7 @@
         <li><a href="#followup">Follow-up & Tracking</a></li>
         <li><a href="#settings">Settings</a></li>
         <li><a href="#faq">FAQ</a></li>
+        <li><a href="#troubleshooting">Troubleshooting (Office 2024)</a></li>
         <li><a href="#structure">Project Structure</a></li>
       </ol>
     </div>
@@ -194,9 +195,9 @@
         <p>Track follow-up status of sent emails and monitor email open status.</p>
       </div>
       <div class="card">
-        <div class="icon">🌙</div>
-        <h4>Dark Theme</h4>
-        <p>Modern GitHub-dark inspired UI with accent colors, hover effects, and rounded corners.</p>
+        <div class="icon">🌗</div>
+        <h4>Dark / Light Theme</h4>
+        <p>Toggle between GitHub-dark and clean Light themes instantly. Switch from the ribbon or Settings — applies live without restarting Outlook.</p>
       </div>
     </div>
   </div>
@@ -209,7 +210,7 @@
     <h3>Requirements</h3>
     <table>
       <tr><th>Requirement</th><th>Version</th></tr>
-      <tr><td>Microsoft Outlook</td><td>2016, 2019, 2021, or Microsoft 365</td></tr>
+      <tr><td>Microsoft Outlook</td><td>2016, 2019, 2021, 2024, or Microsoft 365</td></tr>
       <tr><td>.NET Framework</td><td>4.8</td></tr>
       <tr><td>VSTO Runtime</td><td>4.0</td></tr>
       <tr><td>Operating System</td><td>Windows 10 / 11</td></tr>
@@ -365,7 +366,7 @@
     <p>No. Installation is performed for the current user account. Administrator privileges are recommended but not required.</p>
 
     <h4>Is MailForge compatible with Outlook 365?</h4>
-    <p>Yes. MailForge is compatible with Outlook 2016, 2019, 2021, and Microsoft 365.</p>
+    <p>Yes. MailForge is compatible with Outlook 2016, 2019, 2021, 2024, and Microsoft 365.</p>
 
     <h4>How does MailForge prevent duplicate emails?</h4>
     <p>MailForge uses a <code>HashSet</code> to track EntryIDs of emails and ensures each email appears only once in search results.</p>
@@ -378,6 +379,34 @@
 
     <h4>What if VSTOInstaller is not found?</h4>
     <p>The installer automatically falls back to manual registry registration. The <code>install.bat</code> script selects the best available method.</p>
+
+    <h4>Search is slow or the grid stays empty?</h4>
+    <p>MailForge streams mailboxes with <code>GetFirst/GetNext</code> (never enumerates the whole store), so even a 100&nbsp;GB mailbox won't hang Outlook. If results don't appear, make sure at least one filter is set and that <strong>Importance</strong> is left on <strong>Any</strong> unless you specifically want to filter by priority.</p>
+  </div>
+</section>
+
+<section id="troubleshooting">
+  <div class="container">
+    <h2>🛠️ Troubleshooting (Office 2024)</h2>
+    <p>Outlook 2024 is stricter than 2016/2019/2021. If the add-in fails to load or is disabled, apply the steps below.</p>
+
+    <h3>Symptom: "Not loaded. A runtime error occurred during the loading"</h3>
+    <ul class="feature-list">
+      <li><span class="check">✅</span> Make sure you <strong>Rebuilt</strong> the solution after updating — a stale DLL from before the fix will still fail.</li>
+      <li><span class="check">✅</span> Run <code>fix-outlook-user.bat</code> (ships with the project) to register the add-in under the correct COM Guid and set <code>DoNotDisableAddinList</code>.</li>
+    </ul>
+
+    <h3>Symptom: "Slow and Disabled" with a 12-second average delay</h3>
+    <ul class="feature-list">
+      <li><span class="check">✅</span> A signed manifest triggers a certificate-revocation (CRL) check on offline machines. MailForge ships with <strong>SignManifests disabled</strong> to avoid this.</li>
+      <li><span class="check">✅</span> The manifest path must be a plain local path (<code>C:\Users\...\MailForge.vsto|vstolocal</code>), <strong>not</strong> a <code>file:///</code> URL — the <code>file:///</code> form forces network/trust checks that add a 12s timeout.</li>
+      <li><span class="check">✅</span> Install under <code>%LOCALAPPDATA%\MailForge\</code> (a local folder), not a OneDrive-synced or network-mapped path — syncing adds startup latency that Outlook counts against the add-in.</li>
+      <li><span class="check">✅</span> <code>fix-outlook-user.bat</code> also disables the CRL check in the registry as a safety net.</li>
+    </ul>
+
+    <div class="alert alert-info">
+      <strong>Tip:</strong> After any fix, fully close Outlook, run <code>fix-outlook-user.bat</code>, then reopen Outlook. Verify the MailForge tab appears in the ribbon and no "disabled" warning shows in <em>File → Options → Add-ins → Manage COM Add-ins</em>.
+    </div>
   </div>
 </section>
 
@@ -388,7 +417,7 @@
 ├── Forms/                      # UI forms (WinForms)
 │   ├── AdvancedSearchForm.cs    # Advanced email search
 │   ├── BatchOperationForm.cs    # Batch email operations
-│   ├── DarkThemeHelper.cs       # Dark theme engine
+│   ├── DarkThemeHelper.cs       # Dark/Light theme engine
 │   ├── EmailDashboardForm.cs    # Email analytics dashboard
 │   ├── FollowUpForm.cs          # Follow-up tracker
 │   ├── SettingsForm.cs          # Application settings
@@ -405,10 +434,13 @@
 │   ├── FollowUpTrackerService.cs # Follow-up management
 │   ├── SettingsService.cs       # Application settings
 │   └── ...
-├── Resources/                  # Resource files (icons)
+├── Resources/                  # Resource files (19 glassmorphism icons)
 ├── Ribbon1.cs                  # Outlook ribbon definition
 ├── Ribbon1.xml                 # Ribbon XML layout
 ├── ThisAddIn.cs                # VSTO add-in entry point
+├── OutlookSafe.cs              # Safe ribbon stub + global error guard
+├── App.config                  # Binding redirects for .NET 4.8 / Office 2024
+├── fix-outlook-user.bat        # User-level COM registration + CRL-off fix
 ├── install.bat                 # Installation script
 ├── uninstall.bat               # Uninstallation script
 ├── MailForge.csproj            # Project file
