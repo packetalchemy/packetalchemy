@@ -158,6 +158,19 @@
     <h2>✨ Features</h2>
     <p>MailForge is a professional toolkit for managing your Outlook inbox more efficiently:</p>
 
+    <p>MailForge adds a single <strong>MailForge</strong> tab to the Outlook ribbon, organized into 7 groups:</p>
+
+    <table>
+      <tr><th>Group</th><th>Buttons</th></tr>
+      <tr><td>Intelligence</td><td>Advanced Search · Daily Digest · Quick Notes</td></tr>
+      <tr><td>Analytics</td><td>Email Dashboard · Storage Analyzer · Data Scanner</td></tr>
+      <tr><td>Batch Tools</td><td>Batch Operations · Smart Categorize</td></tr>
+      <tr><td>Email Templates</td><td>New Template · Apply Template</td></tr>
+      <tr><td>Compose Tools</td><td>Quick Reply · Schedule Send · Signatures</td></tr>
+      <tr><td>Manage</td><td>Email Tracker · Snooze · Archive · Settings</td></tr>
+      <tr><td>Appearance</td><td>Toggle Theme</td></tr>
+    </table>
+
     <div class="card-grid">
       <div class="card">
         <div class="icon">🔍</div>
@@ -165,22 +178,52 @@
         <p>Search across all folders by Subject, From, To, Body, Date, Flag, Unread status, and Attachment presence.</p>
       </div>
       <div class="card">
+        <div class="icon">📰</div>
+        <h4>Daily Digest</h4>
+        <p>Generate a summary digest of recent activity across your mailbox.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📝</div>
+        <h4>Quick Notes</h4>
+        <p>Attach a private note to any email for later reference.</p>
+      </div>
+      <div class="card">
         <div class="icon">📊</div>
         <h4>Email Dashboard</h4>
         <p>Visual charts of your email activity — sent, received, and overall mailbox statistics.</p>
       </div>
       <div class="card">
-        <div class="icon">📦</div>
+        <div class="icon">💾</div>
+        <h4>Storage Analyzer</h4>
+        <p>Analyze which folders and senders consume the most mailbox space.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📂</div>
+        <h4>Data Scanner</h4>
+        <p>Scan emails for sensitive data patterns (PII, credentials, etc.).</p>
+      </div>
+      <div class="card">
+        <div class="icon">⚡</div>
         <h4>Batch Operations</h4>
         <p>Archive, delete, move, and mark read/unread for multiple emails simultaneously.</p>
       </div>
       <div class="card">
-        <div class="icon">📝</div>
-        <h4>Email Templates</h4>
-        <p>Create, manage, and quickly apply reusable email templates for repetitive replies.</p>
+        <div class="icon">🧠</div>
+        <h4>Smart Categorize</h4>
+        <p>Auto-assign Outlook categories based on sender patterns.</p>
       </div>
       <div class="card">
-        <div class="icon">⚡</div>
+        <div class="icon">📄</div>
+        <h4>New Template</h4>
+        <p>Create reusable email templates for repetitive replies.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📥</div>
+        <h4>Apply Template</h4>
+        <p>Apply a saved template to a new or existing email in one click.</p>
+      </div>
+      <div class="card">
+        <div class="icon">↪️</div>
         <h4>Quick Reply</h4>
         <p>Fast email replies with one click for your most common responses.</p>
       </div>
@@ -190,14 +233,34 @@
         <p>Schedule emails for delivery at a specific date and time.</p>
       </div>
       <div class="card">
-        <div class="icon">🔖</div>
-        <h4>Follow-up & Tracking</h4>
-        <p>Track follow-up status of sent emails and monitor email open status.</p>
+        <div class="icon">✍️</div>
+        <h4>Signatures</h4>
+        <p>Manage and insert multiple Outlook signatures.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📍</div>
+        <h4>Email Tracker</h4>
+        <p>Unified follow-up &amp; tracking: register sent emails, track replies, snooze, and monitor open status.</p>
+      </div>
+      <div class="card">
+        <div class="icon">😴</div>
+        <h4>Snooze</h4>
+        <p>Snooze emails to reappear in your inbox at a later time.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🗃️</div>
+        <h4>Archive</h4>
+        <p>Move selected emails to your archive folder in one click.</p>
+      </div>
+      <div class="card">
+        <div class="icon">⚙️</div>
+        <h4>Settings</h4>
+        <p>Configure appearance, storage paths, signatures, and default search options.</p>
       </div>
       <div class="card">
         <div class="icon">🌗</div>
-        <h4>Dark / Light Theme</h4>
-        <p>Toggle between GitHub-dark and clean Light themes instantly. Switch from the ribbon or Settings — applies live without restarting Outlook.</p>
+        <h4>Toggle Theme</h4>
+        <p>Switch between GitHub-dark and clean Light themes instantly. Applies live without restarting Outlook.</p>
       </div>
     </div>
   </div>
@@ -335,12 +398,12 @@
 
 <section id="followup">
   <div class="container">
-    <h2>🔖 Follow-up & Tracking</h2>
-    <p>MailForge provides tools to track your sent emails:</p>
+    <h2>📍 Email Tracker</h2>
+    <p>MailForge unifies follow-up and tracking into a single tab:</p>
     <ul class="feature-list">
       <li><span class="check">✅</span> <strong>Follow-up Tracker:</strong> Register and manage follow-up status of sent emails.</li>
       <li><span class="check">✅</span> <strong>Snooze:</strong> Snooze emails to reappear at a later time.</li>
-      <li><span class="check">✅</span> <strong>Track Emails:</strong> Monitor whether your sent emails have been opened.</li>
+      <li><span class="check">✅</span> <strong>Track Emails:</strong> Monitor whether your sent emails have been opened or replied to.</li>
     </ul>
   </div>
 </section>
@@ -419,22 +482,20 @@
 │   ├── BatchOperationForm.cs    # Batch email operations
 │   ├── DarkThemeHelper.cs       # Dark/Light theme engine
 │   ├── EmailDashboardForm.cs    # Email analytics dashboard
-│   ├── FollowUpForm.cs          # Follow-up tracker
+│   ├── FollowUpForm.cs          # Unified Email Tracker (follow-up + tracking)
 │   ├── SettingsForm.cs          # Application settings
 │   ├── SignatureManagerForm.cs  # Signature management
 │   ├── StorageAnalyzerForm.cs   # Storage analysis
 │   ├── SensitiveDataScannerForm.cs  # Data scanning
 │   ├── TemplateForm.cs          # Email templates
-│   ├── TrackingForm.cs          # Email tracking
 │   └── ...
 ├── Services/                   # Business logic services
 │   ├── JsonStorageService.cs    # JSON file storage
 │   ├── TemplateService.cs       # Email templates
-│   ├── TrackingService.cs       # Email tracking
-│   ├── FollowUpTrackerService.cs # Follow-up management
+│   ├── FollowUpTrackerService.cs # Follow-up + tracking management
 │   ├── SettingsService.cs       # Application settings
 │   └── ...
-├── Resources/                  # Resource files (19 glassmorphism icons)
+├── Resources/                  # Resource files (22 glassmorphism icons)
 ├── Ribbon1.cs                  # Outlook ribbon definition
 ├── Ribbon1.xml                 # Ribbon XML layout
 ├── ThisAddIn.cs                # VSTO add-in entry point
