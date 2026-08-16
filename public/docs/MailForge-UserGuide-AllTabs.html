@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>راهنمای کاربر MailForge — کاربرد تمام تب‌ها</title>
+<style>
+  :root{
+    --bg:#0d1117; --panel:#161b22; --panel2:#1c2230; --border:#2d333b;
+    --txt:#c9d1d9; --dim:#8b949e; --cyan:#39c5cf; --blue:#388bfd;
+    --green:#3fb950; --orange:#f0883e; --red:#f85149; --purple:#a371f7;
+    --code:#0d1117;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--txt);
+    font-family:"Segoe UI",Tahoma,system-ui,sans-serif;line-height:1.8;}
+  header{background:linear-gradient(135deg,#161b22,#1c2230);
+    padding:40px 24px;border-bottom:2px solid var(--cyan);text-align:center;}
+  header h1{margin:0;font-size:28px;color:#fff;}
+  header h1 .grad{color:var(--cyan);}
+  header p{color:var(--dim);margin-top:8px;}
+  .container{max-width:980px;margin:0 auto;padding:24px 16px 80px;}
+  .toc{background:var(--panel);border:1px solid var(--border);border-radius:12px;
+    padding:18px 22px;margin:24px 0;}
+  .toc h3{margin:0 0 12px;color:var(--cyan);}
+  .toc ol{margin:0;padding-right:20px;columns:2;column-gap:30px;}
+  .toc a{color:var(--txt);text-decoration:none;}
+  .toc a:hover{color:var(--cyan);}
+  .tab{background:var(--panel);border:1px solid var(--border);border-radius:14px;
+    padding:22px 24px;margin:18px 0;}
+  .tab-head{display:flex;align-items:center;gap:12px;margin-bottom:6px;}
+  .tab-ico{font-size:30px;}
+  .tab-title{font-size:20px;font-weight:700;color:#fff;}
+  .tab-group{font-size:12px;color:var(--dim);background:var(--panel2);
+    border:1px solid var(--border);padding:2px 10px;border-radius:20px;}
+  .desc{color:var(--txt);margin:10px 0;}
+  .feat{background:var(--panel2);border-right:3px solid var(--cyan);
+    border-radius:8px;padding:10px 14px;margin:10px 0;}
+  .feat b{color:var(--cyan);}
+  .steps{background:var(--code);border:1px solid var(--border);border-radius:8px;
+    padding:14px 18px;margin:12px 0;font-family:Consolas,monospace;font-size:14px;}
+  .steps div{margin:4px 0;color:var(--txt);}
+  .steps .n{color:var(--orange);font-weight:700;}
+  .warn{background:rgba(248,81,73,.12);border:1px solid var(--red);
+    border-radius:8px;padding:10px 14px;color:#ffb3ae;margin:12px 0;font-size:14px;}
+  .ok{color:var(--green);}
+  .kbd{background:var(--panel2);border:1px solid var(--border);border-radius:5px;
+    padding:1px 7px;font-family:Consolas,monospace;font-size:13px;color:var(--cyan);}
+  footer{text-align:center;color:var(--dim);padding:30px;border-top:1px solid var(--border);}
+  .pill{display:inline-block;background:var(--panel2);border:1px solid var(--border);
+    border-radius:20px;padding:3px 12px;margin:3px;font-size:13px;color:var(--dim);}
+</style>
+</head>
+<body>
+<header>
+  <h1>راهنمای کاربر <span class="grad">MailForge</span> — کاربرد تمام تب‌ها</h1>
+  <p>افزونه VSTO Outlook برای مدیریت، جستجو، تحلیل و بهینه‌سازی ایمیل‌ها</p>
+  <div>
+    <span class="pill">۱۸ دکمه</span>
+    <span class="pill">۷ گروه ریبون</span>
+    <span class="pill">تم تاریک/روشن</span>
+    <span class="pill">پردازش کاملاً محلی</span>
+  </div>
+</header>
+
+<div class="container">
+
+<div class="toc">
+  <h3>📑 فهرست تب‌ها</h3>
+  <ol>
+    <li><a href="#t1">Advanced Search</a></li>
+    <li><a href="#t2">Daily Digest</a></li>
+    <li><a href="#t3">Quick Notes</a></li>
+    <li><a href="#t4">Email Dashboard</a></li>
+    <li><a href="#t5">Storage Analyzer</a></li>
+    <li><a href="#t6">Data Scanner</a></li>
+    <li><a href="#t7">Batch Operations</a></li>
+    <li><a href="#t8">Smart Categorize</a></li>
+    <li><a href="#t9">New Template</a></li>
+    <li><a href="#t10">Apply Template</a></li>
+    <li><a href="#t11">Quick Reply</a></li>
+    <li><a href="#t12">Schedule Send</a></li>
+    <li><a href="#t13">Signatures</a></li>
+    <li><a href="#t14">Email Tracker</a></li>
+    <li><a href="#t15">Snooze</a></li>
+    <li><a href="#t16">Archive</a></li>
+    <li><a href="#t17">Settings</a></li>
+    <li><a href="#t18">Toggle Theme</a></li>
+  </ol>
+</div>
+
+<!-- ===================== 1. ADVANCED SEARCH ===================== -->
+<section class="tab" id="t1">
+  <div class="tab-head">
+    <span class="tab-ico">🔍</span>
+    <span class="tab-title">Advanced Search</span>
+    <span class="tab-group">Intelligence</span>
+  </div>
+  <p class="desc">قوی‌ترین ابزار MailForge. جستجوی ترکیبی با فیلترهای دقیق روی پوشه‌های مختلف — نه فقط پوشه فعلی.</p>
+  <div class="feat"><b>کاربرد:</b> پیدا کردن سریع ایمیل با ترکیب موضوع، فرستنده، گیرنده، متن، تاریخ، فلگ، خوانده/نخوانده و پیوست.</div>
+  <div class="feat"><b>فیلدها:</b> Subject, From, To, Body, Date From/To, Folder (انتخاب چندگانه), Use Regex, Flagged, Unread, Has Attachment, Importance.</div>
+  <div class="feat"><b>ویژگی‌های خروجی:</b> ضدتکرار (هر ایمیل یک بار)، خروجی CSV، ذخیره جستجو، تاریخچه جستجو، لغو حین اجرا.</div>
+  <div class="steps">
+    <div><span class="n">۱.</span> حداقل یک فیلد را پر کنید (مثلاً Subject Contains "فاکتور").</div>
+    <div><span class="n">۲.</span> در پانل Folders چک‌باکس‌ها را انتخاب کنید (All Folders یا Inbox + Sent ترکیبی).</div>
+    <div><span class="n">۳.</span> دکمه <b>Search</b> را بزنید.</div>
+    <div><span class="n">۴.</span> روی هر ردیف دوبار کلیک کنید تا ایمیل باز شود.</div>
+    <div><span class="n">۵.</span> با <b>Export CSV</b> نتایج را خروجی بگیرید.</div>
+  </div>
+  <div class="warn">⚠️ اگر نتیجه‌ای نیامد: مطمئن شوید حداقل یک فیلتر ست کرده‌اید و Importance روی <b>Any</b> باقی مانده باشد.</div>
+</section>
+
+<!-- ===================== 2. DAILY DIGEST ===================== -->
+<section class="tab" id="t2">
+  <div class="tab-head">
+    <span class="tab-ico">📰</span>
+    <span class="tab-title">Daily Digest</span>
+    <span class="tab-group">Intelligence</span>
+  </div>
+  <p class="desc">یک خلاصه متنی از وضعیت صندوق ورودی: ایمیل‌های نخوانده، فلگ‌شده، رسیده‌های امروز و یادآوری‌های پیگیری.</p>
+  <div class="feat"><b>کاربرد:</b> مشاهده سریع وضعیت Inbox بدون اسکرول کردن بین صدها ایمیل.</div>
+  <div class="feat"><b>خروجی:</b> پنجره‌ای با متن ساختاریافته شامل آمار + لیست ۱۰ مورد برتر نخوانده/فلگ‌شده + یادآوری فالوآپ.</div>
+  <div class="feat"><b>ذخیره تاریخچه:</b> هر دایجست در <code>digest_history.json</code> ذخیره می‌شود (محلی روی همین کامپیوتر).</div>
+  <div class="steps">
+    <div><span class="n">۱.</span> روی دکمه Daily Digest در ریبون کلیک کنید.</div>
+    <div><span class="n">۲.</span> خلاصه در یک پنجره نمایش داده می‌شود.</div>
+    <div><span class="n">۳.</span> می‌توانید متن را کپی/پرینت بگیرید.</div>
+  </div>
+  <div class="warn">⚠️ افزونه فقط صندوق <b>Inbox</b> را برای دایجست می‌خواند (۵۰ آیتم جدیدترین).</div>
+</section>
+
+<!-- ===================== 3. QUICK NOTES ===================== -->
+<section class="tab" id="t3">
+  <div class="tab-head">
+    <span class="tab-ico">📝</span>
+    <span class="tab-title">Quick Notes</span>
+    <span class="tab-group">Intelligence</span>
+  </div>
+  <p class="desc">یادداشت شخصی الصاق کنید به هر ایمیل (با EntryId آن) — مثل یک Post-it روی نامه.</p>
+  <div class="feat"><b>کاربرد:</b> یادداشت‌های سریع مثل "با این فرد ساعت ۳ تماس بگیر" بدون تغییر دادن خود ایمیل.</div>
+  <div class="feat"><b>ذخیره:</b> در <code>quicknotes.json</code> محلی — به ایمیل چسبیده و با باز کردن دوباره قابل بازیابی است.</div>
+  <div class="steps">
+    <div><span class="n">۱.</span> یک ایمیل را در Outlook انتخاب کنید.</div>
+    <div><span class="n">۲.</span> دکمه Quick Notes را بزنید.</div>
+    <div><span class="n">۳.</span> متن یادداشت را بنویسید و Save کنید.</div>
+    <div><span class="n">۴.</span> بار بعد با باز کردن همان ایمیل، یادداشت از طریق سرویس بازیابی می‌شود (در فرم‌های دیگر قابل نمایش).</div>
+  </div>
+  <div class="ok">✅ افزودن یادداشت جدید به ایمیل موجود، متن قبلی را پاک نمی‌کند بلکه به آن ملحق می‌شود.</div>
+</section>
+
+<!-- ===================== 4. EMAIL DASHBOARD ===================== -->
+<section class="tab" id="t4">
+  <div class="tab-head">
+    <span class="tab-ico">📊</span>
+    <span class="tab-title">Email Dashboard</span>
+    <span class="tab-group">Analytics</span>
+  </div>
+  <p class="desc">۳ تب تحلیلی: نمای کلی، پرتماس‌ترین‌ها، و آمار ایمیل.</p>
+  <div class="feat"><b>تب Overview:</b> تعداد کل، میانگین حجم، نمودار روزانه (۳۰ روز)، ۱۰ فرستنده برتر، ۱۰ گیرنده برتر، ایمیل به تفکیک پوشه، بزرگترین پیوست‌ها.</div>
+  <div class="feat"><b>تب Most Contacted:</b> ۲۰ مخاطب برتر بر اساس ارسال/دریافت (فیلتر: All / By Sent / By Received).</div>
+  <div class="feat"><b>تب Email Stats:</b> نمودار ارسال/دریافت روزانه، شلوغ‌ترین ساعات، شلوغ‌ترین روزهای هفته.</div>
+  <div class="steps">
+    <div><span class="n">۱.</span> دکمه Email Dashboard را بزنید (خودکار شروع به اسکن می‌کند).</div>
+    <div><span class="n">۲.</span> برای به‌روزرسانی دکمه <b>Refresh</b> یا کلید <span class="kbd">F5</span>.</div>
+    <div><span class="n">۳.</span> بین ۳ تب جابجا شوید.</div>
+  </div>
+  <div class="warn">⚠️ اسکن پوشه‌های Inbox, Sent, Drafts, Deleted, Outbox را پوشش می‌دهد. برای صندوق‌های بسیار بزرگ چند ثانیه طول می‌کشد.</div>
+</section>
+
+<!-- ===================== 5. STORAGE ANALYZER ===================== -->
+<section class="tab" id="t5">
+  <div class="tab-head">
+    <span class="tab-ico">💾</span>
+    <span class="tab-title">Storage Analyzer</span>
+    <span class="tab-group">Analytics</span>
+  </div>
+  <p class="desc">تحلیل فضای اشغالی صندوق: کدام پوشه‌ها و کدام فرستندگان بیشترین فضا را می‌گیرند.</p>
+  <div class="feat"><b>تب Overview:</b> حجم کل، تعداد کل، نمودار میله‌ای فضای هر پوشه، جدول پوشه‌ها با درصد.</div>
+  <div class="feat"><b>تب Size by Contact:</b> ۲۰ مخاطب با بیشترین حجم اشغالی (تعداد + میانگین + کل).</div>
+  <div class="feat"><b>تب Oldest & Largest:</b> ۱۰ ایمیل قدیمی‌ترین و ۱۰ ایمیل بزرگترین برای پاکسازی هدفمند.</div>
+  <div class="steps">
+    <div><span class="n">۱.</span> دکمه Storage Analyzer را بزنید (خودکار تحلیل می‌کند).</div>
+    <div><span class="n">۲.</span> از تب Oldest & Largest برای یافتن ایمیل‌های حجیم جهت آرشیو استفاده کنید.</div>
+  </div>
+  <div class="ok">✅ ابزار فقط می‌خواند و هیچ ایمیلی را حذف یا جابجا نمی‌کند — فقط گزارش می‌دهد.</div>
+</section>
+
+<!-- ===================== 6. DATA SCANNER ===================== -->
+<section class="tab" id="t6">
+  <div class="tab-head">
+    <span class="tab-ico">📂</span>
+    <span class="tab-title">Data Scanner (Sensitive Data)</span>
+    <span class="tab-group">Analytics</span>
+  </div>
+  <p class="desc">اسکن محلی ایمیل‌ها برای الگوهای داده حساس — بدون خروج هیچ داده‌ای از کامپیوتر.</p>
+  <div class="feat"><b>الگوهای شناسایی:</b> شماره کارت اعتباری (Visa/Master/Amex/Discover)، SSN، شماره تلفن، آدرس ایمیل در متن، آدرس IP.</div>
+  <div class="feat"><b>سطح هشدار:</b> HIGH (کارت)، CRITICAL (SSN)، MEDIUM (تلفن)، LOW (ایمیل/آی‌پی).</div>
+  <div class="feat"><b>خروجی:</b> جدول با نوع، شدت، موضوع، فرستنده، تاریخ، الگوی ماسک‌شده و متن اطراف + دکمه Export.</div>
+  <div class="steps">
+    <div><span class="n">۱.</span> نوع اسکن و پوشه را انتخاب کنید.</div>
+    <div><span class="n">۲.</span> <b>Start Scan</b> را بزنید.</div>
+    <div><span class="n">۳.</span> در صورت یافتن مورد، با <b>Export</b> (یا <span class="kbd">Ctrl+E</span>) خروجی بگیرید.</div>
+  </div>
+  <div class="warn">⚠️ تمام پردازش محلی است. الگوها با Regex بررسی می‌شوند و مقادیر واقعی ماسک می‌شوند (مثل ****1234).</div>
+</section>
+
+<!-- ===================== 7. BATCH OPERATIONS ===================== -->
+<section class="tab" id="t7">
+  <div class="tab-head">
+    <span class="tab-ico">⚡</span>
+    <span class="tab-title">Batch Operations</span>
+    <span class="tab-group">Batch Tools</span>
+  </div>
+  <p class="desc">انتخاب چندین ایمیل و اجرای عملیات دسته‌ای با نوار پیشرفت.</p>
+  <div class="feat"><b>عملیات:</b> Archive (به پوشه MailForge Archive)، Move to (پوشه دلخواه)، Delete، Mark Read، Mark Unread.</div>
+  <div class="feat"><b>رابط:</b> جدول با ستون چک‌باکس، دکمه‌های Select All / Deselect All، نمایش تعداد انتخاب‌شده.</div>
+  <div class="steps">
+    <div><span class="n">۱.</span> چند ایمیل را در Outlook انتخاب کنید و دکمه Batch Operations را بزنید.</div>
+    <div><span class="n">۲.</span> در فرم، موارد دلخواه را تیک بزنید.</div>
+    <div><span class="n">۳.</span> یک عملیات را انتخاب کنید (تأیید ظاهر می‌شود).</div>
+    <div><span class="n">۴.</span> منتظر نوار پیشرفت بمانید؛ ردیف‌های پردازش‌شده حذف می‌شوند.</div>
+  </div>
+  <div class="warn">⚠️ Delete غیرقابل بازگشت است. قبل از حذف دسته‌ای تأییدیه نمایش داده می‌شود — دقت کنید.</div>
+  <div class="ok">✅ کلید <span class="kbd">Delete</span> در فرم، حذف دسته‌ای انتخاب‌شده‌ها را با تأیید اجرا می‌کند.</div>
+</section>
+
+<!-- ===================== 8. SMART CATEGORIZE ===================== -->
+<section class="tab" id="t8">
+  <div class="tab-head">
+    <span class="tab-ico">🧠</span>
+    <span class="tab-title">Smart Categorize</span>
+    <span class="tab-group">Batch Tools</span>
+  </div>
+  <p class="desc">تخصیص خودکار دسته‌بندی‌های Outlook بر اساس قوانین محلی (دامنه / کلمه کلیدی / نام فرستنده).</p>
+  <div class="feat"><b>قوانین پیش‌فرض:</b> Newsletters، Social (facebook/twitter/linkedin/instagram)، Finance (invoice/billing/payment)، Urgent (urgent/ASAP/critical).</div>
+  <div class="feat"><b>منطق:</b> ایمیل‌های انتخاب‌شده را بررسی می‌کند و دسته‌بندی متناظر را روی آن‌ها اعمال می‌کند.</div>
+  <div class="steps">
+    <div><span class="n">۱.</span> ایمیل‌های مورد نظر را در Outlook انتخاب کنید.</div>
+    <div><span class="n">۲.</span> دکمه Smart Categorize را بزنید.</div>
+    <div><span class="n">۳.</span> پیام تأیید تعداد دسته‌بندی‌شده را نشان می‌دهد.</div>
+  </div>
+  <div class="ok">✅ قوانین در <code>categorize_rules.json</code> ذخیره می‌شوند و قابل ویرایش/افزودن از کد هستند.</div>
+</section>
+
+<!-- ===================== 9. NEW TEMPLATE ===================== -->
+<section class="tab" id="t9">
+  <div class="tab-head">
+    <span class="tab-ico">📄</span>
+    <span class="tab-title">New Template</span>
+    <span class="tab-group">Email Templates</span>
+  </div>
+  <p class="desc">ایجاد و ذخیره قالب ایمیل برای پاسخ‌های تکراری.</p>
+  <div class="feat"><b>فیلدها:</b> Template Name، Subject، Body (RichText).</div>
+  <div class="feat"><b>عملیات:</b> Save (ذخیره)، Delete (حذف قالب موجود)، Load (بارگذاری از لیست کشویی).</div>
+  <div class="steps">
+    <div><span class="n">۱.</span> دکمه New Template را بزنید.</div>
+    <div><span class="n">۲.</span> نام، موضوع و متن را بنویسید.</div>
+    <div><span class="n">۳.</span> <b>Save</b> (یا <span class="kbd">Ctrl+S</span>) را بزنید.</div>
+    <div><span class="n">۴.</span> برای ویرایش بعدی، از لیست کشویی انتخاب کنید.</div>
+  </div>
+  <div class="warn">⚠️ نام قالب الزامی است. پس از بارگذاری یک قالب، فیلد نام غیرفعال می‌شود (برای جلوگیری از بازنویسی اتفاقی).</div>
+</section>
+
+<!-- ===================== 10. APPLY TEMPLATE ===================== -->
+<section class="tab" id="t10">
+  <div class="tab-head">
+    <span class="tab-ico">📥</span>
+    <span class="tab-title">Apply Template</span>
+    <span class="tab-group">Email Templates</span>
+  </div>
+  <p class="desc">اعمال سریع یک قالب ذخیره‌شده روی ایمیل جدید یا در حال نگارش.</p>
+  <div class="feat"><b>رابط:</b> لیست کشویی قالب‌ها + پیش‌نمایش (نام/موضوع/متن) + دکمه Apply.</div>
+  <div class="feat"><b>رفتار:</b> پس از Apply، قالب روی پنجره ایمیل فعال اعمال می‌شود.</div>
+  <div class="steps">
+    <div><span class="n">۱.</span> دکمه Apply Template را بزنید.</div>
+    <div><span class="n">۲.</span> از لیست، قالب را انتخاب کنید (پیش‌نمایش نمایش داده می‌شود).</div>
+    <div><span class="n">۳.</span> <b>Apply Template</b> (یا <span class="kbd">Ctrl+Enter</span>) را بزنید.</div>
+  </div>
+  <div class="ok">✅ اگر ایمیل جدید باز نباشد، MailForge یک ایمیل جدید ایجاد و قالب را اعمال می‌کند.</div>
+</section>
+
+<!-- ===================== 11. QUICK REPLY ===================== -->
+<section class="tab" id="t11">
+  <div class="tab-head">
+    <span class="tab-ico">↪️</span>
+    <span class="tab-title">Quick Reply</span>
+    <span class="tab-group">Compose Tools</span>
+  </div>
+  <p class="desc">پاسخ سریع به ایمیل انتخاب‌شده در یک کلیک.</p>
+  <div class="feat"><b>رفتار:</b> روی ایمیل انتخاب‌شده <code>mail.Reply()</code> را اجرا می‌کند و پنجره پاسخ را باز می‌کند.</div>
+  <div class="steps">
+    <div><span class="n">۱.</span> یک ایمیل را انتخاب کنید.</div>
+    <div><span class="n">۲.</span> دکمه Quick Reply را بزنید.</div>
+    <div><span class="n">۳.</span> پنجره پاسخ باز می‌شود؛ متن خود را بنویسید و ارسال کنید.</div>
+  </div>
+  <div class="warn">⚠️ حداقل یک ایمیل باید در پنجره اصلی Outlook انتخاب باشد، وگرنه پیام "لطفاً یک ایمیل انتخاب کنید" نمایش داده می‌شود.</div>
+</section>
+
+<!-- ===================== 12. SCHEDULE SEND ===================== -->
+<section class="tab" id="t12">
+  <div class="tab-head">
+    <span class="tab-ico">🕐</span>
+    <span class="tab-title">Schedule Send</span>
+    <span class="tab-group">Compose Tools</span>
+  </div>
+  <p class="desc">زمان‌بندی ارسال یک ایمیل برای تاریخ/ساعت مشخص.</p>
+  <div class="feat"><b>رفتار:</b> فرم انتخاب زمان را باز می‌کند و از ScheduleService برای زمان‌بندی استفاده می‌کند.</div>
+  <div class="steps">
+    <div><span class="n">۱.</span> دکمه Schedule Send را بزنید.</div>
+    <div><span class="n">۲.</span> در فرم باز شده، تاریخ و ساعت مورد نظر را تنظیم کنید.</div>
+    <div><span class="n">۳.</span> OK را بزنید تا ایمیل در صف ارسال زمان‌بندی شده قرار گیرد.</div>
+  </div>
+  <div class="ok">✅ ایمیل تا زمان تعیین‌شده در پوشه Drafts/Outbox باقی می‌ماند و سپس ارسال می‌شود.</div>
+</section>
+
+<!-- ===================== 13. SIGNATURES ===================== -->
+<section class="tab" id="t13">
+  <div class="tab-head">
+    <span class="tab-ico">✍️</span>
+    <span class="tab-title">Signatures</span>
+    <span class="tab-group">Compose Tools</span>
+  </div>
+  <p class="desc">مدیریت و درج چندین امضای Outlook از یک پنجره.</p>
+  <div class="feat"><b>قابلیت‌ها:</b> لیست امضاها، ایجاد/ویرایش، حذف، و درج روی ایمیل در حال نگارش.</div>
+  <div class="steps">
+    <div><span class="n">۱.</span> دکمه Signatures را بزنید.</div>
+    <div><span class="n">۲.</span> امضای مورد نظر را انتخاب یا جدید بسازید.</div>
+    <div><span class="n">۳.</span> برای درج روی ایمیل باز، دکمه Insert را بزنید.</div>
+  </div>
+  <div class="ok">✅ امضاها از طریق SignatureService مدیریت می‌شوند و با پروفایل Outlook همگام‌سازی می‌شوند.</div>
+</section>
+
+<!-- ===================== 14. EMAIL TRACKER ===================== -->
+<section class="tab" id="t14">
+  <div class="tab-head">
+    <span class="tab-ico">📍</span>
+    <span class="tab-title">Email Tracker</span>
+    <span class="tab-group">Manage</span>
+  </div>
+  <p class="desc">تب یکپارچه پیگیری و ردیابی ایمیل‌های ارسالی (ادغام Follow-up + Tracking).</p>
+  <div class="feat"><b>ثبت پیگیری:</b> ایمیل انتخاب‌شده را با یادداشت و یادآوری N روزه ثبت می‌کند.</div>
+  <div class="feat"><b>ردیف‌ها:</b> Subject، To، Sent Date، Follow-up Date، Replied (✅/❌)، Reply Time، Note، EntryId.</div>
+  <div class="feat"><b>رنگ‌بندی:</b> زرد = سررسید گذشته (Overdue)، سبز = پاسخ داده شده، عادی = در انتظار.</div>
+  <div class="feat"><b>دکمه‌ها:</b> Add Selected Email، Replied (علامت پاسخ داده)، Delete، Refresh.</div>
+  <div class="steps">
+    <div><span class="n">۱.</span> ایمیل ارسالی را انتخاب کنید.</div>
+    <div><span class="n">۲.</span> در فرم Email Tracker، تعداد روز یادآوری و یادداشت را تنظیم کنید.</div>
+    <div><span class="n">۳.</span> <b>Add Selected Email</b> (یا <span class="kbd">Ctrl+Enter</span>) را بزنید.</div>
+    <div><span class="n">۴.</span> وقت پاسخ داد طرف، ردیف را انتخاب و <b>Replied</b> را بزنید.</div>
+    <div><span class="n">۵.</span> دابل‌کلیک روی هر ردیف، ایمیل را باز می‌کند.</div>
+  </div>
+  <div class="warn">⚠️ داده‌ها در <code>followup.json</code> محلی ذخیره می‌شوند. حذف این فایل، تاریخچه پیگیری را پاک می‌کند.</div>
+</section>
+
+<!-- ===================== 15. SNOOZE ===================== -->
+<section class="tab" id="t15">
+  <div class="tab-head">
+    <span class="tab-ico">😴</span>
+    <span class="tab-title">Snooze</span>
+    <span class="tab-group">Manage</span>
+  </div>
+  <p class="desc">به تعویق انداختن ایمیل برای بازگشت در زمان مشخص (مثل "بعداً به این رسیدگی کن").</p>
+  <div class="feat"><b>رفتار:</b> ایمیل انتخاب‌شده را با استفاده از EmailSnoozeService زمان‌بندی می‌کند تا در زمان تعیین‌شده دوباره در صدر قرار گیرد.</div>
+  <div class="steps">
+    <div><span class="n">۱.</span> ایمیل را انتخاب کنید.</div>
+    <div><span class="n">۲.</span> دکمه Snooze را بزنید.</div>
+    <div><span class="n">۳.</span> زمان بیداری (مثلاً +۱ ساعت) را تنظیم و تأیید کنید.</div>
+  </div>
+  <div class="ok">✅ ایمیل تا زمان تنظیم‌شده از دید خارج نمی‌شود بلکه با پرچم زمان‌بندی شده نشانه‌گذاری می‌شود.</div>
+</section>
+
+<!-- ===================== 16. ARCHIVE ===================== -->
+<section class="tab" id="t16">
+  <div class="tab-head">
+    <span class="tab-ico">🗃️</span>
+    <span class="tab-title">Archive</span>
+    <span class="tab-group">Manage</span>
+  </div>
+  <p class="desc">انتقال سریع ایمیل‌های انتخاب‌شده به پوشه آرشیو (پیش‌فرض: MailForge Archive).</p>
+  <div class="feat"><b>رفتار:</b> فرم انتخاب نام پوشه را باز می‌کند؛ تایید، ایمیل‌ها را جابجا می‌کند.</div>
+  <div class="feat"><b>ذخیره نام:</b> دکمه Save Folder Name، نام پوشه را در تنظیمات حفظ می‌کند برای استفاده بعدی.</div>
+  <div class="steps">
+    <div><span class="n">۱.</span> چند ایمیل را انتخاب کنید.</div>
+    <div><span class="n">۲.</span> دکمه Archive را بزنید.</div>
+    <div><span class="n">۳.</span> نام پوشه را تأیید یا تغییر دهید.</div>
+    <div><span class="n">۴.</span> <b>Archive Now</b> (یا <span class="kbd">Ctrl+Enter</span>) را بزنید.</div>
+  </div>
+  <div class="warn">⚠️ Archive ایمیل را از پوشه اصلی خارج و به پوشه آرشیو منتقل می‌کند (نه حذف). قابل بازگشت از پوشه آرشیو است.</div>
+</section>
+
+<!-- ===================== 17. SETTINGS ===================== -->
+<section class="tab" id="t17">
+  <div class="tab-head">
+    <span class="tab-ico">⚙️</span>
+    <span class="tab-title">Settings</span>
+    <span class="tab-group">Manage</span>
+  </div>
+  <p class="desc">تنظیمات عمومی افزونه: زمان‌بندی، پیگیری، اسنوز، دایجست، آرشیو و تم.</p>
+  <div class="feat"><b>فیلدها:</b> Schedule Every (min)، Follow-up After (days)، Snooze Duration (min)، Enable Daily Digest، Digest Time (HH:mm)، Archive Folder Name، Theme (Dark/Light).</div>
+  <div class="feat"><b>تأثیر تم:</b> تغییر تم در همین لحظه اعمال می‌شود بدون نیاز به ری‌استارت Outlook.</div>
+  <div class="steps">
+    <div><span class="n">۱.</span> دکمه Settings را بزنید.</div>
+    <div><span class="n">۲.</span> مقادیر را تنظیم کنید.</div>
+    <div><span class="n">۳.</span> <b>Save</b> (یا <span class="kbd">Ctrl+Enter</span>) را بزنید.</div>
+  </div>
+  <div class="warn">⚠️ فرمت Digest Time باید HH:mm باشد (مثل 08:00) وگرنه هنگام Save اخطار می‌دهد.</div>
+</section>
+
+<!-- ===================== 18. TOGGLE THEME ===================== -->
+<section class="tab" id="t18">
+  <div class="tab-head">
+    <span class="tab-ico">🌗</span>
+    <span class="tab-title">Toggle Theme</span>
+    <span class="tab-group">Appearance</span>
+  </div>
+  <p class="desc">تعویض آنی بین تم تاریک (الهام‌گرفته از GitHub-dark) و تم روشن.</p>
+  <div class="feat"><b>رفتار:</b> وضعیت فعلی را از Settings می‌خواند، آن را معکوس می‌کند و بلافاصله روی تمام فرم‌های باز و آینده اعمال می‌کند.</p></div>
+  <div class="steps">
+    <div><span class="n">۱.</span> دکمه Toggle Theme را در ریبون بزنید.</div>
+    <div><span class="n">۲.</span> پیام تأیید تم جدید نمایش داده می‌شود.</div>
+    <div><span class="n">۳.</span> انتخاب در Settings نیز ذخیره می‌شود (در ری‌استارت بعدی حفظ می‌شود).</div>
+  </div>
+  <div class="ok">✅ هیچ ری‌استارتی لازم نیست — تغییر لحظه‌ای است.</div>
+</section>
+
+</div>
+
+<footer>
+  <p>MailForge © 2025 — PacketAlchemy · <a href="https://github.com/packetalchemy/MailForge" style="color:var(--cyan)">GitHub</a></p>
+  <p style="font-size:13px;">تمام پردازش‌ها کاملاً محلی روی کامپیوتر شما انجام می‌شوند. هیچ داده‌ای به بیرون ارسال نمی‌شود.</p>
+</footer>
+</body>
+</html>
