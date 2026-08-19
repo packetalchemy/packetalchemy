@@ -1,0 +1,53 @@
+---
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+import MainLayout from '../../layouts/MainLayout.astro';
+
+export async function getStaticPaths() {
+	const notes = await getCollection('notes');
+	return notes.map((note) => ({
+		params: { slug: note.id },
+		props: note,
+	}));
+}
+type Props = CollectionEntry<'notes'>;
+
+const note = Astro.props;
+const { Content } = await render(note);
+
+const sourceLabels: Record<string, string> = {
+	telegram: '📱 Telegram',
+	linkedin: '💼 LinkedIn',
+	instagram: '📸 Instagram',
+	field: '🔧 Field Note',
+};
+---
+
+<MainLayout title={`${note.data.title} | PacketAlchemy`}>
+	<article class="relative max-w-3xl mx-auto px-6 md:px-10 pt-28 pb-20">
+		<div class="absolute -right-32 -top-32 w-[400px] h-[400px] rounded-full bg-cyan-600/10 blur-[140px]"></div>
+		<div class="relative">
+			<a href="/notes/" class="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-blue-400 transition-colors mb-6">
+				← Back to Notes
+			</a>
+			<div class="flex items-center gap-3 mb-4">
+				<span class="px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest bg-cyan-500/20 text-cyan-300 rounded-md">
+					{sourceLabels[note.data.source] || 'Note'}
+				</span>
+				<span class="text-xs text-gray-500 font-mono">
+					{note.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+				</span>
+			</div>
+			<h1 class="text-3xl md:text-4xl font-bold leading-tight">{note.data.title}</h1>
+			<div class="mt-8 prose-invert max-w-none text-gray-300 leading-relaxed">
+				<Content />
+			</div>
+			{note.data.tags.length > 0 && (
+				<div class="flex flex-wrap gap-2 mt-10 pt-6 border-t border-white/5">
+					{note.data.tags.map((tag: string) => (
+						<a href={`/notes/?tag=${tag}`} class="px-2.5 py-0.5 text-[11px] border border-white/10 rounded-md text-gray-400 hover:border-cyan-500/30 hover:text-cyan-300 transition-colors">{tag}</a>
+					))}
+				</div>
+			)}
+		</div>
+	</article>
+</MainLayout>

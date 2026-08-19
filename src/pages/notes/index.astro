@@ -1,0 +1,64 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { getCollection } from 'astro:content';
+
+const notes = await getCollection('notes');
+notes.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+const sourceLabels: Record<string, string> = {
+	telegram: '📱 Telegram',
+	linkedin: '💼 LinkedIn',
+	instagram: '📸 Instagram',
+	field: '🔧 Field',
+};
+
+function timeAgo(date: Date): string {
+	const diff = Date.now() - date.getTime();
+	const days = Math.floor(diff / 86400000);
+	if (days === 0) return 'Today';
+	if (days === 1) return 'Yesterday';
+	if (days < 7) return `${days} days ago`;
+	if (days < 30) return `${Math.floor(days / 7)}w ago`;
+	return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+}
+---
+
+<MainLayout title="Notes | PacketAlchemy">
+	<section class="relative overflow-hidden">
+		<div class="absolute -right-64 -top-64 w-[500px] h-[500px] rounded-full bg-cyan-600/10 blur-[150px]"></div>
+		<div class="relative max-w-5xl mx-auto px-6 md:px-10 pt-28 pb-12">
+			<div class="inline-flex items-center gap-2 rounded-full border border-cyan-500/20 bg-cyan-500/10 px-4 py-1.5 text-xs text-cyan-300 mb-6">
+				<span class="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+				{notes.length} Notes · Updated regularly
+			</div>
+			<h1 class="text-4xl md:text-5xl font-black leading-tight tracking-tight">
+				Field
+				<span class="bg-gradient-to-r from-cyan-400 to-blue-300 bg-clip-text text-transparent"> Notes</span>
+			</h1>
+			<p class="text-gray-400 mt-4 text-lg max-w-2xl">
+				Quick insights, lessons from the field, and cross-posts from our social channels. Short-form engineering journal.
+			</p>
+		</div>
+	</section>
+
+	<section class="max-w-5xl mx-auto px-6 md:px-10 pb-20">
+		<div class="grid gap-4 md:grid-cols-2">
+			{notes.map((note) => (
+				<a href={`/notes/${note.id}/`} class="group block rounded-xl border border-white/5 bg-white/[0.02] p-6 hover:border-cyan-500/30 transition-all duration-300">
+					<div class="flex items-center gap-2 mb-3">
+						<span class="text-[10px] font-bold uppercase tracking-widest text-cyan-300">{sourceLabels[note.data.source] || 'Note'}</span>
+						<span class="text-xs text-gray-500 font-mono">· {timeAgo(note.data.pubDate)}</span>
+					</div>
+					<h3 class="text-lg font-bold group-hover:text-cyan-400 transition-colors">{note.data.title}</h3>
+					{note.data.tags.length > 0 && (
+						<div class="flex flex-wrap gap-1.5 mt-3">
+							{note.data.tags.slice(0, 3).map((tag: string) => (
+								<span class="px-2 py-0.5 text-[10px] border border-white/10 rounded text-gray-500">{tag}</span>
+							))}
+						</div>
+					)}
+				</a>
+			))}
+		</div>
+	</section>
+</MainLayout>
