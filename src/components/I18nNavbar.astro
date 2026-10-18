@@ -93,3 +93,19 @@ const switchLabel = isFa ? 'English' : 'فارسی';
   const menu = document.getElementById('mobile-menu');
   btn?.addEventListener('click', () => menu?.classList.toggle('hidden'));
 </script>
+
+<script>
+  // Highlight the nav link for the current page (desktop + mobile)
+  const path = window.location.pathname.replace(/\/$/, "") || "/";
+  document.querySelectorAll("nav a[href]").forEach((a) => {
+    const href = a.getAttribute("href");
+    if (!href || href.startsWith("http")) return;
+    const h = href.replace(/\/$/, "") || "/";
+    const active = h === "/" ? path === "/" : path === h || path.startsWith(h + "/");
+    if (active) {
+      a.classList.add("text-white", "bg-white/10");
+      a.classList.remove("text-gray-400");
+      a.setAttribute("aria-current", "page");
+    }
+  });
+</script>
