@@ -1,0 +1,153 @@
+---
+import I18nLayout from '../../layouts/I18nLayout.astro';
+import { getLocale } from '../../i18n/index';
+
+const lang = 'fa' as const;
+const t = getLocale(lang);
+---
+
+<I18nLayout title="چطور واسط Gy سرنوشت bearer را تعیین می‌کند | PacketAlchemy" lang={lang}>
+
+<section class="relative overflow-hidden">
+  <div class="absolute -right-64 -top-64 w-[500px] h-[500px] rounded-full bg-blue-600/10 blur-[150px]"></div>
+  <div class="relative max-w-5xl mx-auto px-6 md:px-10 pt-28 pb-12 rtl">
+    <div class="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-1.5 text-xs text-blue-300 mb-6">
+      <span class="h-1.5 w-1.5 rounded-full bg-blue-400"></span>
+      مقاله فارسی
+    </div>
+    <h1 class="text-4xl md:text-5xl font-black leading-tight tracking-tight">
+      چطور واسط Gy سرنوشت
+      <br />
+      <span class="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
+        bearer را تعیین می‌کند
+      </span>
+    </h1>
+    <p class="text-gray-400 mt-4 text-lg max-w-2xl">
+      واسط Gy فقط نشست را تأیید یا رد نمی‌کند. یک چرخه عمر کوتا را اجرا می‌کند: OCS اعتبار را تکه‌تکه اعطا می‌کند، PGW مصرف را گزارش می‌دهد، و وقتی اعتبار تمام می‌شود، OCS دقیقاً به PGW می‌گوید با bearer چه کند.
+    </p>
+  </div>
+</section>
+
+<section class="max-w-4xl mx-auto px-6 md:px-10 pb-20 rtl">
+  <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-8 md:p-10">
+    <h2 class="text-2xl font-bold mb-4">نمای کلی</h2>
+    <p class="text-gray-300 leading-relaxed">
+      واسط Gy که پروتکل Diameter را بین PGW و OCS حمل می‌کند، یک بررسی تأیید یک‌باره نیست. یک حلقه اعتبار بلادرنگ است — اعطا، مصرف، گزارش، اعطای دوباره — و bearer در هر قدم با پاسخ OCS زنده می‌ماند یا می‌میرد.
+    </p>
+  </div>
+
+  <div class="mt-12">
+    <h2 class="text-2xl font-bold mb-6">اجزای کوتا</h2>
+    <div class="space-y-4">
+      <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-6">
+        <h3 class="text-lg font-bold">گروه رتبه‌بندی</h3>
+        <p class="text-gray-400 mt-2 leading-relaxed">کوتا به چه چیزی اعمال می‌شود: APN، سرویس یا جریان.</p>
+      </div>
+      <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-6">
+        <h3 class="text-lg font-bold">MSCC</h3>
+        <p class="text-gray-400 mt-2 leading-relaxed">یک درخواست CCR می‌تواند چند درخواست کوتا داشته باشد، یکی به‌ازای هر گروه رتبه‌بندی.</p>
+      </div>
+      <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-6">
+        <h3 class="text-lg font-bold">GSU</h3>
+        <p class="text-gray-400 mt-2 leading-relaxed">تکه‌ای که OCS اعطا می‌کند: حجم، زمان یا رویداد.</p>
+      </div>
+      <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-6">
+        <h3 class="text-lg font-bold">USU</h3>
+        <p class="text-gray-400 mt-2 leading-relaxed">چیزی که PGW از آن اعطا مصرف کرده است.</p>
+      </div>
+      <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-6">
+        <h3 class="text-lg font-bold">RSU</h3>
+        <p class="text-gray-400 mt-2 leading-relaxed">چیزی که PGW برای مرحله بعد درخواست می‌کند.</p>
+      </div>
+      <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-6">
+        <h3 class="text-lg font-bold">زمان اعتبار</h3>
+        <p class="text-gray-400 mt-2 leading-relaxed">مدت اعتبار اعطا. با انقضای آن، PGW باید دوباره درخواست کند، حتی اگر کوتا باقی مانده باشد.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-12">
+    <h2 class="text-2xl font-bold mb-6">چرخه عمر کوتا</h2>
+    <div class="space-y-4">
+      <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-6">
+        <h3 class="text-lg font-bold">اعطای اولیه</h3>
+        <p class="text-gray-400 mt-2 leading-relaxed">PGW درخواست CCR اولیه با RSU می‌فرستد. OCS با GSU و زمان اعتبار پاسخ می‌دهد. نشست آغاز می‌شود.</p>
+      </div>
+      <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-6">
+        <h3 class="text-lg font-bold">حلقه به‌روزرسانی</h3>
+        <p class="text-gray-400 mt-2 leading-relaxed">با مصرف اعطا توسط مشترک، PGW درخواست CCR به‌روزرسانی با USU و RSU تازه می‌فرستد. OCS با GSU تازه پاسخ می‌دهد.</p>
+      </div>
+      <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-6">
+        <h3 class="text-lg font-bold">احراز هویت مجدد</h3>
+        <p class="text-gray-400 mt-2 leading-relaxed">OCS می‌تواند وسط نشست با درخواست احراز هویت مجدد، احراز هویت را اجباری کند — مثلاً پس از تغییر تعرفه یا به‌روزرسانی سیاست.</p>
+      </div>
+      <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-6">
+        <h3 class="text-lg font-bold">پایان</h3>
+        <p class="text-gray-400 mt-2 leading-relaxed">در پایان نشست، PGW درخواست CCR پایانی با USU نهایی می‌فرستد تا OCS بتواند حساب را تسویه کند.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-12">
+    <h2 class="text-2xl font-bold mb-6">تمام شدن کوتا: سرنوشت bearer</h2>
+    <p class="text-gray-400 leading-relaxed mb-6">
+      وقتی اعتبار تمام می‌شود، OCS با نشانه واحد نهایی پاسخ می‌دهد. PGW باید آن را اعمال کند. سه نتیجه ممکن است:
+    </p>
+    <div class="space-y-4">
+      <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-6">
+        <h3 class="text-lg font-bold">پایان دادن</h3>
+        <p class="text-gray-400 mt-2 leading-relaxed">bearer یا نشست PDN قطع می‌شود. حالت معمول برای مشترکین اعتباری بدون موجودی و بدون راه جایگزین.</p>
+      </div>
+      <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-6">
+        <h3 class="text-lg font-bold">هدایت دوباره</h3>
+        <p class="text-gray-400 mt-2 leading-relaxed">کاربر به سرور شارژ مجدد یا اطلاع‌رسانی هدایت می‌شود (باغ دیواردار). ترافیک به مقصد هدایت مجاز است؛ بقیه مسدود می‌شود.</p>
+      </div>
+      <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-6">
+        <h3 class="text-lg font-bold">محدود کردن دسترسی</h3>
+        <p class="text-gray-400 mt-2 leading-relaxed">نشست برقرار می‌ماند ولی با سرویس محدود، مثلاً فقط APNهای خاص یا کیفیت سرویس پایین، طبق سیاست اپراتور.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-12">
+    <h2 class="text-2xl font-bold mb-6">واسط Gy در رومینگ</h2>
+    <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-8">
+      <ul class="text-gray-400 leading-relaxed space-y-3 list-disc list-inside marker:text-gray-600">
+        <li><span class="text-white font-semibold">رومینگ با مسیریابی از خانه:</span> PGW در شبکه خانه است، پس واسط Gy دقیقاً مثل خانه کار می‌کند.</li>
+        <li><span class="text-white font-semibold">شکست محلی:</span> PGW بازدیدکننده ترافیک را محلی سرو می‌کند در حالی که شارژینگ در OCS خانه لنگر دارد. گزارش مصرف و اعمال نشانه واحد نهایی هنوز لازم است، پس رفتار Gy در شکست محلی منبع رایج اختلاف‌های شارژینگ رومینگ است.</li>
+        <li><span class="text-white font-semibold">سیاست‌های سخت‌گیرانه‌تر:</span> سیاست‌های OCS در رومینگ معمولاً سخت‌گیرانه‌ترند: بعضی APNها مسدود، کوتاهای تنگ‌تر و زمان اعتبار کوتاه‌تر.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mt-12">
+    <h2 class="text-2xl font-bold mb-6">مشکلات رایج</h2>
+    <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-8">
+      <ul class="text-gray-400 leading-relaxed space-y-3 list-disc list-inside marker:text-gray-600">
+        <li>کوتا وسط نشست تمام می‌شود ولی bearer برقرار می‌ماند (نشانه واحد نهایی اعمال نشده است).</li>
+        <li>انقضای زمان اعتبار به‌جای درخواست دوباره، پایان نشست تلقی می‌شود.</li>
+        <li>ناسازگاری USU و GSU در گروه‌های رتبه‌بندی (سرویس اشتباه شارژ می‌شود).</li>
+        <li>وقفه Diameter روی CCR به‌روزرسانی — رفتار PGW به تنظیمات مدیریت خرابی کنترل اعتبار بستگی دارد (ادامه یا پایان).</li>
+        <li>حلقه هدایت: خود صفحه شارژ مجدد کوتا مصرف می‌کند.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mt-12 rounded-2xl border border-blue-500/20 bg-blue-500/5 p-8">
+    <h2 class="text-xl font-bold mb-3">نکته PacketAlchemy</h2>
+    <p class="text-gray-300 leading-relaxed">
+      واسط Gy یک بررسی تأیید یک‌باره نیست. یک <span class="text-white font-semibold">حلقه اعتبار بلادرنگ</span> است — اعطا، مصرف، گزارش، اعطای دوباره — و bearer در هر قدم با پاسخ OCS زنده می‌ماند یا می‌میرد.
+    </p>
+  </div>
+
+  <div class="mt-12 rounded-2xl border border-white/5 bg-gradient-to-br from-blue-600/10 to-cyan-600/10 p-8 text-center">
+    <h3 class="text-xl font-bold">ادامه مطالعه</h3>
+    <p class="text-gray-400 mt-2 text-sm">نسخه انگلیسی این مقاله و مقاله‌های مرتبط را هم ببینید.</p>
+    <div class="flex flex-wrap justify-center gap-4 mt-6">
+      <a href="/blog/gy-interface-deep-dive/" class="px-6 py-2.5 rounded-xl bg-white/5 border border-white/10 hover:border-blue-500/40 hover:bg-blue-500/10 transition-all text-sm">English version</a>
+      <a href="/fa/pfcp-n4/" class="px-6 py-2.5 rounded-xl bg-white/5 border border-white/10 hover:border-blue-500/40 hover:bg-blue-500/10 transition-all text-sm">PFCP به فارسی</a>
+      <a href="/fa/learning-paths/" class="px-6 py-2.5 rounded-xl bg-white/5 border border-white/10 hover:border-blue-500/40 hover:bg-blue-500/10 transition-all text-sm">مسیرهای یادگیری</a>
+    </div>
+  </div>
+</section>
+</I18nLayout>
