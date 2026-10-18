@@ -1,0 +1,138 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout title="Learning Paths | PacketAlchemy">
+
+  <section class="relative overflow-hidden">
+    <div class="absolute -right-64 -top-64 w-[500px] h-[500px] rounded-full bg-blue-600/10 blur-[150px]"></div>
+    <div class="relative max-w-5xl mx-auto px-6 md:px-10 pt-28 pb-12">
+      <div class="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-1.5 text-xs text-blue-300 mb-6">
+        <span class="h-1.5 w-1.5 rounded-full bg-blue-400"></span>
+        Learning Paths
+      </div>
+      <h1 class="text-4xl md:text-5xl font-black leading-tight tracking-tight">
+        Learning
+        <span class="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent"> Paths</span>
+      </h1>
+      <p class="text-gray-400 mt-4 text-lg max-w-2xl">
+        Ordered paths through the PacketAlchemy notes. Start at the top of a path and read
+        down. Each step assumes the ones above it.
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-5xl mx-auto px-6 md:px-10 pb-20">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <!-- Path 1 -->
+      <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-7 hover:border-blue-500/30 hover:-translate-y-1 transition-all duration-300">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400">📶</div>
+          <h2 class="text-lg font-bold">Path 1 — EPC Foundations</h2>
+        </div>
+        <p class="text-gray-400 text-sm leading-relaxed mb-5">The packet core from attach to charging. The foundation everything else builds on.</p>
+        <ol class="space-y-2.5 text-sm text-gray-400 list-decimal list-inside marker:text-gray-600">
+          <li><span class="font-mono text-[13px]">LTE/lte-attach-flow.md</span> <span class="text-gray-500">— attach flow with failure points.</span></li>
+          <li><span class="font-mono text-[13px]">LTE/lte-attach-procedure.md</span> <span class="text-gray-500">— attach procedure in detail.</span></li>
+          <li><span class="font-mono text-[13px]">Protocols/diameter-s6a-mme-hss.md</span> <span class="text-gray-500">— S6a: MME and HSS.</span></li>
+          <li><span class="font-mono text-[13px]">DNS/dns-in-epc.md</span> <span class="text-gray-500">— DNS in EPC, APN resolution.</span></li>
+          <li><span class="font-mono text-[13px]">Protocols/gtp-c-deep-dive.md</span> <span class="text-gray-500">— GTP-C.</span></li>
+          <li><span class="font-mono text-[13px]">Protocols/gtp-u-deep-dive.md</span> <span class="text-gray-500">— GTP-U.</span></li>
+          <li><span class="font-mono text-[13px]">Charging/ocs-overview.md</span> <span class="text-gray-500">— OCS online charging.</span></li>
+          <li><span class="font-mono text-[13px]">Roaming/gy-interface.md</span> <span class="text-gray-500">— Gy quota lifecycle and bearer fate.</span></li>
+          <li><span class="font-mono text-[13px]">Charging/pcrf-gx-policy-control.md</span> <span class="text-gray-500">— PCRF / Gx policy.</span></li>
+          <li><span class="font-mono text-[13px]">Protocols/pfcp-n4-sxa-control.md</span> <span class="text-gray-500">— PFCP (CUPS side: Sx).</span></li>
+          <li><span class="font-mono text-[13px]">Troubleshooting/epc-end-to-end-playbook.md</span> <span class="text-gray-500">— put it together.</span></li>
+        </ol>
+      </div>
+
+      <!-- Path 2 -->
+      <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-7 hover:border-blue-500/30 hover:-translate-y-1 transition-all duration-300">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400">📡</div>
+          <h2 class="text-lg font-bold">Path 2 — 5G Core</h2>
+        </div>
+        <p class="text-gray-400 text-sm leading-relaxed mb-5">From EPC to the service-based 5G Core: slicing, interworking, PFCP on N4, and converged charging.</p>
+        <ol class="space-y-2.5 text-sm text-gray-400 list-decimal list-inside marker:text-gray-600">
+          <li><span class="font-mono text-[13px]">5G/5g-core-evolution.md</span> <span class="text-gray-500">— from EPC to 5GC.</span></li>
+          <li><span class="font-mono text-[13px]">5G/network-slicing.md</span> <span class="text-gray-500">— slicing.</span></li>
+          <li><span class="font-mono text-[13px]">5G/epc-5gc-interworking.md</span> <span class="text-gray-500">— interworking.</span></li>
+          <li><span class="font-mono text-[13px]">Protocols/pfcp-n4-sxa-control.md</span> <span class="text-gray-500">— PFCP on N4.</span></li>
+          <li><span class="font-mono text-[13px]">Charging/chf-5g-charging.md</span> <span class="text-gray-500">— CHF converged charging.</span></li>
+          <li><span class="font-mono text-[13px]">Diagrams/04-5g-core-architecture.md</span> <span class="text-gray-500">— architecture diagram.</span></li>
+          <li><span class="font-mono text-[13px]">Diagrams/05-5g-pdu-session-flow.md</span> <span class="text-gray-500">— PDU session flow.</span></li>
+          <li><span class="font-mono text-[13px]">Wireshark/full-5g-core-call-flow.md</span> <span class="text-gray-500">— full call flow.</span></li>
+          <li><span class="font-mono text-[13px]">Wireshark/5g-advanced-pcap-analysis.md</span> <span class="text-gray-500">— advanced PCAP.</span></li>
+        </ol>
+      </div>
+
+      <!-- Path 3 -->
+      <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-7 hover:border-blue-500/30 hover:-translate-y-1 transition-all duration-300">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-400">🔍</div>
+          <h2 class="text-lg font-bold">Path 3 — Troubleshooting &amp; War Room</h2>
+        </div>
+        <p class="text-gray-400 text-sm leading-relaxed mb-5">Packet analysis, hands-on scenarios, and outage simulations. For engineers who learn by breaking things.</p>
+        <ol class="space-y-2.5 text-sm text-gray-400 list-decimal list-inside marker:text-gray-600">
+          <li><span class="font-mono text-[13px]">Protocols/packet-analysis-gtp-diameter.md</span> <span class="text-gray-500">— packet analysis.</span></li>
+          <li><span class="font-mono text-[13px]">Lab/wireshark-core-analysis.md</span> <span class="text-gray-500">— Wireshark core analysis.</span></li>
+          <li><span class="font-mono text-[13px]">Lab/deep-pcap-step-by-step-analysis.md</span> <span class="text-gray-500">— deep PCAP, step by step.</span></li>
+          <li><a href="/notes/scenario-attach-no-data/" class="font-mono text-[13px] text-blue-400 hover:text-blue-300">Lab/scenario-attach-no-data.md</a> <span class="text-gray-500">— hands-on scenario: attach OK, no data.</span></li>
+          <li><span class="font-mono text-[13px]">Troubleshooting/incident-simulation-no-internet.md</span> <span class="text-gray-500">— incident simulation.</span></li>
+          <li><span class="font-mono text-[13px]">CaseStudies/real-epc-incidents.md</span> <span class="text-gray-500">— real incidents.</span></li>
+          <li><span class="font-mono text-[13px]">WarRoom/global-core-outage-simulation.md</span> <span class="text-gray-500">— global outage.</span></li>
+          <li><span class="font-mono text-[13px]">WarRoom/multi-domain-outage-simulation.md</span> <span class="text-gray-500">— multi-domain outage.</span></li>
+        </ol>
+      </div>
+
+      <!-- Path 4 -->
+      <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-7 hover:border-blue-500/30 hover:-translate-y-1 transition-all duration-300">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400">🌍</div>
+          <h2 class="text-lg font-bold">Path 4 — Roaming</h2>
+        </div>
+        <p class="text-gray-400 text-sm leading-relaxed mb-5">Roaming fundamentals, steering, and roaming charging — where Gy meets the visited network.</p>
+        <ol class="space-y-2.5 text-sm text-gray-400 list-decimal list-inside marker:text-gray-600">
+          <li><span class="font-mono text-[13px]">Roaming/lte-roaming.md</span> <span class="text-gray-500">— roaming fundamentals.</span></li>
+          <li><span class="font-mono text-[13px]">Roaming/lte-roaming-steering.md</span> <span class="text-gray-500">— steering.</span></li>
+          <li><span class="font-mono text-[13px]">Roaming/gy-interface.md</span> <span class="text-gray-500">— Gy and roaming charging.</span></li>
+          <li><span class="font-mono text-[13px]">Protocols/diameter-s6a-mme-hss.md</span> <span class="text-gray-500">— S6a in roaming attach.</span></li>
+        </ol>
+      </div>
+
+      <!-- Path 5 -->
+      <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-7 hover:border-blue-500/30 hover:-translate-y-1 transition-all duration-300">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400">🎯</div>
+          <h2 class="text-lg font-bold">Path 5 — Interview Prep</h2>
+        </div>
+        <p class="text-gray-400 text-sm leading-relaxed mb-5">Turn the foundations into answers: Q&amp;A, an interview pack, real stories, and one outage talked through end to end.</p>
+        <ol class="space-y-2.5 text-sm text-gray-400 list-decimal list-inside marker:text-gray-600">
+          <li><span class="text-gray-300">Finish Path 1 (EPC Foundations).</span></li>
+          <li><span class="font-mono text-[13px]">Interview/core-network-interview-qa.md</span> <span class="text-gray-500">— Q&amp;A.</span></li>
+          <li><span class="font-mono text-[13px]">Interview/core-network-interview-pack.md</span> <span class="text-gray-500">— interview pack.</span></li>
+          <li><span class="font-mono text-[13px]">CaseStudies/real-epc-incidents.md</span> <span class="text-gray-500">— have stories ready.</span></li>
+          <li><span class="font-mono text-[13px]">WarRoom/global-core-outage-simulation.md</span> <span class="text-gray-500">— talk through an outage.</span></li>
+        </ol>
+      </div>
+
+    </div>
+
+    <!-- How to use -->
+    <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-8 md:p-10 mt-6">
+      <h2 class="text-2xl font-bold mb-6">How to use the paths</h2>
+      <div class="space-y-3 text-sm text-gray-400 leading-relaxed">
+        <p><span class="text-white font-semibold">New to packet core:</span> Path 1, then Path 2.</p>
+        <p><span class="text-white font-semibold">Stuck on a live problem:</span> Path 3, or jump to the note that matches your symptom via the notes index.</p>
+        <p><span class="text-white font-semibold">Preparing for an interview:</span> Path 5.</p>
+      </div>
+      <p class="text-sm text-gray-500 mt-8 pt-6 border-t border-white/5">
+        Source notes live in the
+        <a href="https://github.com/packetalchemy/packetalchemy-telecom-notes" target="_blank" rel="noopener" class="text-blue-400 hover:text-blue-300"> packetalchemy-telecom-notes repo on GitHub</a>.
+        Prefer deep dives? Start with the <a href="/blog" class="text-blue-400 hover:text-blue-300">Blog</a> or try the
+        <a href="/notes/scenario-attach-no-data/" class="text-blue-400 hover:text-blue-300">Attach OK, No Data lab</a>.
+      </p>
+    </div>
+  </section>
+</MainLayout>
