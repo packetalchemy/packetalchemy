@@ -1,0 +1,134 @@
+---
+import I18nLayout from '../../layouts/I18nLayout.astro';
+import { getLocale } from '../../i18n/index';
+
+const lang = 'fa' as const;
+const t = getLocale(lang);
+---
+
+<I18nLayout title="چطور SMF با PFCP، UPF را کنترل می‌کند | PacketAlchemy" lang={lang}>
+
+<section class="relative overflow-hidden">
+  <div class="absolute -right-64 -top-64 w-[500px] h-[500px] rounded-full bg-blue-600/10 blur-[150px]"></div>
+  <div class="relative max-w-5xl mx-auto px-6 md:px-10 pt-28 pb-12 rtl">
+    <div class="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-1.5 text-xs text-blue-300 mb-6">
+      <span class="h-1.5 w-1.5 rounded-full bg-blue-400"></span>
+      مقاله فارسی
+    </div>
+    <h1 class="text-4xl md:text-5xl font-black leading-tight tracking-tight">
+      چطور SMF با PFCP،
+      <br />
+      <span class="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
+        UPF را کنترل می‌کند
+      </span>
+    </h1>
+    <p class="text-gray-400 mt-4 text-lg max-w-2xl">
+      نشست در SMF برقرار است ولی UPF همه‌چیز را دور می‌ریزد. مشکل کجاست؟ جواب تقریباً همیشه یکی است: یک قانون گم‌شده یا ناسازگار.
+    </p>
+  </div>
+</section>
+
+<section class="max-w-4xl mx-auto px-6 md:px-10 pb-20 rtl">
+  <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-8 md:p-10">
+    <h2 class="text-2xl font-bold mb-4">نمای کلی</h2>
+    <p class="text-gray-300 leading-relaxed">
+      در هسته نسل پنجم، SMF و UPF روی قانون‌ها توافق ندارند. SMF فکر می‌کند به UPF گفته چه کند. UPF پیام را نگرفته — یا قانونی گرفته که نمی‌تواند اعمال کند. پروتکلی که این قانون‌ها را حمل می‌کند PFCP است که روی نقطه مرجع N4 بین SMF و UPF اجرا می‌شود.
+    </p>
+    <p class="text-gray-300 leading-relaxed mt-4">
+      هسته نسل پنجم کنترل را از ارسال جدا می‌کند. SMF منطق نشست را دارد: کدام مشترک، کدام کیفیت سرویس، کدام شارژینگ. UPF بسته‌ها را دارد: آن‌ها را تطبیق می‌دهد، ارسال می‌کند، دور می‌ریزد و اندازه می‌گیرد. هیچ‌کدام کار دیگری را نمی‌تواند بکند و PFCP تنها کانال بین آن‌هاست. همین پروتکل در EPC هم روی Sx اجرا می‌شود، بین بخش‌های کنترل و صفحه کاربر SGW و PGW.
+    </p>
+  </div>
+
+  <div class="mt-12">
+    <h2 class="text-2xl font-bold mb-6">قانون‌های نشست PFCP</h2>
+    <p class="text-gray-400 leading-relaxed mb-6">
+      یک نشست PFCP مجموعه‌ای از قانون‌هاست. UPF آن‌ها را نصب و اعمال می‌کند، بدون سیگنالینگ به‌ازای هر بسته.
+    </p>
+    <div class="space-y-4">
+      <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-6">
+        <h3 class="text-lg font-bold">قانون PDR</h3>
+        <p class="text-gray-400 mt-2 leading-relaxed">ترافیک را شناسایی می‌کند: شناسه F-TEID، فیلتر SDF، واسط مبدأ و نشانی IP مشترک. اگر هیچ PDRای تطبیق نکند، بسته قانونی ندارد — و بسته بی‌قانون دور ریخته می‌شود.</p>
+      </div>
+      <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-6">
+        <h3 class="text-lg font-bold">قانون FAR</h3>
+        <p class="text-gray-400 mt-2 leading-relaxed">مشخص می‌کند با بسته‌های منطبق چه شود: ارسال، دورریختن، نگه‌داشتن در بافر یا تکثیر. قانون FAR اطلاعات ساخت سربرگ بیرونی را هم دارد — همان F-TEIDای که UPF باید روی بسته‌های خروجی GTP-U بزند.</p>
+      </div>
+      <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-6">
+        <h3 class="text-lg font-bold">قانون QER</h3>
+        <p class="text-gray-400 mt-2 leading-relaxed">کیفیت سرویس را اعمال می‌کند: نرخ بیت، گیتینگ و علامت‌گذاری. این‌جاست که پروفایل کیفیت سرویس به رفتار واقعی ارسال تبدیل می‌شود.</p>
+      </div>
+      <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-6">
+        <h3 class="text-lg font-bold">قانون URR</h3>
+        <p class="text-gray-400 mt-2 leading-relaxed">مصرف را برای شارژینگ اندازه‌گیری می‌کند. UPF وقتی آستانه‌ها رد شوند یا نشست تمام شود، مصرف را به SMF گزارش می‌دهد.</p>
+      </div>
+      <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-6">
+        <h3 class="text-lg font-bold">قانون BAR</h3>
+        <p class="text-gray-400 mt-2 leading-relaxed">رفتار بافرینگ را مشخص می‌کند، مثلاً هنگام پیجینگ. بسته‌های بافرشده وقتی مشترک در دسترس شد تحویل داده می‌شوند، یا وقتی بافر منقضی شد دور ریخته می‌شوند.</p>
+      </div>
+      <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-6">
+        <h3 class="text-lg font-bold">شناسه F-TEID</h3>
+        <p class="text-gray-400 mt-2 leading-relaxed">نقطه پایانی تونلی که UPF برای ارسال بسته‌های GTP-U به کار می‌برد.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-12">
+    <h2 class="text-2xl font-bold mb-6">چرخه عمر نشست</h2>
+    <div class="space-y-4">
+      <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-6">
+        <h3 class="text-lg font-bold">برقراری</h3>
+        <p class="text-gray-400 mt-2 leading-relaxed">SMF درخواست برقراری نشست PFCP با همه قانون‌ها می‌فرستد. UPF منابع را تخصیص می‌دهد و شناسه F-TEID خودش را برمی‌گرداند.</p>
+      </div>
+      <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-6">
+        <h3 class="text-lg font-bold">اصلاح</h3>
+        <p class="text-gray-400 mt-2 leading-relaxed">نشست‌ها تغییر می‌کنند: جابه‌جایی مسیر، جریان کیفیت سرویس تازه، رویداد شارژینگ. SMF درخواست اصلاح نشست PFCP با قانون‌های به‌روز می‌فرستد و UPF آن‌ها را زنده جایگزین می‌کند.</p>
+      </div>
+      <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-6">
+        <h3 class="text-lg font-bold">حذف</h3>
+        <p class="text-gray-400 mt-2 leading-relaxed">در پایان نشست، SMF درخواست حذف نشست PFCP می‌فرستد. UPF قانون‌ها را آزاد می‌کند و گزارش‌های نهایی مصرف را از قانون‌های URR می‌فرستد.</p>
+      </div>
+      <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-6">
+        <h3 class="text-lg font-bold">پیام‌های سطح گره</h3>
+        <ul class="text-gray-400 mt-2 leading-relaxed space-y-2 list-disc list-inside marker:text-gray-600">
+          <li><span class="text-white font-semibold">ضربان قلب</span> — زنده بودن گره بین SMF و UPF.</li>
+          <li><span class="text-white font-semibold">گزارش گره</span> — UPF رویدادها را به SMF گزارش می‌کند، مثلاً خرابی مسیر صفحه کاربر.</li>
+          <li><span class="text-white font-semibold">برقراری و رهایی انجمن</span> — خود رابطه SMF و UPF.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-12">
+    <h2 class="text-2xl font-bold mb-6">مشکلات رایج</h2>
+    <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-8">
+      <ul class="text-gray-400 leading-relaxed space-y-3 list-disc list-inside marker:text-gray-600">
+        <li>نشست در SMF هست ولی ترافیک عبور نمی‌کند: UPF قانون‌های PDR و FAR را نصب نکرده، یا شناسه F-TEID در قانون PDR ناقص یا ناسازگار است.</li>
+        <li>ترافیک پس از جابه‌جایی قطع می‌شود: قانون FAR قدیمی هنوز به مسیر قدیمی اشاره می‌کند.</li>
+        <li>کیفیت سرویس اعمال نمی‌شود: قانون QER نیست یا با پروفایل کیفیت سرویس همخوانی ندارد.</li>
+        <li>شکاف شارژینگ: قانون URR نصب نشده، یا گزارش‌های مصرف هنگام حذف نشست گم شده‌اند.</li>
+        <li>از دست رفتن دسته‌جمعی نشست‌ها: قطع ضربان قلب باعث می‌شود SMF، UPF را از کار افتاده بداند و دوباره انتخاب کند.</li>
+      </ul>
+      <p class="text-gray-300 leading-relaxed mt-6">
+        عادت تشخیصی این است: دید SMF را که کدام قانون‌ها را فرستاده با دید UPF که کدام قانون‌ها نصب شده‌اند مقایسه کنید. وقتی با هم فرق دارند، عیب را پیدا کرده‌اید.
+      </p>
+    </div>
+  </div>
+
+  <div class="mt-12 rounded-2xl border border-blue-500/20 bg-blue-500/5 p-8">
+    <h2 class="text-xl font-bold mb-3">نکته PacketAlchemy</h2>
+    <p class="text-gray-300 leading-relaxed">
+      بیشتر قطعی‌های PFCP خرابی پروتکل نیستند. آن‌ها <span class="text-white font-semibold">یک قانون گم‌شده یا ناسازگار</span> هستند — SMF فکر می‌کند UPF چیزی را اعمال می‌کند که UPF هرگز دریافت نکرده است.
+    </p>
+  </div>
+
+  <div class="mt-12 rounded-2xl border border-white/5 bg-gradient-to-br from-blue-600/10 to-cyan-600/10 p-8 text-center">
+    <h3 class="text-xl font-bold">ادامه مطالعه</h3>
+    <p class="text-gray-400 mt-2 text-sm">نسخه انگلیسی این مقاله و مقاله‌های مرتبط را هم ببینید.</p>
+    <div class="flex flex-wrap justify-center gap-4 mt-6">
+      <a href="/blog/pfcp-n4-smf-controls-upf/" class="px-6 py-2.5 rounded-xl bg-white/5 border border-white/10 hover:border-blue-500/40 hover:bg-blue-500/10 transition-all text-sm">English version</a>
+      <a href="/fa/gy-interface/" class="px-6 py-2.5 rounded-xl bg-white/5 border border-white/10 hover:border-blue-500/40 hover:bg-blue-500/10 transition-all text-sm">واسط Gy به فارسی</a>
+      <a href="/fa/learning-paths/" class="px-6 py-2.5 rounded-xl bg-white/5 border border-white/10 hover:border-blue-500/40 hover:bg-blue-500/10 transition-all text-sm">مسیرهای یادگیری</a>
+    </div>
+  </div>
+</section>
+</I18nLayout>
