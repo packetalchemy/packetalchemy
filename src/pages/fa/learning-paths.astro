@@ -1,0 +1,144 @@
+---
+import I18nLayout from '../../layouts/I18nLayout.astro';
+import { getLocale } from '../../i18n/index';
+
+const lang = 'fa' as const;
+const t = getLocale(lang);
+---
+
+<I18nLayout title="مسیرهای یادگیری | PacketAlchemy" lang={lang}>
+
+  <section class="relative overflow-hidden">
+    <div class="absolute -right-64 -top-64 w-[500px] h-[500px] rounded-full bg-blue-600/10 blur-[150px]"></div>
+    <div class="relative max-w-5xl mx-auto px-6 md:px-10 pt-28 pb-12 rtl">
+      <div class="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-1.5 text-xs text-blue-300 mb-6">
+        <span class="h-1.5 w-1.5 rounded-full bg-blue-400"></span>
+        مسیرهای یادگیری
+      </div>
+      <h1 class="text-4xl md:text-5xl font-black leading-tight tracking-tight">
+        مسیرهای
+        <span class="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent"> یادگیری</span>
+      </h1>
+      <p class="text-gray-400 mt-4 text-lg max-w-2xl">
+        مسیرهای مرتب‌شده در یادداشت‌های PacketAlchemy. از بالای هر مسیر شروع کنید و به ترتیب پایین بیایید. هر قدم، قدم‌های بالاتر از خودش را فرض می‌کند.
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-5xl mx-auto px-6 md:px-10 pb-20 rtl">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <!-- مسیر ۱ -->
+      <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-7 hover:border-blue-500/30 hover:-translate-y-1 transition-all duration-300">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400">📶</div>
+          <h2 class="text-lg font-bold">مسیر ۱ — مبانی EPC</h2>
+        </div>
+        <p class="text-gray-400 text-sm leading-relaxed mb-5">هسته بسته از اتصال تا شارژینگ. پایه‌ای که بقیه مسیرها رویش ساخته می‌شوند.</p>
+        <div class="space-y-2.5 text-sm text-gray-400">
+          <p><span class="text-gray-600 ml-2">۱.</span><span dir="ltr" class="font-mono text-[13px]">LTE/lte-attach-flow.md</span> <span class="text-gray-500">— جریان اتصال با نقاط خرابی.</span></p>
+          <p><span class="text-gray-600 ml-2">۲.</span><span dir="ltr" class="font-mono text-[13px]">LTE/lte-attach-procedure.md</span> <span class="text-gray-500">— رویه اتصال با جزئیات.</span></p>
+          <p><span class="text-gray-600 ml-2">۳.</span><span dir="ltr" class="font-mono text-[13px]">Protocols/diameter-s6a-mme-hss.md</span> <span class="text-gray-500">— S6a: MME و HSS.</span></p>
+          <p><span class="text-gray-600 ml-2">۴.</span><span dir="ltr" class="font-mono text-[13px]">DNS/dns-in-epc.md</span> <span class="text-gray-500">— DNS در EPC و تفکیک APN.</span></p>
+          <p><span class="text-gray-600 ml-2">۵.</span><span dir="ltr" class="font-mono text-[13px]">Protocols/gtp-c-deep-dive.md</span> <span class="text-gray-500">— GTP-C.</span></p>
+          <p><span class="text-gray-600 ml-2">۶.</span><span dir="ltr" class="font-mono text-[13px]">Protocols/gtp-u-deep-dive.md</span> <span class="text-gray-500">— GTP-U.</span></p>
+          <p><span class="text-gray-600 ml-2">۷.</span><span dir="ltr" class="font-mono text-[13px]">Charging/ocs-overview.md</span> <span class="text-gray-500">— شارژ آنلاین OCS.</span></p>
+          <p><span class="text-gray-600 ml-2">۸.</span><span dir="ltr" class="font-mono text-[13px]">Roaming/gy-interface.md</span> <span class="text-gray-500">— چرخه عمر کوتای Gy و سرنوشت bearer.</span></p>
+          <p><span class="text-gray-600 ml-2">۹.</span><span dir="ltr" class="font-mono text-[13px]">Charging/pcrf-gx-policy-control.md</span> <span class="text-gray-500">— کنترل پالیسی PCRF و Gx.</span></p>
+          <p><span class="text-gray-600 ml-2">۱۰.</span><span dir="ltr" class="font-mono text-[13px]">Protocols/pfcp-n4-sxa-control.md</span> <span class="text-gray-500">— PFCP (سمت CUPS: Sx).</span></p>
+          <p><span class="text-gray-600 ml-2">۱۱.</span><span dir="ltr" class="font-mono text-[13px]">Troubleshooting/epc-end-to-end-playbook.md</span> <span class="text-gray-500">— کنار هم گذاشتن همه‌چیز.</span></p>
+        </div>
+      </div>
+
+      <!-- مسیر ۲ -->
+      <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-7 hover:border-blue-500/30 hover:-translate-y-1 transition-all duration-300">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400">📡</div>
+          <h2 class="text-lg font-bold">مسیر ۲ — هسته نسل پنجم</h2>
+        </div>
+        <p class="text-gray-400 text-sm leading-relaxed mb-5">از EPC تا هسته نسل پنجم مبتنی بر سرویس: اسلایسینگ، تعامل، PFCP روی N4 و شارژ همگرا.</p>
+        <div class="space-y-2.5 text-sm text-gray-400">
+          <p><span class="text-gray-600 ml-2">۱.</span><span dir="ltr" class="font-mono text-[13px]">5G/5g-core-evolution.md</span> <span class="text-gray-500">— از EPC تا 5GC.</span></p>
+          <p><span class="text-gray-600 ml-2">۲.</span><span dir="ltr" class="font-mono text-[13px]">5G/network-slicing.md</span> <span class="text-gray-500">— اسلایسینگ شبکه.</span></p>
+          <p><span class="text-gray-600 ml-2">۳.</span><span dir="ltr" class="font-mono text-[13px]">5G/epc-5gc-interworking.md</span> <span class="text-gray-500">— تعامل EPC و 5GC.</span></p>
+          <p><span class="text-gray-600 ml-2">۴.</span><span dir="ltr" class="font-mono text-[13px]">Protocols/pfcp-n4-sxa-control.md</span> <span class="text-gray-500">— PFCP روی N4.</span></p>
+          <p><span class="text-gray-600 ml-2">۵.</span><span dir="ltr" class="font-mono text-[13px]">Charging/chf-5g-charging.md</span> <span class="text-gray-500">— شارژ همگرای CHF.</span></p>
+          <p><span class="text-gray-600 ml-2">۶.</span><span dir="ltr" class="font-mono text-[13px]">Diagrams/04-5g-core-architecture.md</span> <span class="text-gray-500">— نمودار معماری.</span></p>
+          <p><span class="text-gray-600 ml-2">۷.</span><span dir="ltr" class="font-mono text-[13px]">Diagrams/05-5g-pdu-session-flow.md</span> <span class="text-gray-500">— جریان نشست PDU.</span></p>
+          <p><span class="text-gray-600 ml-2">۸.</span><span dir="ltr" class="font-mono text-[13px]">Wireshark/full-5g-core-call-flow.md</span> <span class="text-gray-500">— جریان کامل تماس.</span></p>
+          <p><span class="text-gray-600 ml-2">۹.</span><span dir="ltr" class="font-mono text-[13px]">Wireshark/5g-advanced-pcap-analysis.md</span> <span class="text-gray-500">— تحلیل پیشرفته PCAP.</span></p>
+        </div>
+      </div>
+
+      <!-- مسیر ۳ -->
+      <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-7 hover:border-blue-500/30 hover:-translate-y-1 transition-all duration-300">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-400">🔍</div>
+          <h2 class="text-lg font-bold">مسیر ۳ — عیب‌یابی و اتاق جنگ</h2>
+        </div>
+        <p class="text-gray-400 text-sm leading-relaxed mb-5">تحلیل پکت، سناریوهای عملی و شبیه‌سازی قطعی. برای مهندسانی که با خراب کردن یاد می‌گیرند.</p>
+        <div class="space-y-2.5 text-sm text-gray-400">
+          <p><span class="text-gray-600 ml-2">۱.</span><span dir="ltr" class="font-mono text-[13px]">Protocols/packet-analysis-gtp-diameter.md</span> <span class="text-gray-500">— تحلیل پکت.</span></p>
+          <p><span class="text-gray-600 ml-2">۲.</span><span dir="ltr" class="font-mono text-[13px]">Lab/wireshark-core-analysis.md</span> <span class="text-gray-500">— تحلیل هسته با Wireshark.</span></p>
+          <p><span class="text-gray-600 ml-2">۳.</span><span dir="ltr" class="font-mono text-[13px]">Lab/deep-pcap-step-by-step-analysis.md</span> <span class="text-gray-500">— تحلیل عمیق PCAP گام‌به‌گام.</span></p>
+          <p><span class="text-gray-600 ml-2">۴.</span><a href="/notes/scenario-attach-no-data/" dir="ltr" class="font-mono text-[13px] text-blue-400 hover:text-blue-300">Lab/scenario-attach-no-data.md</a> <span class="text-gray-500">— سناریوی عملی: اتصال برقرار است ولی دیتا نیست.</span></p>
+          <p><span class="text-gray-600 ml-2">۵.</span><span dir="ltr" class="font-mono text-[13px]">Troubleshooting/incident-simulation-no-internet.md</span> <span class="text-gray-500">— شبیه‌سازی رخداد.</span></p>
+          <p><span class="text-gray-600 ml-2">۶.</span><span dir="ltr" class="font-mono text-[13px]">CaseStudies/real-epc-incidents.md</span> <span class="text-gray-500">— رخدادهای واقعی.</span></p>
+          <p><span class="text-gray-600 ml-2">۷.</span><span dir="ltr" class="font-mono text-[13px]">WarRoom/global-core-outage-simulation.md</span> <span class="text-gray-500">— قطعی سراسری.</span></p>
+          <p><span class="text-gray-600 ml-2">۸.</span><span dir="ltr" class="font-mono text-[13px]">WarRoom/multi-domain-outage-simulation.md</span> <span class="text-gray-500">— قطعی چنددامنه‌ای.</span></p>
+        </div>
+      </div>
+
+      <!-- مسیر ۴ -->
+      <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-7 hover:border-blue-500/30 hover:-translate-y-1 transition-all duration-300">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400">🌍</div>
+          <h2 class="text-lg font-bold">مسیر ۴ — رومینگ</h2>
+        </div>
+        <p class="text-gray-400 text-sm leading-relaxed mb-5">مبانی رومینگ، هدایت و شارژ رومینگ — جایی که Gy به شبکه میزبان می‌رسد.</p>
+        <div class="space-y-2.5 text-sm text-gray-400">
+          <p><span class="text-gray-600 ml-2">۱.</span><span dir="ltr" class="font-mono text-[13px]">Roaming/lte-roaming.md</span> <span class="text-gray-500">— مبانی رومینگ.</span></p>
+          <p><span class="text-gray-600 ml-2">۲.</span><span dir="ltr" class="font-mono text-[13px]">Roaming/lte-roaming-steering.md</span> <span class="text-gray-500">— هدایت رومینگ.</span></p>
+          <p><span class="text-gray-600 ml-2">۳.</span><span dir="ltr" class="font-mono text-[13px]">Roaming/gy-interface.md</span> <span class="text-gray-500">— Gy و شارژ رومینگ.</span></p>
+          <p><span class="text-gray-600 ml-2">۴.</span><span dir="ltr" class="font-mono text-[13px]">Protocols/diameter-s6a-mme-hss.md</span> <span class="text-gray-500">— S6a در اتصال رومینگ.</span></p>
+        </div>
+      </div>
+
+      <!-- مسیر ۵ -->
+      <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-7 hover:border-blue-500/30 hover:-translate-y-1 transition-all duration-300">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400">🎯</div>
+          <h2 class="text-lg font-bold">مسیر ۵ — آمادگی مصاحبه</h2>
+        </div>
+        <p class="text-gray-400 text-sm leading-relaxed mb-5">مبانی را به پاسخ تبدیل کنید: پرسش و پاسخ، بسته مصاحبه، داستان‌های واقعی و یک قطعی که از اول تا آخر شرح داده می‌شود.</p>
+        <div class="space-y-2.5 text-sm text-gray-400">
+          <p><span class="text-gray-600 ml-2">۱.</span><span class="text-gray-300">اول مسیر ۱ (مبانی EPC) را کامل کنید.</span></p>
+          <p><span class="text-gray-600 ml-2">۲.</span><span dir="ltr" class="font-mono text-[13px]">Interview/core-network-interview-qa.md</span> <span class="text-gray-500">— پرسش و پاسخ.</span></p>
+          <p><span class="text-gray-600 ml-2">۳.</span><span dir="ltr" class="font-mono text-[13px]">Interview/core-network-interview-pack.md</span> <span class="text-gray-500">— بسته مصاحبه.</span></p>
+          <p><span class="text-gray-600 ml-2">۴.</span><span dir="ltr" class="font-mono text-[13px]">CaseStudies/real-epc-incidents.md</span> <span class="text-gray-500">— داستان‌های آماده داشته باشید.</span></p>
+          <p><span class="text-gray-600 ml-2">۵.</span><span dir="ltr" class="font-mono text-[13px]">WarRoom/global-core-outage-simulation.md</span> <span class="text-gray-500">— یک قطعی را قدم‌به‌قدم شرح دهید.</span></p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- راهنمای استفاده -->
+    <div class="rounded-2xl border border-white/5 bg-white/[0.02] p-8 md:p-10 mt-6">
+      <h2 class="text-2xl font-bold mb-6">چطور از مسیرها استفاده کنیم</h2>
+      <div class="space-y-3 text-sm text-gray-400 leading-relaxed">
+        <p><span class="text-white font-semibold">تازه‌کار در هسته بسته:</span> اول مسیر ۱، بعد مسیر ۲.</p>
+        <p><span class="text-white font-semibold">درگیر یک مشکل زنده:</span> مسیر ۳، یا سراغ یادداشتی بروید که با نشانه شما می‌خواند.</p>
+        <p><span class="text-white font-semibold">آماده شدن برای مصاحبه:</span> مسیر ۵.</p>
+      </div>
+      <p class="text-sm text-gray-500 mt-8 pt-6 border-t border-white/5">
+        یادداشت‌های منبع در
+        <a href="https://github.com/packetalchemy/packetalchemy-telecom-notes" target="_blank" rel="noopener" class="text-blue-400 hover:text-blue-300"> مخزن packetalchemy-telecom-notes در گیت‌هاب</a>
+        هستند. برای مطالعه عمیق‌تر، از
+        <a href="/fa/blog" class="text-blue-400 hover:text-blue-300">مقالات فارسی</a>
+        یا
+        <a href="/notes/scenario-attach-no-data/" class="text-blue-400 hover:text-blue-300">آزمایشگاه اتصال برقرار، دیتا نیست</a>
+        شروع کنید.
+      </p>
+    </div>
+  </section>
+</I18nLayout>
