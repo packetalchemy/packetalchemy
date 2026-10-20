@@ -1,4 +1,25 @@
 ---
+const protocols = [
+  "GTP-C", "GTP-U", "Diameter", "PFCP", "S1AP", "NGAP", "SBA · HTTP/2",
+  "SIP", "RADIUS", "SCTP", "DNS", "Wireshark", "3GPP", "EPC", "5G Core",
+];
+
+const nodes = [
+  { x: 70, label: "UE", sub: "subscriber" },
+  { x: 232, label: "gNB", sub: "radio" },
+  { x: 394, label: "AMF", sub: "mobility" },
+  { x: 556, label: "SMF", sub: "session" },
+  { x: 718, label: "UPF", sub: "user plane" },
+  { x: 868, label: "Internet", sub: "data network" },
+];
+
+const ifaces = [
+  { x: 151, label: "Uu" },
+  { x: 313, label: "N2" },
+  { x: 475, label: "N11" },
+  { x: 637, label: "N4 · PFCP" },
+  { x: 793, label: "N6" },
+];
 ---
 
 <section class="relative overflow-hidden">
@@ -106,19 +127,19 @@
     <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 max-w-5xl border-t border-white/5 pt-10">
       <div>
         <div class="text-3xl md:text-4xl font-black text-gradient-brand">
-          21+
+          <span data-count="21" data-suffix="+">21+</span>
         </div>
         <div class="text-sm text-gray-500 mt-1">Years in Telecom</div>
       </div>
       <div>
         <div class="text-3xl md:text-4xl font-black text-gradient-brand">
-          11+
+          <span data-count="11" data-suffix="+">11+</span>
         </div>
         <div class="text-sm text-gray-500 mt-1">Years PS Core</div>
       </div>
       <div>
         <div class="text-3xl md:text-4xl font-black text-gradient-brand">
-          7+
+          <span data-count="7" data-suffix="+">7+</span>
         </div>
         <div class="text-sm text-gray-500 mt-1">Huawei Devices</div>
       </div>
@@ -146,6 +167,84 @@
       <span class="px-3 py-1 border border-white/10 rounded-full text-xs text-gray-400 bg-white/[0.02]">3GPP</span>
       <span class="px-3 py-1 border border-white/10 rounded-full text-xs text-gray-400 bg-white/[0.02]">AI</span>
       <span class="px-3 py-1 border border-white/10 rounded-full text-xs text-gray-400 bg-white/[0.02]">Python</span>
+    </div>
+
+    <!-- Packet Journey: animated packet flow through the 5G Core -->
+    <div class="reveal mt-16 max-w-5xl rounded-2xl border border-white/5 bg-[#0d1420]/70 backdrop-blur-sm px-5 py-5 md:px-7">
+      <div class="flex items-center justify-between gap-4">
+        <div class="flex items-center gap-2 text-[11px] font-semibold tracking-[0.2em] uppercase text-gray-400">
+          <span class="h-1.5 w-1.5 rounded-full bg-teal-400 animate-pulse"></span>
+          Packet Journey
+        </div>
+        <div class="text-[11px] text-gray-500">Control plane decides · user plane delivers</div>
+      </div>
+
+      <svg viewBox="0 0 960 128" class="w-full h-auto mt-3" role="img" aria-label="Animated diagram of a packet travelling from the UE through the 5G Core to the data network">
+        <defs>
+          <linearGradient id="linkGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#3b82f6" />
+            <stop offset="55%" stop-color="#2dd4bf" />
+            <stop offset="100%" stop-color="#38bdf8" />
+          </linearGradient>
+        </defs>
+
+        <!-- link -->
+        <line x1="70" y1="52" x2="868" y2="52" stroke="rgba(148,163,184,.22)" stroke-width="2" />
+        <line x1="70" y1="52" x2="868" y2="52" stroke="url(#linkGrad)" stroke-width="2" stroke-dasharray="3 8" opacity="0.55" />
+
+        <!-- travelling packets (hidden briefly behind each node box) -->
+        <g>
+          <circle r="9" fill="rgba(45,212,191,.18)" />
+          <circle r="4" fill="#2dd4bf" />
+          <animateMotion dur="7s" begin="0s" repeatCount="indefinite" path="M 70 52 H 868" />
+        </g>
+        <g>
+          <circle r="9" fill="rgba(56,189,248,.18)" />
+          <circle r="4" fill="#38bdf8" />
+          <animateMotion dur="7s" begin="2.4s" repeatCount="indefinite" path="M 70 52 H 868" />
+        </g>
+        <g>
+          <circle r="9" fill="rgba(96,165,250,.18)" />
+          <circle r="4" fill="#60a5fa" />
+          <animateMotion dur="7s" begin="4.8s" repeatCount="indefinite" path="M 70 52 H 868" />
+        </g>
+
+        <!-- SMF decision pulse -->
+        <circle cx="556" cy="52" r="5" fill="none" stroke="#2dd4bf" stroke-width="1.5">
+          <animate attributeName="r" values="5;26" dur="2.6s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.7;0" dur="2.6s" repeatCount="indefinite" />
+        </circle>
+
+        <!-- nodes -->
+        {nodes.map((n) => (
+          <g>
+            <rect x={n.x - 52} y="29" width="104" height="46" rx="10" fill="#0d1420" stroke="rgba(255,255,255,.12)" />
+            <text x={n.x} y="51" text-anchor="middle" font-size="13" font-weight="700" fill="#e5e7eb">{n.label}</text>
+            <text x={n.x} y="66" text-anchor="middle" font-size="9" fill="#64748b">{n.sub}</text>
+          </g>
+        ))}
+
+        <!-- interface labels -->
+        {ifaces.map((i) => (
+          <text x={i.x} y="104" text-anchor="middle" font-size="10" fill="#64748b">{i.label}</text>
+        ))}
+      </svg>
+    </div>
+
+    <!-- Protocol marquee -->
+    <div class="marquee mt-12 max-w-5xl border-y border-white/5 py-4" aria-hidden="true">
+      <div class="marquee-track">
+        {[0, 1].map(() => (
+          <div class="marquee-group">
+            {protocols.map((p) => (
+              <>
+                <span class="text-xs font-semibold tracking-[0.25em] text-gray-500 whitespace-nowrap">{p}</span>
+                <span class="text-[8px] text-teal-400/50">◆</span>
+              </>
+            ))}
+          </div>
+        ))}
+      </div>
     </div>
   </div>
 </section>
