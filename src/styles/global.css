@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+/* ===== BRAND TOKENS (PA monogram: blue P, teal A) ===== */
+@theme {
+  --color-ink: #0b0f17;
+  --color-panel: #111827;
+  --color-brand-blue: #2563eb;
+  --color-brand-sky: #38bdf8;
+  --color-brand-teal: #2dd4bf;
+}
+
 /* ===== BASE ===== */
 html {
   scroll-behavior: smooth;
@@ -13,6 +22,10 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+h1, h2, h3 {
+  text-wrap: balance;
+}
+
 /* ===== SUBTLE GLOW BACKGROUND ===== */
 body::before {
   content: "";
@@ -21,6 +34,7 @@ body::before {
   z-index: -2;
   background:
     radial-gradient(circle at 10% 20%, rgba(37,99,235,.12), transparent 35%),
+    radial-gradient(circle at 90% 80%, rgba(45,212,191,.07), transparent 40%),
     radial-gradient(circle at 90% 80%, rgba(56,189,248,.08), transparent 40%);
 }
 
@@ -35,6 +49,14 @@ body::after {
     linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
   background-size: 48px 48px;
   mask-image: radial-gradient(circle, white 30%, transparent 100%);
+}
+
+/* ===== BRAND GRADIENT TEXT ===== */
+.text-gradient-brand {
+  background: linear-gradient(92deg, #60a5fa 0%, #2dd4bf 55%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 /* ===== ANIMATIONS ===== */
@@ -53,7 +75,85 @@ body::after {
   animation: fade-in 0.6s ease-out both;
 }
 
-/* ===== CARD COMPONENT ===== */.card {
+/* Slow drift for hero glow blobs */
+@keyframes drift {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(40px, 30px) scale(1.08);
+  }
+}
+
+@keyframes drift-rev {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-40px, -24px) scale(1.06);
+  }
+}
+
+.animate-drift {
+  animation: drift 14s ease-in-out infinite;
+}
+
+.animate-drift-rev {
+  animation: drift-rev 18s ease-in-out infinite;
+}
+
+/* Packets travelling along a line (hero accent) */
+@keyframes packet-run {
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  92% {
+    opacity: 1;
+  }
+  100% {
+    left: calc(100% - 6px);
+    opacity: 0;
+  }
+}
+
+.packet-dot {
+  position: absolute;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  margin-top: -3px;
+  border-radius: 9999px;
+  background: #2dd4bf;
+  box-shadow: 0 0 10px 2px rgba(45,212,191,.55);
+  animation: packet-run 5.5s linear infinite;
+}
+
+.packet-dot.delay-1 {
+  animation-delay: 1.8s;
+  background: #38bdf8;
+  box-shadow: 0 0 10px 2px rgba(56,189,248,.55);
+}
+
+.packet-dot.delay-2 {
+  animation-delay: 3.6s;
+  background: #60a5fa;
+  box-shadow: 0 0 10px 2px rgba(96,165,250,.55);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-drift,
+  .animate-drift-rev,
+  .packet-dot {
+    animation: none;
+  }
+}
+
+/* ===== CARD COMPONENT ===== */
+.card {
   background: rgba(17,24,39,.45);
   backdrop-filter: blur(14px);
   border: 1px solid rgba(255,255,255,.05);
@@ -62,13 +162,34 @@ body::after {
 
 .card:hover {
   transform: translateY(-4px);
-  border-color: rgba(59,130,246,.4);
+  border-color: rgba(45,212,191,.35);
   background: rgba(17,24,39,.6);
+  box-shadow: 0 16px 44px -16px rgba(37,99,235,.35);
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0b0f17;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1f2937;
+  border-radius: 8px;
+  border: 2px solid #0b0f17;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2563eb;
 }
 
 /* ===== SELECTION + FOCUS ===== */
 ::selection {
-  background: rgba(59, 130, 246, 0.35);
+  background: rgba(45, 212, 191, 0.35);
   color: #ffffff;
 }
 
