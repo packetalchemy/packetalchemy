@@ -10,7 +10,7 @@ posts.sort(
 const latest = posts.slice(0, 3);
 ---
 
-<section class="max-w-6xl mx-auto px-8 py-20">
+<section class="reveal max-w-6xl mx-auto px-8 py-20">
 
   <div class="flex items-center justify-between">
 
@@ -30,11 +30,12 @@ const latest = posts.slice(0, 3);
   <div class="grid md:grid-cols-3 gap-8 mt-10">
 
     {
-      latest.map((post) => (
+      latest.map((post, i) => (
 
         <a
           href={`/blog/${post.id}/`}
-          class="group relative overflow-hidden rounded-2xl border border-gray-800 bg-[#111827]/70 p-7 hover:border-teal-400/40 hover:-translate-y-1 hover:shadow-[0_18px_50px_-16px_rgba(45,212,191,0.25)] transition-all duration-300"
+          style={`transition-delay: ${i * 90}ms`}
+          class="reveal group relative overflow-hidden rounded-2xl border border-gray-800 bg-[#111827]/70 p-7 hover:border-teal-400/40 hover:-translate-y-1 hover:shadow-[0_18px_50px_-16px_rgba(45,212,191,0.25)] transition-all duration-300"
         >
           <span class="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-blue-500 via-teal-400 to-sky-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
 
